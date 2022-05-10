@@ -1,0 +1,44 @@
+<div class="prototype_phylogeny">
+    <div class="header">
+        <input type="text" size="30" placeholder="Search" />
+    </div>
+    <div class="prototype_phylogeny_diagram">
+        <div class="flexbox_concept" [class.has_selected_block]="hasSelectedBlock" [class.navigation_mode]="phylogenyShowTable && hasSelectedBlock">
+            <div class="subclone_label">{{phylogenyProportionId}}</div>
+            <phylo-node *ngFor="let data of cellData; index as index"
+                [jsonData]="data"
+                [sample]="data.sample || 'primary'"
+                [label]="data.label"
+                [color]="data.color"
+                [genes]="data.genes || 0"
+                [showEndBlock]="data.show_end_block || false"
+                [children]="data.children"
+                [key]="index"
+            ></phylo-node>
+        </div>
+        <div class="flexbox_concept is_narrow" *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"
+            [class.selected]="proportionSetEntry.key == phylogenyProportionId"
+            [class.navigation_mode]="phylogenyShowTable && hasSelectedBlock"
+            (click)="$event.stopPropagation(); selectProportion(proportionSetEntry.key)">
+            <div class="subclone_label">{{proportionSetEntry.key}}</div>
+            <div class="prototype_phylogeny_block cell_block">
+                <div class="children">
+                    <!-- FIXME is this handling click or passing down a click handler? -->
+                    <phylo-node *ngFor="let data of proportionSetEntry.value; index as innerProportionIndex"
+                        [showPrimaryBlocks]="true"
+                        [blockLabel]="data.proportion + '%'"
+                        [color]="data.color"
+                        [showStripes]="false"
+                        [parentTotal]="data.proportion"
+                        [showEndBlock]="false"
+                        [showStats]="true"
+                        [ignoreScaling]="true"
+                        [key]="innerProportionIndex"
+                        (click)="selectProportion(proportionSetEntry.key)"
+                    ></phylo-node>
+                </div>
+            </div>
+        </div>
+    </div>
+    <phylo-table *ngIf="hasSelectedBlock && phylogenyShowTable"></phylo-table>
+</div>
