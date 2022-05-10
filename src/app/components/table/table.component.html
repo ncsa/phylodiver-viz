@@ -1,0 +1,39 @@
+<div class="prototype_phylogeny_table">
+    <div class="title">
+        <div class="close_btn" (click)="$event.stopPropagation(); closeTable()"></div>
+        <div class="label">Selected: </div>
+        <div class="data_label">{{label || ''}}</div>
+        <div class="edge_label" *ngIf="edgeLabel">{{edgeLabel}}</div>
+        <div class="tier_label" (click)="$event.stopPropagation(); deselectTier()">
+            <ng-container *ngIf="phylogenySelectedTier">
+                {{phylogenySelectedTier}} <div class="close_icon"></div>
+            </ng-container>
+            <ng-container *ngIf="phylogenySelectedTier">
+                All Tiers
+            </ng-container>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let column of tableColumns" [ngClass]="'column_' + column.field">
+                    {{column.label}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let data of detailsData">
+                <tr *ngIf="!phylogenySelectedTier || phylogenySelectedTier === data.tier" (click)="$event.stopPropagation(); selectRow(data)">
+                    <td *ngFor="let column of tableColumns; index as i" [ngClass]="'column_' + column.field">
+                        {{data[column.field]}}
+                    </td>
+                </tr>
+            </ng-container>
+            <tr *ngIf="!detailsData || detailsData.length === 0">
+                <td [attr.colspan]="tableColumns.length">
+                    ...
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
