@@ -6,7 +6,7 @@ import { SelectionService } from 'src/app/services/selection.service';
 @Component({
   selector: 'phylo-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['../../styles/styles.scss', './table.component.scss']
 })
 export class TableComponent implements OnInit, OnDestroy {
 

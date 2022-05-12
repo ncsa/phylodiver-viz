@@ -8,7 +8,7 @@ import { SelectionService } from 'src/app/services/selection.service';
 @Component({
   selector: 'phylo-node',
   templateUrl: './node.component.html',
-  styleUrls: ['./node.component.scss']
+  styleUrls: ['../../styles/styles.scss', './node.component.scss'],
 })
 export class NodeComponent implements OnInit, OnChanges, OnDestroy {
 
@@ -211,6 +211,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       styles['flex'] = (!this.ignoreScaling && hasSelectedBlock && selectedBlockLevel >= this.blockLevel && !this.isSelected) ? '1' : '' + (this.getProportion() * 1000); //proper value is 100, using 1000 to force this to shrink super small when selected
       //styles['flex'] = (has_selected_block && selected_block_level >= this.block_level && !this.is_selected) ? '1' : '' + (this.genes / this.parent_total * 1000); //proper value is 100, using 1000 to force this to shrink super small when selected
     }
+
     this.cssStyles = styles;
   }
 

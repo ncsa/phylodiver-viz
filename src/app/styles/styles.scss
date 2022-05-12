@@ -1,0 +1,55 @@
+//**************** styles ******************
+//this css library should only be loaded ONCE PER PAGE (or web component)
+//load _core.scss directly if only needing the supporting css colors, variables, mixins, and other functionality
+
+@import 'core';
+
+
+/*
+
+*************** theme - override as needed *****************
+example: document.documentElement.style.setProperty('--text-color', '#ff0000');
+
+*/
+
+//create a variable for every color
+//color variables will be -dash based plus -color
+// example: violation_high_hover would convert to --violation-high-hover-color
+
+:root {
+	@each $name, $color in $colors {
+		--#{str-replace($name, '_', '-')}-color: #{$color};
+	}
+}
+
+//**************** css libraries ******************
+
+@import 'core/reset';
+
+//load custom css for common elements
+@import 'custom/svg';
+@import 'custom/webfont';
+
+//**************** css ******************
+
+//host css (think of this as the body tag for the web component)
+:host {
+	display: block;
+
+	color: color_variable('text');
+	background: {
+		color: color_variable('background');
+	}
+
+	font: {
+		family: $font_family;
+		//size: .9em;  --- if put this here each level of nested component decreases font size
+	}
+	line: {
+//		height: 130%;
+	}
+}
+
+//**************** google webfont ******************
+
+//webfonts are no longer referenced using the official CDN, instead, they are loaded locally using webfont.scss

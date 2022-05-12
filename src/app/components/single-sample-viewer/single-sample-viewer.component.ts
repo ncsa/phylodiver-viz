@@ -8,7 +8,7 @@ import { SelectionService } from 'src/app/services/selection.service';
 @Component({
   selector: 'phylo-single-sample-viewer',
   templateUrl: './single-sample-viewer.component.html',
-  styleUrls: ['./single-sample-viewer.component.scss']
+  styleUrls: ['../../styles/styles.scss', './single-sample-viewer.component.scss']
 })
 export class SingleSampleViewerComponent implements OnInit, OnDestroy {
 

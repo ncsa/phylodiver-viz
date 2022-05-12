@@ -1,0 +1,238 @@
+/**************** single sample viewer ******************/
+
+@import '../../styles/core';
+
+
+//**************** css ******************
+
+.single_sample_viewer {
+  display: flex;
+  flex-direction: column;
+
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: get_index(interface);
+
+	color: color_variable('text');
+	background: {
+		color: color_variable('background');
+	}
+
+	.header {
+		margin: {
+			right: auto;
+			left: auto;
+		}
+		padding: $padding;
+
+		input {
+			padding: ($padding / 4);
+
+			border: 1px solid color_variable('header_border');
+
+			@include border-radius($border_radius);
+		}
+	}
+
+  .container {
+    overflow: {
+      y: auto;
+    }
+
+    flex-grow: 1; //to fill the window height
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min: {
+      height: 200px;
+    }
+
+    padding: 0px $padding;
+  }
+
+  phylo-table {
+    flex-grow: 10; //to fill the window height when open
+
+    overflow: {
+      y: auto;
+    }
+  }
+}
+
+.phyloviz_diagram {
+  position: relative;
+  display: flex;
+
+  height: 700px; //70vh; //700px; //500px;
+
+  margin: {
+    bottom: $padding;
+    right: 160px; //give room for end block
+  }
+
+  @include transition(#{height .2s easing($ease-in-out)});
+
+  &.navigation_mode {
+    height: 120px;
+
+    ::ng-deep phylo-node .summary {
+      display: none;
+    }
+
+    ::ng-deep phylo-node .node {
+      &.is_selected {
+        min: {
+          height: 0px;
+        }
+      }
+    }
+  }
+
+  &.has_selected_block {
+    ::ng-deep phylo-node .node {
+      &:not(.is_visible) {
+        @include opacity(40);
+      }
+
+      &:not(.is_selected) {
+        > .block_info {
+          width: 5vw;
+
+          .info {
+            .label {
+              display: none;
+            }
+
+            .value {
+              div:not(.group) {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &.is_selected {
+        > .block_info {
+          width: 25vw;
+        }
+      }
+    }
+  }
+
+  &.is_narrow {
+    width: $narrow_size;
+
+    min: {
+      height: 120px;
+    }
+    max: {
+      height: 300px;
+    }
+
+    margin: {
+      right: $padding * 3;
+    }
+
+    &:hover {
+      &:after {
+        display: block;
+      }
+    }
+
+    //background grey
+    //NOTE: not the right way to do this as the background radius just overlaps each other instead of properly left and right curves
+    &:before {
+      content: '';
+      position: absolute;
+      left: -($padding * 2);
+      right: -($padding * 2.25);
+      top: -($padding * 2.5);
+      bottom: -($padding * 1.5);
+      z-index: -10;
+
+      background: {
+        color: #e1e1e1;
+      }
+
+      @include border-radius($border_radius * 2);
+    }
+
+    //area for selected and hover
+    &:after {
+      display: none;
+
+      content: '';
+      position: absolute;
+      left: -6px;
+      right: -6px;
+      top: -6px;
+      bottom: -6px;
+      z-index: -10;
+
+      background: {
+        color: #fff;
+      }
+
+      border: 2px solid #999; //3px
+
+      @include border-radius($border_radius * 2);
+    }
+
+    &:not(.selected) {
+      .count {
+        display: none;
+      }
+    }
+
+    .subclone_label {
+      left: 50%;
+    }
+
+    ::ng-deep phylo-node .node {
+      min: {
+        width: none;
+      }
+
+      .block {
+        width: ($narrow_size - ($padding * .25)) !important;
+      }
+
+      .end_block {
+      }
+    }
+  }
+
+  &:not(.is_narrow) {
+    & + .is_narrow {
+      margin: {
+        left: $padding * 2; //extra padding between the main diagram an the navigation bars
+      }
+    }
+
+    ::ng-deep phylo-node .block:not(.is_parent_block) {
+      @include repeating-bars(45deg, rgba(#fff, .3), transparent, 2px);
+    }
+  }
+
+  &.selected {
+    &:after {
+      display: block;
+    }
+
+    .subclone_label {
+      background: {
+        color: #fff;
+      }
+
+      border: {
+        color: color_variable('selected_color');
+      }
+    }
+  }
+}

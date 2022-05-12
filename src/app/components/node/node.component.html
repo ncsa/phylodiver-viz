@@ -1,4 +1,4 @@
-<div class="prototype_phylogeny_block cell_block"
+<div class="node"
   [style]="cssStyles"
   (click)="$event.stopPropagation(); onSelectBlock()"
   [class.is_first_selected]="isFirstSelected" [class.is_visible]="isSelected"
@@ -6,6 +6,7 @@
     <div class="block" *ngIf="showPrimaryBlocks" [class.is_parent_block]="showStripes && children && children.length === 0">
         <div class="count" *ngIf="blockLabel">{{blockLabel}}</div>
     </div>
+
     <div class="block_info" *ngIf="showPrimaryBlocks"><!--  v-if="children || is_selected" -->
         <div class="info" *ngIf="(children && children.length > 0) || isFirstSelected">
             <div class="info_container">
@@ -44,6 +45,7 @@
                     </div>
                 </template>
             </div>
+
             <div class="summary" *ngIf="jsonData?.summary">
                 <div class="summary_header">Mutation Edge Info</div>
                 <div class="summary_table">
@@ -69,6 +71,7 @@
                 <div class="summary_button" (click)="$event.stopPropagation(); onToggleTable(undefined)">{{(!phylogenyShowTable) ? 'Open in' : 'Hide'}} Table</div>
             </div>
         </div>
+
         <div class="block_background" *ngIf="children && children.length > 0">
             <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <linearGradient x1="0" y1="0" x2="100%" y2="0" id="gradient">
@@ -81,6 +84,7 @@
             </svg>
         </div>
     </div>
+
     <div class="children" *ngIf="showPrimaryBlocks && children">
         <phylo-node *ngFor="let child of children; index as index"
             [jsonData]="child"
@@ -96,6 +100,7 @@
             [key]="index"
         ></phylo-node>
     </div>
+
     <div class="end_block" *ngIf="showEndBlock">
         <div class="percentage">{{getProportion()}}%</div>
     </div>
