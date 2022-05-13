@@ -24,7 +24,8 @@
         <div class="legend">
             <phylo-legend *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"></phylo-legend>
         </div>
--->
+
+
 
         <div class="phyloviz_diagram is_narrow" *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"
             [class.selected]="proportionSetEntry.key == phylogenyProportionId"
@@ -35,7 +36,7 @@
 
             <div class="node">
                 <div class="children">
-                    <!-- FIXME is this handling click or passing down a click handler? -->
+                    <! -- FIXME is this handling click or passing down a click handler? -- >
                     <phylo-node *ngFor="let data of proportionSetEntry.value; index as innerProportionIndex"
                         [showPrimaryBlocks]="true"
                         [blockLabel]="data.proportion + '%'"
@@ -51,6 +52,8 @@
                 </div>
             </div>
         </div>
+-->
+
     </div>
 
     <phylo-table *ngIf="hasSelectedBlock && phylogenyShowTable"></phylo-table>
