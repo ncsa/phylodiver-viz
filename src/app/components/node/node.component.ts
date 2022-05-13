@@ -37,7 +37,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   jsonData: any; // TODO FIXME
 
   @Input()
-  key = 0;
+  key = '';
 
   @Input()
   label = '';
@@ -109,6 +109,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     }));
     this.subscriptions.push(this.selectionService.getPhylogenyProportionId().subscribe(proportionId => {
       this.phylogenyProportionId = proportionId;
+      this.updateStyle();
     }));
   }
 
@@ -119,7 +120,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     if ('parent' in changes) {
       this.updateParentsAggregate();
     }
-    if ('selected' in changes || 'parentTotal' in changes) {
+    if ('selected' in changes || 'parentTotal' in changes || 'jsonData' in changes) {
       this.updateStyle();
     }
   }

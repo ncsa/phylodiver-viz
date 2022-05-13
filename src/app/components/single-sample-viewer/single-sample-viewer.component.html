@@ -7,15 +7,15 @@
         <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedBlock" [class.navigation_mode]="phylogenyShowTable && hasSelectedBlock">
             <div class="subclone_label">{{phylogenyProportionId}}</div>
 
-            <phylo-node *ngFor="let data of cellData; index as index"
-                [jsonData]="data"
-                [sample]="data.sample || 'primary'"
-                [label]="data.label"
-                [color]="data.color"
-                [genes]="data.genes || 0"
-                [showEndBlock]="data.show_end_block || false"
-                [children]="data.children"
-                [key]="index"
+            <phylo-node *ngFor="let data of cellData | keyvalue"
+                [jsonData]="data.value"
+                [sample]="$any(data.value).sample || 'primary'"
+                [label]="$any(data.value).label"
+                [color]="$any(data.value).color"
+                [genes]="$any(data.value).genes || 0"
+                [showEndBlock]="$any(data.value).show_end_block || false"
+                [children]="$any(data.value).children"
+                [key]="$any(data.key)"
             ></phylo-node>
         </div>
 
@@ -38,7 +38,7 @@
                         [showEndBlock]="false"
                         [showStats]="true"
                         [ignoreScaling]="true"
-                        [key]="innerProportionIndex"
+                        [key]="innerProportionIndex + ''"
                         (click)="selectProportion(proportionSetEntry.key)"
                     ></phylo-node>
                 </div>
