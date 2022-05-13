@@ -1,107 +1,101 @@
-<div class="node"
-  [style]="cssStyles"
-  (click)="$event.stopPropagation(); onSelectBlock()"
-  [class.is_selected]="isFirstSelected" [class.is_visible]="isSelected"
->
-    <div class="block" *ngIf="showPrimaryBlocks" [class.is_parent_block]="showStripes && children && children.length === 0">
-        <div class="count" *ngIf="blockLabel">{{blockLabel}}</div>
-    </div>
+<div class="block" *ngIf="showPrimaryBlocks" [class.is_parent_block]="showStripes && children && children.length === 0">
+    <div class="count" *ngIf="blockLabel">{{blockLabel}}</div>
+</div>
 
-    <div class="block_info" *ngIf="showPrimaryBlocks"><!--  v-if="children || is_selected" -->
-        <div class="info" *ngIf="(children && children.length > 0) || isFirstSelected">
-            <div class="info_container">
-                <ng-container *ngIf="showEndBlock">
-                    <div class="label">Aggregated Totals:</div>
-                    <div class="value">
-                        <div class="group group_red">M: {{parentsAggregate.t1_mutations}}</div>
-                    </div>
-                    <div class="value">
-                        <div class="group group_blue">G: {{parentsAggregate.t1_cgc_genes}}</div>
-                    </div>
-                    <div class="value">
-                        <div class="group">D: {{parentsAggregate.drugs}}</div>
-                    </div>
-                </ng-container>
-                <ng-container *ngIf="!showEndBlock">
-                    <div class="label">
-                        <span class="full">T1&nbsp;</span>M<span class="full">utations</span>:
-                    </div>
-                    <div class="value">
-                        <div class="group group_red">{{jsonData.t1_mutations}}</div>
-                        <div class="full">/{{jsonData.mutations}}</div>
-                    </div>
-                    <div class="label">
-                        <span class="full">C</span>G<span class="full">C Genes</span>:
-                    </div>
-                    <div class="value">
-                        <div class="group group_blue">{{jsonData.t1_cgc_genes}}</div>
-                        <div class="full">/{{jsonData.genes}}</div>
-                    </div>
-                    <div class="label">
-                        D<span class="full">rugs</span>:
-                    </div>
-                    <div class="value">
-                        <div class="group">{{jsonData.drugs}}</div>
-                    </div>
-                </ng-container>
-            </div>
-
-            <div class="summary" *ngIf="jsonData?.summary">
-                <div class="summary_header">Mutation Edge Info</div>
-                <div class="summary_table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.field">
-                                    {{column.label}}
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let data of jsonData.summary" (click)="$event.stopPropagation(); onToggleTable(data.tier)">
-                                <td *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.field">
-                                    <div class="group group_red">
-                                        {{data[column.field]}}
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+<div class="block_info" *ngIf="showPrimaryBlocks"><!--  v-if="children || is_selected" -->
+    <div class="info" *ngIf="(children && children.length > 0) || isFirstSelected">
+        <div class="info_container">
+            <ng-container *ngIf="showEndBlock">
+                <div class="label">Aggregated Totals:</div>
+                <div class="value">
+                    <div class="group group_red">M: {{parentsAggregate.t1_mutations}}</div>
                 </div>
-                <div class="summary_button" (click)="$event.stopPropagation(); onToggleTable(undefined)">{{(!phylogenyShowTable) ? 'Open in' : 'Hide'}} Table</div>
+                <div class="value">
+                    <div class="group group_blue">G: {{parentsAggregate.t1_cgc_genes}}</div>
+                </div>
+                <div class="value">
+                    <div class="group">D: {{parentsAggregate.drugs}}</div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!showEndBlock">
+                <div class="label">
+                    <span class="full">T1&nbsp;</span>M<span class="full">utations</span>:
+                </div>
+                <div class="value">
+                    <div class="group group_red">{{jsonData.t1_mutations}}</div>
+                    <div class="full">/{{jsonData.mutations}}</div>
+                </div>
+                <div class="label">
+                    <span class="full">C</span>G<span class="full">C Genes</span>:
+                </div>
+                <div class="value">
+                    <div class="group group_blue">{{jsonData.t1_cgc_genes}}</div>
+                    <div class="full">/{{jsonData.genes}}</div>
+                </div>
+                <div class="label">
+                    D<span class="full">rugs</span>:
+                </div>
+                <div class="value">
+                    <div class="group">{{jsonData.drugs}}</div>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="summary" *ngIf="jsonData?.summary">
+            <div class="summary_header">Mutation Edge Info</div>
+            <div class="summary_table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.field">
+                                {{column.label}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of jsonData.summary" (click)="$event.stopPropagation(); onToggleTable(data.tier)">
+                            <td *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.field">
+                                <div class="group group_red">
+                                    {{data[column.field]}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-
-        <div class="block_background" *ngIf="children && children.length > 0">
-            <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <linearGradient x1="0" y1="0" x2="100%" y2="0" id="gradient">
-                    <stop class="gradient_start" offset="0" />
-                    <stop class="gradient_end" offset="100%" />
-                </linearGradient>
-                <path id="curve_background" style="stroke-miterlimit:10;" fill="url(#gradient)" d="M0 0 C 0 20, 100 20, 100 0 L 100 100 C 100 80, 0 80, 0 100 L 0 0" vector-effect="non-scaling-stroke"></path>
-                <path id="curve_selected_white" style="stroke-miterlimit:10;" fill="none" d="M0 0 C 0 20, 100 20, 100 0 L 100 100 C 100 80, 0 80, 0 100 L 0 0" vector-effect="non-scaling-stroke"></path>
-                <path id="curve_selected" style="stroke-miterlimit:10;" fill="none" d="M0 0 C 0 20, 100 20, 100 0 L 100 100 C 100 80, 0 80, 0 100 L 0 0" vector-effect="non-scaling-stroke"></path>
-            </svg>
+            <div class="summary_button" (click)="$event.stopPropagation(); onToggleTable(undefined)">{{(!phylogenyShowTable) ? 'Open in' : 'Hide'}} Table</div>
         </div>
     </div>
 
-    <div class="children" *ngIf="showPrimaryBlocks && children">
-        <phylo-node *ngFor="let child of children; index as index"
-            [jsonData]="child"
-            [sample]="child.sample || 'primary'"
-            [label]="child.label"
-            [color]="child.color"
-            [genes]="child.genes || 0"
-            [parent]="getThisNode()"
-            [parentTotal]="getChildrenTotal()"
-            [showEndBlock]="showEndBlock || !children || children.length === 0"
-            [children]="child.children!"
-            [blockLevel]="blockLevel + 1"
-            [key]="index + ''"
-        ></phylo-node>
+    <div class="block_background" *ngIf="children && children.length > 0">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <linearGradient x1="0" y1="0" x2="100%" y2="0" id="gradient">
+                <stop class="gradient_start" offset="0" />
+                <stop class="gradient_end" offset="100%" />
+            </linearGradient>
+            <path id="curve_background" style="stroke-miterlimit:10;" fill="url(#gradient)" d="M0 0 C 0 20, 100 20, 100 0 L 100 100 C 100 80, 0 80, 0 100 L 0 0" vector-effect="non-scaling-stroke"></path>
+            <path id="curve_selected_white" style="stroke-miterlimit:10;" fill="none" d="M0 0 C 0 20, 100 20, 100 0 L 100 100 C 100 80, 0 80, 0 100 L 0 0" vector-effect="non-scaling-stroke"></path>
+            <path id="curve_selected" style="stroke-miterlimit:10;" fill="none" d="M0 0 C 0 20, 100 20, 100 0 L 100 100 C 100 80, 0 80, 0 100 L 0 0" vector-effect="non-scaling-stroke"></path>
+        </svg>
     </div>
+</div>
 
-    <div class="end_block" *ngIf="showEndBlock">
-        <div class="percentage">{{getProportion()}}%</div>
-    </div>
+<div class="children" *ngIf="showPrimaryBlocks && children">
+    <phylo-node *ngFor="let child of children; index as index"
+        [jsonData]="child"
+        [sample]="child.sample || 'primary'"
+        [label]="child.label"
+        [color]="child.color"
+        [genes]="child.genes || 0"
+        [parent]="getThisNode()"
+        [parentTotal]="getChildrenTotal()"
+        [showEndBlock]="showEndBlock || !children || children.length === 0"
+        [children]="child.children!"
+        [blockLevel]="blockLevel + 1"
+        [key]="index + ''"
+    ></phylo-node>
+</div>
+
+<div class="end_block" *ngIf="showEndBlock">
+    <div class="percentage">{{getProportion()}}%</div>
 </div>

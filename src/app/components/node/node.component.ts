@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ChildFIXME } from 'src/app/models/models';
 
@@ -11,6 +11,15 @@ import { SelectionService } from 'src/app/services/selection.service';
   styleUrls: ['../../styles/styles.scss', './node.component.scss'],
 })
 export class NodeComponent implements OnInit, OnChanges, OnDestroy {
+  @HostBinding('class.is_selected') isFirstSelected:boolean = false;
+  @HostBinding('class.is_visible') isSelected:boolean = false;
+  @HostBinding('style') cssStyles:{[key: string]: string} = {};
+
+  @HostListener('click', ['$event'])
+  onClick(e:any) {
+     e.stopPropagation();
+     this.onSelectBlock();
+  }
 
   @Input()
   blockLabel = '';
@@ -63,12 +72,8 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   showStripes = true;
 
-
   subscriptions: Subscription[] = [];
 
-  cssStyles: {[key: string]: string} = {};
-  isFirstSelected = false;
-  isSelected = false;
   parentsAggregate = {
     't1_mutations': 0,
     'mutations': 0,
@@ -109,6 +114,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     }));
     this.subscriptions.push(this.selectionService.getPhylogenyProportionId().subscribe(proportionId => {
       this.phylogenyProportionId = proportionId;
+      this.getChildrenTotal();
       this.updateStyle();
     }));
   }

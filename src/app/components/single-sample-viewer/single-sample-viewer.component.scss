@@ -84,7 +84,7 @@
       display: none;
     }
 
-    ::ng-deep phylo-node .node {
+    ::ng-deep phylo-node {
       &.is_selected {
         min: {
           height: 0px;
@@ -94,7 +94,7 @@
   }
 
   &.has_selected_block {
-    ::ng-deep phylo-node .node {
+    ::ng-deep phylo-node {
       &:not(.is_visible) {
         @include opacity(40);
       }
@@ -194,7 +194,7 @@
       left: 50%;
     }
 
-    ::ng-deep phylo-node .node {
+    ::ng-deep phylo-node {
       min: {
         width: none;
       }

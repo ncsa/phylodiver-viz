@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class SelectionService {
 
   selectedBlocks: BehaviorSubject<any[]>; // TODO FIXME
-  
+
   phylogenyProportionId: BehaviorSubject<any>; // TODO FIXME
 
   phylogenySelectedTier: BehaviorSubject<any>; // TODO FIXME
@@ -16,7 +16,7 @@ export class SelectionService {
 
   constructor() {
     this.selectedBlocks = new BehaviorSubject<any>([]);
-    this.phylogenyProportionId = new BehaviorSubject<any>(null);
+    this.phylogenyProportionId = new BehaviorSubject<any>('primary'); //null);
     this.phylogenySelectedTier = new BehaviorSubject<any>(null);
     this.phylogenyShowTable = new BehaviorSubject<boolean>(false);
   }

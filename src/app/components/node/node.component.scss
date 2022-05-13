@@ -5,7 +5,7 @@
 
 //**************** css ******************
 
-.node {
+:host {
   cursor: pointer;
   position: relative;
 
@@ -308,7 +308,7 @@
 
     flex-grow: 1;
 
-    .node {
+    ::ng-deep phylo-node {
       flex-grow: 1;
       flex-shrink: 0;
     }
