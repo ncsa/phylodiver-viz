@@ -3,7 +3,7 @@
         <input type="text" size="30" placeholder="Search" />
     </div>
 
-    <div class="container">
+    <div class="content">
         <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedBlock" [class.navigation_mode]="phylogenyShowTable && hasSelectedBlock">
             <div class="subclone_label">{{phylogenyProportionId}}</div>
 
@@ -18,6 +18,13 @@
                 [key]="$any(data.key)"
             ></phylo-node>
         </div>
+
+<!-- todo: change is_narrow over to a new component called legend -->
+<!--
+        <div class="legend">
+            <phylo-legend *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"></phylo-legend>
+        </div>
+-->
 
         <div class="phyloviz_diagram is_narrow" *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"
             [class.selected]="proportionSetEntry.key == phylogenyProportionId"

@@ -1,7 +1,7 @@
 <div class="node"
   [style]="cssStyles"
   (click)="$event.stopPropagation(); onSelectBlock()"
-  [class.is_first_selected]="isFirstSelected" [class.is_visible]="isSelected"
+  [class.is_selected]="isFirstSelected" [class.is_visible]="isSelected"
 >
     <div class="block" *ngIf="showPrimaryBlocks" [class.is_parent_block]="showStripes && children && children.length === 0">
         <div class="count" *ngIf="blockLabel">{{blockLabel}}</div>
@@ -10,7 +10,7 @@
     <div class="block_info" *ngIf="showPrimaryBlocks"><!--  v-if="children || is_selected" -->
         <div class="info" *ngIf="(children && children.length > 0) || isFirstSelected">
             <div class="info_container">
-                <template *ngIf="showEndBlock">
+                <ng-container *ngIf="showEndBlock">
                     <div class="label">Aggregated Totals:</div>
                     <div class="value">
                         <div class="group group_red">M: {{parentsAggregate.t1_mutations}}</div>
@@ -21,8 +21,8 @@
                     <div class="value">
                         <div class="group">D: {{parentsAggregate.drugs}}</div>
                     </div>
-                </template>
-                <template *ngIf="!showEndBlock">
+                </ng-container>
+                <ng-container *ngIf="!showEndBlock">
                     <div class="label">
                         <span class="full">T1&nbsp;</span>M<span class="full">utations</span>:
                     </div>
@@ -43,7 +43,7 @@
                     <div class="value">
                         <div class="group">{{jsonData.drugs}}</div>
                     </div>
-                </template>
+                </ng-container>
             </div>
 
             <div class="summary" *ngIf="jsonData?.summary">
