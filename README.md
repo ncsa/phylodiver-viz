@@ -5,24 +5,27 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Prepping an Ubuntu VM:
 Prepping local ubuntu machine to build phylodiver-viz repo
 
-install npm, then angular using npm
-    https://angular.io/guide/setup-local
 
-1. `sudo apt-get install npm`
-2. `sudo npm install -g @angular/cli` 
-
-install an lts version of node 
+Install an lts version of node 
     https://github.com/nodesource/distributions/blob/master/README.md
 
-3. `curl -fsSL https://deb.nodesource.com/setup_lts.x > setup_lts.sh`
-4. `sudo -E bash setup_lts.sh`
-5. `sudo apt-get install -y nodejs`
+1. `curl -fsSL https://deb.nodesource.com/setup_lts.x > setup_lts.sh`
+2. `sudo -E bash setup_lts.sh`
+3. `sudo apt-get install -y nodejs`
+
+
+If the nodejs installation didn't install npm, do so and then install angular
+    https://angular.io/guide/setup-local
+
+4. `sudo apt-get install npm`
+5. `sudo npm install -g @angular/cli` 
+
 
 6. `ng version` #if this succeeds, angular cli is working
 
-install remaining project specific packages
-7. `npm install` 
+Install remaining project specific packages. From the top-level project directory of this repo (where the package.json is located):
 
+7. `npm install` 
 
 ## Development server
 
