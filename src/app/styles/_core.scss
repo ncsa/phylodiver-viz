@@ -13,6 +13,10 @@ $colors: (
 
   header_border: #ccc,
 
+  legend_background: #e1e1e1,
+  legend_border: #999,
+  legend_text: #555,
+
   selected_color: #ef4d6e,
 
 	text: #000,
@@ -49,7 +53,6 @@ $indexes: (
 $border_radius: 4px;
 $padding: 20px; //base value used for padding and margins
 
-$narrow_size: 25px;
 $selected_border_size: 6px;
 
 //when changing the list of notifications, be sure to update this list of names and modify the color values above for notification_

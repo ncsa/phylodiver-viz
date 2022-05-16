@@ -1,8 +1,8 @@
-<div class="block" *ngIf="showPrimaryBlocks" [class.is_parent_block]="showStripes && children && children.length === 0">
+<div class="block" [class.is_parent_block]="!children || children.length === 0">
     <div class="count" *ngIf="blockLabel">{{blockLabel}}</div>
 </div>
 
-<div class="block_info" *ngIf="showPrimaryBlocks"><!--  v-if="children || is_selected" -->
+<div class="block_info"><!--  v-if="children || is_selected" -->
     <div class="info" *ngIf="(children && children.length > 0) || isFirstSelected">
         <div class="info_container">
             <ng-container *ngIf="showEndBlock">
@@ -80,7 +80,7 @@
     </div>
 </div>
 
-<div class="children" *ngIf="showPrimaryBlocks && children">
+<div class="children" *ngIf="children">
     <phylo-node *ngFor="let child of children; index as index"
         [jsonData]="child"
         [sample]="child.sample || 'primary'"
@@ -89,7 +89,7 @@
         [genes]="child.genes || 0"
         [parent]="getThisNode()"
         [parentTotal]="getChildrenTotal()"
-        [showEndBlock]="showEndBlock || !children || children.length === 0"
+        [showEndBlock]="showEndBlock || (!child.children || child.children.length === 0)"
         [children]="child.children!"
         [blockLevel]="blockLevel + 1"
         [key]="index + ''"

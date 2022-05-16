@@ -66,12 +66,6 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   showStats = true;
 
-  @Input()
-  showPrimaryBlocks = true;
-
-  @Input()
-  showStripes = true;
-
   subscriptions: Subscription[] = [];
 
   parentsAggregate = {

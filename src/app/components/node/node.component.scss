@@ -83,6 +83,10 @@
 
     @include border-radius(6px);
 
+    &:not(.is_parent_block) {
+      @include repeating-bars(45deg, rgba(#fff, .3), transparent, 2px);
+    }
+
     .count {
       position: absolute;
       left: 100%;
