@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable, of, map } from 'rxjs';
 
 import { PhylogenyProportionSet } from '../models/models';
+import { CellData, PhylogenyData } from '../models/toy-dto';
 import * as amlTree from './phylogeny_aml_tree.json';
 
 @Injectable({
@@ -9,30 +10,35 @@ import * as amlTree from './phylogeny_aml_tree.json';
 })
 export class DataService {
 
-  phylogenyProportionSets: BehaviorSubject<Map<string, PhylogenyProportionSet[]>>;
-
   constructor() {
-    this.phylogenyProportionSets = new BehaviorSubject<Map<string, PhylogenyProportionSet[]>>(new Map<string, PhylogenyProportionSet[]>());
   }
 
-  getPhylogenyData(): Observable<any> { // TODO FIXME
+  getPhylogenyData(): Observable<PhylogenyData> {
     return of(amlTree);
   }
 
   getPhylogenyProportionSets(): Observable<Map<string, PhylogenyProportionSet[]>> {
-    return this.phylogenyProportionSets.asObservable();
-  }
-
-  addPhylogenyProportionSet(setName: string, proportionSet: PhylogenyProportionSet): void {
-    const clonedMap = new Map<string, PhylogenyProportionSet[]>(this.phylogenyProportionSets.value);
-    let setArray: PhylogenyProportionSet[];
-    if (!clonedMap.has(setName)) {
-      setArray = [];
-    } else {
-      setArray = [...clonedMap.get(setName)!];
-    }
-    setArray.push(proportionSet);
-    clonedMap.set(setName, setArray);
-    this.phylogenyProportionSets.next(clonedMap);
+    return this.getPhylogenyData().pipe(
+      map(phylogenyData => {
+        const returnVal = new Map<string, PhylogenyProportionSet[]>();
+        const processNode = (cellData: CellData) => {
+          if (cellData.children && cellData.children.length > 0) {
+            cellData.children.forEach(child => processNode(child));
+          } else {
+            Object.entries(cellData.proportion).forEach(([sampleId, proportion]) => {
+              if (!returnVal.has(sampleId)) {
+                returnVal.set(sampleId, []);
+              }
+              returnVal.get(sampleId)!.push({
+                color: cellData.color,
+                proportion
+              });
+            });
+          }
+        };
+        phylogenyData.cell_data.forEach(cellData => processNode(cellData));
+        return returnVal;
+      })
+    );
   }
 }

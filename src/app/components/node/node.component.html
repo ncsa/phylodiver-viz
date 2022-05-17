@@ -22,21 +22,21 @@
                     <span class="full">T1&nbsp;</span>M<span class="full">utations</span>:
                 </div>
                 <div class="value">
-                    <div class="group group_red">{{jsonData.t1_mutations}}</div>
-                    <div class="full">/{{jsonData.mutations}}</div>
+                    <div class="group group_red">{{jsonData?.t1_mutations}}</div>
+                    <div class="full">/{{jsonData?.mutations}}</div>
                 </div>
                 <div class="label">
                     <span class="full">C</span>G<span class="full">C Genes</span>:
                 </div>
                 <div class="value">
-                    <div class="group group_blue">{{jsonData.t1_cgc_genes}}</div>
-                    <div class="full">/{{jsonData.genes}}</div>
+                    <div class="group group_blue">{{jsonData?.t1_cgc_genes}}</div>
+                    <div class="full">/{{jsonData?.genes}}</div>
                 </div>
                 <div class="label">
                     D<span class="full">rugs</span>:
                 </div>
                 <div class="value">
-                    <div class="group">{{jsonData.drugs}}</div>
+                    <div class="group">{{jsonData?.drugs}}</div>
                 </div>
             </ng-container>
         </div>
@@ -53,10 +53,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let data of jsonData.summary" (click)="$event.stopPropagation(); onToggleTable(data.tier)">
+                        <tr *ngFor="let data of jsonData?.summary" (click)="$event.stopPropagation(); onToggleTable(data.tier)">
                             <td *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.field">
                                 <div class="group group_red">
-                                    {{data[column.field]}}
+                                    {{$any(data)[column.field]}}
                                 </div>
                             </td>
                         </tr>

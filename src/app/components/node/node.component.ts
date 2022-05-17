@@ -1,7 +1,7 @@
 import { Component, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ChildFIXME } from 'src/app/models/models';
 
+import { CellData } from 'src/app/models/toy-dto';
 import { DataService } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
@@ -31,7 +31,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   blockList: any[] = []; // TODO FIXME
 
   @Input()
-  children: ChildFIXME[] = []; // TODO FIXME
+  children: CellData[] = [];
 
   @Input()
   color: string = '#555';
@@ -43,7 +43,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   ignoreScaling = false;
 
   @Input()
-  jsonData: any; // TODO FIXME
+  jsonData?: CellData;
 
   @Input()
   key = '';
@@ -114,9 +114,6 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('jsonData' in changes || 'children' in changes) {
-      this.updatePhylogenyProportionSets();
-    }
     if ('parent' in changes) {
       this.updateParentsAggregate();
     }
@@ -161,20 +158,6 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  updatePhylogenyProportionSets(): void {
-    //update phylogeny_proportion_sets (but only if this is an end block)
-    if (this.jsonData && (typeof this.children == 'undefined' || this.children.length == 0)) {
-      Object.entries(this.jsonData.proportion as {[setName: string]: number}).forEach(([setName, proportion]) => {
-        //add entry for this block
-        this.dataService.addPhylogenyProportionSet(setName, {
-          color: this.color,
-          proportion: proportion || 0,
-          endBlock: this
-        });
-      });
-    }
-  }
-
   updateParentsAggregate(): void {
     const totals = {
       't1_mutations': 0,
@@ -187,11 +170,11 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     let parents = this.getAllParents([]);
     for(let i=0; i<parents.length; i++) {
       let parent_data = parents[i];
-      totals['t1_mutations'] += parent_data.jsonData.t1_mutations;
-      totals['mutations'] += parent_data.jsonData.mutations;
-      totals['t1_cgc_genes'] += parent_data.jsonData.t1_cgc_genes;
+      totals['t1_mutations'] += parent_data.jsonData?.t1_mutations || 0;
+      totals['mutations'] += parent_data.jsonData?.mutations || 0;
+      totals['t1_cgc_genes'] += parent_data.jsonData?.t1_cgc_genes || 0;
       totals['genes'] += parent_data.genes;
-      totals['drugs'] += parent_data.jsonData.drugs;
+      totals['drugs'] += parent_data.jsonData?.drugs || 0;
     }
     this.parentsAggregate = totals;
   }

@@ -1,7 +1,7 @@
 import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ChildFIXME } from 'src/app/models/models';
 
+import { CellData } from 'src/app/models/toy-dto';
 import { DataService } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
@@ -49,6 +49,6 @@ export class LegendNodeComponent implements OnInit, OnDestroy {
 
   selectProportion(): void {
     this.selectionService.setSelectedBlocks([]);
-    this.selectionService.setPhylogenyProportionId(this.data.key);
+    this.selectionService.setPhylogenyProportionId(this.id);
   }
 }

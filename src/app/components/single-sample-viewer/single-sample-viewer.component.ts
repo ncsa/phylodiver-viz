@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { PhylogenyProportionSet } from 'src/app/models/models';
+import { CellData } from 'src/app/models/toy-dto';
 import { DataService } from 'src/app/services/data.service';
 
 import { SelectionService } from 'src/app/services/selection.service';
@@ -14,7 +16,7 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  cellData: any; // FIXME
+  cellData: CellData[] = [];
   hasSelectedBlock = false;
   phylogenyProportionId: any; // TODO FIXME
   phylogenyProportionSets = new Map<string, PhylogenyProportionSet[]>();
@@ -28,7 +30,7 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.push(this.dataService.getPhylogenyData().subscribe(phyloData => {
-      this.cellData = phyloData['cell_data'];
+      this.cellData = phyloData.cell_data;
     }));
     this.subscriptions.push(this.dataService.getPhylogenyProportionSets().subscribe(proportionSets => {
       this.phylogenyProportionSets = proportionSets;
