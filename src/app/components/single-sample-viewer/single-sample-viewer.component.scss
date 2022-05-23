@@ -1,0 +1,197 @@
+/**************** single sample viewer ******************/
+
+@import '../../styles/core';
+
+
+//**************** css ******************
+
+.single_sample_viewer {
+  display: flex;
+  flex-direction: column;
+
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: get_index(interface);
+
+	color: color_variable('text');
+	background: {
+		color: color_variable('background');
+	}
+
+  &.navigation_mode {
+    .phyloviz_diagram {
+//      height: 120px;
+    }
+
+    ::ng-deep phylo-node .summary {
+      display: none;
+    }
+
+    ::ng-deep phylo-node {
+      &.is_selected {
+        min: {
+          height: 0px;
+        }
+      }
+    }
+
+    .legend {
+      height: 120px;
+    }
+  }
+
+	.header {
+		padding: ($padding * .25) ($padding);
+
+		input {
+			padding: ($padding / 4);
+
+			border: 1px solid color_variable('header_border');
+
+			@include border-radius($border_radius);
+		}
+	}
+
+  .content {
+    overflow: {
+      y: auto;
+    }
+
+    flex-grow: 1; //to fill the window height
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min: {
+      height: 200px;
+    }
+
+    padding: 0px $padding;
+  }
+
+  phylo-table {
+    flex-grow: 100; //to fill the window height when open
+
+    overflow: {
+      y: auto;
+    }
+  }
+}
+
+.phyloviz_diagram {
+  position: relative;
+  display: flex;
+
+  height: calc(100% - #{$padding * 4});
+
+  margin: {
+    top: $padding;
+    bottom: $padding;
+
+    right: 160px; //give room for end block
+  }
+
+  @include transition(#{height .2s easing($ease-in-out)});
+
+  &.has_selected_block {
+    ::ng-deep phylo-node {
+      &:not(.is_visible) {
+        @include opacity(40);
+      }
+
+      &:not(.is_selected) {
+        > .block_info {
+          width: 5vw;
+
+          .info {
+            .label {
+              display: none;
+            }
+
+            .value {
+              div:not(.group) {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &.is_selected {
+        > .block_info {
+          width: 25vw;
+        }
+      }
+    }
+  }
+
+  &.selected {
+    &:after {
+      display: block;
+    }
+
+    .subclone_label {
+      background: {
+        color: #fff;
+      }
+
+      border: {
+        color: color_variable('selected_color');
+      }
+    }
+  }
+
+  .subclone_label {
+    cursor: pointer;
+
+    position: absolute;
+    left: calc(100% + 30px); //halfway into end_block
+    top: -36px;
+    z-index: 100;
+
+    color: #888;
+
+    padding: 2px ($padding * .5);
+
+    font: {
+      size: 90%;
+    }
+    text: {
+      transform: capitalize;
+    }
+
+    border: 2px solid transparent;
+
+    @include border-radius($border_radius);
+    @include translate(-50%, 0%);
+
+    &:hover {
+      color: #fff;
+      background: {
+        color: #888;
+      }
+    }
+  }
+}
+
+.legend {
+  display: flex;
+
+  min: {
+    height: 120px;
+  }
+  height: 360px;
+
+  background: {
+    color: color_variable('legend_background');
+  }
+
+  padding: ($padding * .75);
+
+  @include border-radius($border_radius * 2);
+  @include transition(#{height .2s easing($ease-in-out)});
+}

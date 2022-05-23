@@ -1,16 +1,25 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ChildFIXME } from 'src/app/models/models';
 
+import { CellData } from 'src/app/models/toy-dto';
 import { DataService } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
   selector: 'phylo-node',
   templateUrl: './node.component.html',
-  styleUrls: ['./node.component.scss']
+  styleUrls: ['../../styles/styles.scss', './node.component.scss'],
 })
 export class NodeComponent implements OnInit, OnChanges, OnDestroy {
+  @HostBinding('class.is_selected') isFirstSelected:boolean = false;
+  @HostBinding('class.is_visible') isSelected:boolean = false;
+  @HostBinding('style') cssStyles:{[key: string]: string} = {};
+
+  @HostListener('click', ['$event'])
+  onClick(e:any) {
+     e.stopPropagation();
+     this.onSelectBlock();
+  }
 
   @Input()
   blockLabel = '';
@@ -22,7 +31,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   blockList: any[] = []; // TODO FIXME
 
   @Input()
-  children: ChildFIXME[] = []; // TODO FIXME
+  children: CellData[] = [];
 
   @Input()
   color: string = '#555';
@@ -34,10 +43,10 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   ignoreScaling = false;
 
   @Input()
-  jsonData: any; // TODO FIXME
+  jsonData?: CellData;
 
   @Input()
-  key = 0;
+  key = '';
 
   @Input()
   label = '';
@@ -57,18 +66,8 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   showStats = true;
 
-  @Input()
-  showPrimaryBlocks = true;
-
-  @Input()
-  showStripes = true;
-
-
   subscriptions: Subscription[] = [];
 
-  cssStyles: {[key: string]: string} = {};
-  isFirstSelected = false;
-  isSelected = false;
   parentsAggregate = {
     't1_mutations': 0,
     'mutations': 0,
@@ -109,17 +108,16 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     }));
     this.subscriptions.push(this.selectionService.getPhylogenyProportionId().subscribe(proportionId => {
       this.phylogenyProportionId = proportionId;
+      this.getChildrenTotal();
+      this.updateStyle();
     }));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('jsonData' in changes || 'children' in changes) {
-      this.updatePhylogenyProportionSets();
-    }
     if ('parent' in changes) {
       this.updateParentsAggregate();
     }
-    if ('selected' in changes || 'parentTotal' in changes) {
+    if ('selected' in changes || 'parentTotal' in changes || 'jsonData' in changes) {
       this.updateStyle();
     }
   }
@@ -160,20 +158,6 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  updatePhylogenyProportionSets(): void {
-    //update phylogeny_proportion_sets (but only if this is an end block)
-    if (this.jsonData && (typeof this.children == 'undefined' || this.children.length == 0)) {
-      Object.entries(this.jsonData.proportion as {[setName: string]: number}).forEach(([setName, proportion]) => {
-        //add entry for this block
-        this.dataService.addPhylogenyProportionSet(setName, {
-          color: this.color,
-          proportion: proportion || 0,
-          endBlock: this
-        });
-      });
-    }
-  }
-
   updateParentsAggregate(): void {
     const totals = {
       't1_mutations': 0,
@@ -186,11 +170,11 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     let parents = this.getAllParents([]);
     for(let i=0; i<parents.length; i++) {
       let parent_data = parents[i];
-      totals['t1_mutations'] += parent_data.jsonData.t1_mutations;
-      totals['mutations'] += parent_data.jsonData.mutations;
-      totals['t1_cgc_genes'] += parent_data.jsonData.t1_cgc_genes;
+      totals['t1_mutations'] += parent_data.jsonData?.t1_mutations || 0;
+      totals['mutations'] += parent_data.jsonData?.mutations || 0;
+      totals['t1_cgc_genes'] += parent_data.jsonData?.t1_cgc_genes || 0;
       totals['genes'] += parent_data.genes;
-      totals['drugs'] += parent_data.jsonData.drugs;
+      totals['drugs'] += parent_data.jsonData?.drugs || 0;
     }
     this.parentsAggregate = totals;
   }

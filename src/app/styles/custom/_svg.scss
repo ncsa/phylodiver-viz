@@ -1,0 +1,14 @@
+//**************** svg ******************
+
+@mixin svg_fill($name) {
+	svg {
+		fill: color_variable($name);
+	}
+}
+
+
+
+//**************** svg definition ******************
+
+//close
+$svg_close: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><polygon points='107.3,35.6 91.7,20 63.6,48.1 35.5,20 20,35.6 48.1,63.6 20,91.7 35.5,107.3 63.6,79.2 91.7,107.3 107.3,91.7 79.2,63.6' fill='{fill_color}'/></svg>";

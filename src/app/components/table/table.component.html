@@ -13,6 +13,7 @@
             </ng-container>
         </div>
     </div>
+
     <table>
         <thead>
             <tr>
@@ -21,6 +22,7 @@
                 </th>
             </tr>
         </thead>
+
         <tbody>
             <ng-container *ngFor="let data of detailsData">
                 <tr *ngIf="!phylogenySelectedTier || phylogenySelectedTier === data.tier" (click)="$event.stopPropagation(); selectRow(data)">
@@ -29,6 +31,7 @@
                     </td>
                 </tr>
             </ng-container>
+
             <tr *ngIf="!detailsData || detailsData.length === 0">
                 <td [attr.colspan]="tableColumns.length">
                     ...

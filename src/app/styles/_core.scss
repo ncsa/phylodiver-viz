@@ -1,0 +1,87 @@
+//**************** sass config ******************
+
+
+//**************** colors ******************
+
+$colors: (
+	default: #145b96, //used if color name not specified or not found when using get_color()
+
+	background: #fff,
+
+  button: #283b48,
+  button_hover: #385263,
+
+  header_border: #ccc,
+
+  legend_background: #e1e1e1,
+  legend_border: #999,
+  legend_text: #555,
+
+  selected_color: #ef4d6e,
+
+	text: #000,
+	text_light: lighten(#000, 50%),
+);
+
+
+//**************** font ******************
+
+$font_family: 'Open Sans', sans-serif;
+$font_family_header: 'Open Sans', sans-serif;
+$font_size_min: 11px;
+
+
+//**************** indexes ******************
+//z-index positions for positioned layers
+//set here to allow easy viewing and adjustments between all layers
+
+$indexes: (
+	default: 1000, //if no variable is specified, get_index() will return the default setting
+
+	interface: 5000,
+
+	modal: 10000,
+
+  //above everything
+	loading: 11000,
+	error: 11050
+);
+
+
+//**************** sizes ******************
+
+$border_radius: 4px;
+$padding: 20px; //base value used for padding and margins
+
+$selected_border_size: 6px;
+
+//when changing the list of notifications, be sure to update this list of names and modify the color values above for notification_
+//$notification_level_list: HIGH, MEDIUM, LOW, RESOLVED;
+
+
+//**************** core ******************
+
+@import 'core/functions';
+@import 'core/inline-svg-function';
+@import 'core/mixins';
+@import 'core/responsive';
+
+@import 'core/easing';
+
+
+//**************** theme ******************
+//create a variable for every color
+//color variables will be -dash based plus -color
+// example: violation_high_hover would convert to --violation-high-hover-color
+// example of how to change these in javascript: document.documentElement.style.setProperty('--interface-color', '#00f');
+
+//creates a varible color reference, added here (instead of a mixin) since this could have custom naming schemes for each project
+@function color_variable($name:'default') {
+	@return var(#{'--' + str-replace($name, '_', '-') + '-color'}, #{get_color($name)});
+}
+
+//**************** custom ******************
+
+//load custom libraries (only sass that has variables, mixins, or custom functions)
+@import 'custom/other';
+@import 'custom/svg';
