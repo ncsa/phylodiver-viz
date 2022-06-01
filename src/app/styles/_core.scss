@@ -8,14 +8,42 @@ $colors: (
 
 	background: #fff,
 
-  button: #283b48,
-  button_hover: #385263,
+  badge_background: #17c2cb,
+
+  button: #e9255e, //#283b48,
+  button_hover: saturate(lighten(#e9255e, 20%), 60%), //#385263,
+  button_disabled: #aaa,
+  button_disabled_background: #ddd,
+
+  footer_link: #fff,
+  footer_link_hover: darken(#039ca4, 10%), //using page_footer_background
 
   header_border: #ccc,
+
+  landing_border: #999,
+  landing_block_title: #17c2cb,
+  landing_button: #fff,
+  landing_button_background: #ef4d6e,
+  landing_button_hover: saturate(lighten(#ef4d6e, 10%), 60%),
 
   legend_background: #e1e1e1,
   legend_border: #999,
   legend_text: #555,
+
+  link: #e9255e,
+  link_hover: saturate(lighten(#e9255e, 20%), 60%),
+
+  page_header: #000,
+  page_header_background: rgba(#fff, .95),
+  page_footer: #fff,
+  page_footer_background: #039ca4,
+
+  page_section_gradient: #000,
+  page_section_gradient_background: #48cad1,
+  page_section_alt: #000,
+  page_section_alt_background: #f0f2ed,
+
+  progress_bar: #eee,
 
   selected_color: #ef4d6e,
 
@@ -57,6 +85,8 @@ $selected_border_size: 6px;
 
 //when changing the list of notifications, be sure to update this list of names and modify the color values above for notification_
 //$notification_level_list: HIGH, MEDIUM, LOW, RESOLVED;
+
+$page_sections: alt, gradient;
 
 
 //**************** core ******************

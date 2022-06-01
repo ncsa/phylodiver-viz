@@ -1,0 +1,144 @@
+/**************** page-header ******************/
+
+@import '../../../styles/core';
+
+//**************** mixin ******************
+
+@mixin small_header() {
+  padding: ($padding * .25) ($padding);
+
+  .logo {
+    width: 50px;
+  }
+
+  h2 {
+    font: {
+      size: 120%;
+    }
+  }
+}
+
+//**************** css ******************
+
+:host {
+  color: color_variable('page_header');
+  background: {
+    color: color_variable('page_header_background');
+  }
+
+  padding: $padding;
+
+  @include transition(#{padding .2s easing($ease-in-out)});
+
+  //same as .small (combine into a mixin?)
+  @include on_mobile() {
+    @include small_header();
+  }
+
+  &.small {
+    @include small_header();
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: $padding * .5;
+
+  max: {
+    width: $page_width;
+  }
+  width: 100vw;
+
+  margin: {
+    right: auto;
+    left: auto;
+  }
+}
+
+.logo {
+  width: 80px;
+
+  @include transition(#{width .2s easing($ease-in-out)});
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+h2 {
+  margin: 0px;
+
+  font: {
+    size: 160%;
+    weight: bold;
+  }
+
+  @include transition(#{font-size .2s easing($ease-in-out)});
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.dataset {
+  position: relative;
+
+  margin: {
+    left: $padding; //little extra padding
+  }
+
+  .label {
+    position: absolute; //positioned this way to keep the align-center on the dataset_name block
+    left: 0px;
+    bottom: 100%;
+    z-index: 100;
+
+    font: {
+      size: $font_size_min;
+    }
+  }
+
+  .dataset_name {
+    display: flex;
+    align-items: center;
+    gap: $padding * .5;
+
+    padding: ($padding * .2) ($padding * .4);
+
+    font: {
+      size: 90%;
+    }
+
+    border: 1px solid #ccc;
+  }
+
+  .button {
+    cursor: pointer;
+
+    color: color_variable('button');
+
+    padding: ($padding * .25) ($padding * .75);
+
+    font: {
+      size: $font_size_min;
+    }
+
+    border: 1px solid #e9255e;
+
+    @include border-radius($border_radius);
+
+    &:hover {
+      color: color_variable('button_hover');
+
+      border: {
+        color: color_variable('button_hover');
+      }
+    }
+  }
+
+  @include on_mobile() {
+    display: none; //hide on mobile, not enough room? or move to new line?
+  }
+}

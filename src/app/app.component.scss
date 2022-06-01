@@ -3,4 +3,28 @@
 @import './styles/core';
 
 
+//**************** mixin ******************
+
+
 //**************** css ******************
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  min: {
+    height: 100vh; //make sure we have the full viewer height available for the interative app
+  }
+}
+
+page-header {
+  @include position(sticky);
+  top: 0px;
+  z-index: get_index(interface);
+}
+
+.content {
+  position: relative;
+
+  flex-grow: 1;
+}

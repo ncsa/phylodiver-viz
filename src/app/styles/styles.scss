@@ -30,6 +30,8 @@ example: document.documentElement.style.setProperty('--text-color', '#ff0000');
 @import 'custom/svg';
 @import 'custom/webfont';
 
+@import 'custom/page';
+
 //**************** css ******************
 
 //host css (think of this as the body tag for the web component)
