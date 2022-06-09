@@ -170,8 +170,8 @@
         x: hidden;
       }
 
-      margin: 0px ($padding / 2);
-      padding: ($padding / 5) 0px;
+      margin: 0px ($padding * 0.5);
+      padding: ($padding * 0.2) 0px;
 
       font: {
         size: $font_size_min + 1;
@@ -338,7 +338,7 @@
     @include transition(#{max-height .2s easing($ease-in-out)});
 
     .summary_header {
-      padding: ($padding / 2) ($padding);
+      padding: ($padding * 0.5) ($padding);
 
       font: {
         weight: bold;
@@ -349,10 +349,10 @@
       overflow: hidden;
 
       margin: {
-        right: -$padding / 2;
-        left: -$padding / 2;
+        right: ($padding * -0.5);
+        left: ($padding -0.5);
       }
-      padding: ($padding / 4) ($padding);
+      padding: ($padding * 0.25) ($padding);
     }
 
     .summary_button {
@@ -365,11 +365,11 @@
       }
 
       margin: {
-        top: $padding / 2;
+        top: ($padding * 0.5);
         bottom: $padding;
         left: $padding;
       }
-      padding: ($padding / 4) ($padding);
+      padding: ($padding * 0.25) ($padding);
 
       @include border-radius($border_radius);
 
@@ -385,7 +385,7 @@
 
       th,
       td {
-        padding: ($padding / 5) ($padding / 2);
+        padding: ($padding * 0.2) ($padding * 0.5);
 
         text: {
           align: left;
@@ -439,7 +439,7 @@
 
     width: $padding * 2;
 
-    padding: 1px ($padding / 4);
+    padding: 1px ($padding * 0.25);
 
     color: #fff;
     background: {
