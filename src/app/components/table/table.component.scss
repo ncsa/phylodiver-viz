@@ -1,5 +1,6 @@
 /**************** single sample viewer ******************/
 
+@use "sass:math";
 @import '../../styles/core';
 
 
@@ -20,8 +21,8 @@
 	.close_btn {
 		cursor: pointer;
 		position: absolute;
-		left: $padding / 2; //$padding * 2;
-		top: $padding / 2;
+		left: math.div($padding, 2); //$padding * 2;
+		top: math.div($padding, 2);
 		z-index: 100;
 
 		padding: 20px;
@@ -62,9 +63,9 @@
 			}
 
 			margin: {
-				right: $padding / 2;
+				right: math.div($padding, 2);
 			}
-			padding: ($padding / 5) ($padding / 4);
+			padding: math.div($padding, 5) math.div($padding, 4);
 
 			font: {
 				weight: bold;
@@ -124,10 +125,10 @@
 				content: '';
 
 				margin: {
-					left: $padding / 2;
+					left: math.div($padding, 2);
 				}
 				padding: {
-					left: $padding / 2;
+					left: math.div($padding, 2);
 				}
 
 				border: {
@@ -139,10 +140,10 @@
 				content: '';
 
 				margin: {
-					left: $padding / 2;
+					left: math.div($padding, 2);
 				}
 				padding: {
-					left: $padding / 2;
+					left: math.div($padding, 2);
 				}
 
 				border: {
@@ -182,7 +183,7 @@
 
 		th,
 		td {
-			padding: ($padding / 4) 8px;
+			padding: math.div($padding, 4) 8px;
 
 			font: {
 				size: 90%;

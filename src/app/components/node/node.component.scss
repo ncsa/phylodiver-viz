@@ -1,5 +1,6 @@
 /**************** node ******************/
 
+@use "sass:math";
 @import '../../styles/core';
 
 
@@ -170,8 +171,8 @@
         x: hidden;
       }
 
-      margin: 0px ($padding / 2);
-      padding: ($padding / 5) 0px;
+      margin: 0px math.div($padding, 2);
+      padding: math.div($padding, 5) 0px;
 
       font: {
         size: $font_size_min + 1;
@@ -338,7 +339,7 @@
     @include transition(#{max-height .2s easing($ease-in-out)});
 
     .summary_header {
-      padding: ($padding / 2) ($padding);
+      padding: math.div($padding, 2) ($padding);
 
       font: {
         weight: bold;
@@ -349,10 +350,10 @@
       overflow: hidden;
 
       margin: {
-        right: -$padding / 2;
-        left: -$padding / 2;
+        right: math.div($padding, -2);
+        left: math.div($padding, -2);
       }
-      padding: ($padding / 4) ($padding);
+      padding: math.div($padding, 4) ($padding);
     }
 
     .summary_button {
@@ -365,11 +366,11 @@
       }
 
       margin: {
-        top: $padding / 2;
+        top: math.div($padding, 2);
         bottom: $padding;
         left: $padding;
       }
-      padding: ($padding / 4) ($padding);
+      padding: math.div($padding, 4) ($padding);
 
       @include border-radius($border_radius);
 
@@ -385,7 +386,7 @@
 
       th,
       td {
-        padding: ($padding / 5) ($padding / 2);
+        padding: math.div($padding, 5) math.div($padding, 2);
 
         text: {
           align: left;
@@ -439,7 +440,7 @@
 
     width: $padding * 2;
 
-    padding: 1px ($padding / 4);
+    padding: 1px math.div($padding, 4);
 
     color: #fff;
     background: {

@@ -6,6 +6,7 @@ import { LegendNodeComponent } from './components/legend-node/legend-node.compon
 import { NodeComponent } from './components/node/node.component';
 import { SingleSampleViewerComponent } from './components/single-sample-viewer/single-sample-viewer.component';
 import { TableComponent } from './components/table/table.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TableComponent } from './components/table/table.component';
     TableComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
