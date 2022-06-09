@@ -7,6 +7,8 @@ import { NodeComponent } from './components/node/node.component';
 import { SingleSampleViewerComponent } from './components/single-sample-viewer/single-sample-viewer.component';
 import { TableComponent } from './components/table/table.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './state/reducers';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
