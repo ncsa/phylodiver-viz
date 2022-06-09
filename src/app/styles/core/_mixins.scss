@@ -222,7 +222,7 @@
 
 // Opacity
 @mixin opacity($opacity) {
-	opacity: math.div($opacity, 100);
+	opacity: ($opacity * 0.01);
 	filter: alpha(opacity=$opacity);
 }
 
