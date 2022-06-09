@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LegendNodeComponent } from './legend-node.component';
+import { LegendSampleComponent } from './legend-sample.component';
 
-describe('LegendNodeComponent', () => {
-  let component: LegendNodeComponent;
-  let fixture: ComponentFixture<LegendNodeComponent>;
+describe('LegendSampleComponent', () => {
+  let component: LegendSampleComponent;
+  let fixture: ComponentFixture<LegendSampleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LegendNodeComponent ]
+      declarations: [ LegendSampleComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LegendNodeComponent);
+    fixture = TestBed.createComponent(LegendSampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

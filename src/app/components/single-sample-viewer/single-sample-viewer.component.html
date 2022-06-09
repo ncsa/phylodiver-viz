@@ -20,11 +20,11 @@
         </div>
 
         <div class="legend">
-            <phylo-legend-node *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"
+            <phylo-legend-sample *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"
               [id]="proportionSetEntry.key"
               [data]="proportionSetEntry.value"
 
-            ></phylo-legend-node>
+            ></phylo-legend-sample>
         </div>
     </div>
 

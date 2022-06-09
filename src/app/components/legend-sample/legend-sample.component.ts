@@ -1,17 +1,15 @@
-import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { CellData } from 'src/app/models/toy-dto';
-import { DataService } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
-  selector: 'phylo-legend-node',
-  templateUrl: './legend-node.component.html',
-  styleUrls: ['../../styles/styles.scss', './legend-node.component.scss'],
+  selector: 'phylo-legend-sample',
+  templateUrl: './legend-sample.component.html',
+  styleUrls: ['../../styles/styles.scss', './legend-sample.component.scss'],
 })
-export class LegendNodeComponent implements OnInit, OnDestroy {
-  @HostBinding('class.is_selected') isSelected:boolean = false;
+export class LegendSampleComponent implements OnInit, OnDestroy {
+  @HostBinding('class.is_selected') isSelected = false;
 
   @HostListener('click', ['$event'])
   onClick(e:any) {
@@ -31,7 +29,6 @@ export class LegendNodeComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(
-    private dataService: DataService,
     private selectionService: SelectionService) { }
 
   ngOnInit(): void {
