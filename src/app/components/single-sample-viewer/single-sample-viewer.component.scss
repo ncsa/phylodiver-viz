@@ -1,5 +1,6 @@
 /**************** single sample viewer ******************/
 
+@use "sass:math";
 @import '../../styles/core';
 
 
@@ -48,7 +49,7 @@
 		padding: ($padding * .25) ($padding);
 
 		input {
-			padding: ($padding / 4);
+			padding: math.div($padding, 4);
 
 			border: 1px solid color_variable('header_border');
 
