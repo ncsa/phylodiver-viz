@@ -1,6 +1,7 @@
 import { Component, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { Sample } from 'src/app/models/dto';
 import { CellData } from 'src/app/models/toy-dto';
 import { DataService } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
@@ -75,7 +76,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     'genes': 0,
     'drugs': 0,
   };
-  phylogenyProportionId: any; // TODO FIXME
+  selectedSample: Sample|null = null;
   phylogenyShowTable = false;
   selectedBlocks: NodeComponent[] = [];
 
@@ -106,8 +107,8 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       this.isSelected = blocks.indexOf(this) > -1;
       this.selectedBlocks = blocks;
     }));
-    this.subscriptions.push(this.selectionService.getPhylogenyProportionId().subscribe(proportionId => {
-      this.phylogenyProportionId = proportionId;
+    this.subscriptions.push(this.selectionService.getSample().subscribe(selectedSample => {
+      this.selectedSample = selectedSample;
       this.getChildrenTotal();
       this.updateStyle();
     }));
@@ -131,15 +132,15 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   getProportion(): number {
-    return this.jsonData?.proportion ? (this.jsonData.proportion[this.phylogenyProportionId] || 0) : 0;
+    return this.jsonData?.proportion ? (this.jsonData.proportion[this.selectedSample!.sample_id] || 0) : 0;
   }
 
   getChildrenTotal(): number {
     let total = 0;
     if (this.children) {
       for (let i=0; i < this.children.length; i++) {
-        if (typeof this.children[i].proportion[this.phylogenyProportionId] != 'undefined') {
-          total += this.children[i].proportion[this.phylogenyProportionId];
+        if (typeof this.children[i].proportion[this.selectedSample!.sample_id] != 'undefined') {
+          total += this.children[i].proportion[this.selectedSample!.sample_id];
         }
       }
     }

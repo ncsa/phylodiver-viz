@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { Sample } from '../models/dto';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +10,7 @@ export class SelectionService {
 
   selectedBlocks: BehaviorSubject<any[]>; // TODO FIXME
 
-  phylogenyProportionId: BehaviorSubject<any>; // TODO FIXME
+  sample: BehaviorSubject<Sample|null>;
 
   phylogenySelectedTier: BehaviorSubject<any>; // TODO FIXME
 
@@ -16,7 +18,7 @@ export class SelectionService {
 
   constructor() {
     this.selectedBlocks = new BehaviorSubject<any>([]);
-    this.phylogenyProportionId = new BehaviorSubject<any>('primary'); //null);
+    this.sample = new BehaviorSubject<Sample|null>(null);
     this.phylogenySelectedTier = new BehaviorSubject<any>(null);
     this.phylogenyShowTable = new BehaviorSubject<boolean>(false);
   }
@@ -29,12 +31,12 @@ export class SelectionService {
     this.selectedBlocks.next(blocks);
   }
 
-  getPhylogenyProportionId(): Observable<any> {
-    return this.phylogenyProportionId.asObservable();
+  getSample(): Observable<Sample|null> {
+    return this.sample.asObservable();
   }
 
-  setPhylogenyProportionId(block: any): void {
-    this.phylogenyProportionId.next(block);
+  setSample(sample: Sample): void {
+    this.sample.next(sample);
   }
 
   getPhylogenySelectedTier(): Observable<any> {

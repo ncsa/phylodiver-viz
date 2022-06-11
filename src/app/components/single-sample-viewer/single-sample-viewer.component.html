@@ -5,7 +5,7 @@
 
     <div class="content">
         <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedBlock">
-            <div class="subclone_label">{{phylogenyProportionId}}</div>
+            <div class="subclone_label">{{selectedSample!.name}}</div>
 
             <phylo-node *ngFor="let data of cellData; index as i"
                 [jsonData]="data"
@@ -20,10 +20,8 @@
         </div>
 
         <div class="legend">
-            <phylo-legend-sample *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"
-              [id]="proportionSetEntry.key"
-              [data]="proportionSetEntry.value"
-
+            <phylo-legend-sample *ngFor="let legendSample of legendSamples"
+              [legendSample]="legendSample">
             ></phylo-legend-sample>
         </div>
     </div>

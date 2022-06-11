@@ -1,6 +1,8 @@
 import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { Sample } from 'src/app/models/dto';
+import { LegendSample } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
@@ -18,13 +20,10 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
   }
 
   @Input()
-  id = '';
-
-  @Input()
-  data:any;
+  legendSample?: LegendSample;
 
   hasSelectedBlock = false;
-  phylogenyProportionId: any; // TODO FIXME
+  selectedSample: Sample|null = null;
 
   subscriptions: Subscription[] = [];
 
@@ -34,9 +33,9 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.push(this.selectionService.getSelectedBlocks().subscribe(blocks => {
     }));
-    this.subscriptions.push(this.selectionService.getPhylogenyProportionId().subscribe(proportionId => {
-      this.phylogenyProportionId = proportionId;
-      this.isSelected = (this.phylogenyProportionId == this.id) ? true : false;
+    this.subscriptions.push(this.selectionService.getSample().subscribe(selectedSample => {
+      this.selectedSample = selectedSample;
+      this.isSelected = selectedSample?.sample_id === this.legendSample!.sample.sample_id;
     }));
   }
 
@@ -46,6 +45,6 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
 
   selectProportion(): void {
     this.selectionService.setSelectedBlocks([]);
-    this.selectionService.setPhylogenyProportionId(this.id);
+    this.selectionService.setSample(this.legendSample!.sample);
   }
 }
