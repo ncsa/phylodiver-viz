@@ -34,11 +34,10 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     'drugs': 0,
   };
   selectedSample: Sample|null = null;
-  phylogenyShowTable = false;
+  showTable = false;
   selectedNodes: DisplayNode[] = [];
 
   gradientId = 'uninitialized';
-  showEndBlock = false;
 
   summaryColumns = [
     { field: "tier", label: "Tier" },
@@ -52,8 +51,8 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     private selectionService: SelectionService) { }
 
   ngOnInit(): void {
-    this.subscriptions.push(this.selectionService.getPhylogenyShowTable().subscribe(showTable => {
-      this.phylogenyShowTable = showTable;
+    this.subscriptions.push(this.selectionService.getShowTable().subscribe(showTable => {
+      this.showTable = showTable;
     }));
     this.subscriptions.push(this.selectionService.getSelectedNodes().subscribe(nodes => {
       //determine if this is the first in the selected array (which is the one clicked on)
@@ -71,7 +70,6 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('displayNode' in changes && this.displayNode) {
-      this.showEndBlock = this.displayNode && !!this.displayNode!.cluster && !!this.displayNode!.parent;
       this.gradientId = 'gradient_' + this.displayNode!.node_name.replace(/\W/, '-');
       this.updateParentsAggregate();
       this.updateStyle();
@@ -132,7 +130,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       '--gradient_end': childrenColor
     } as any;
     //only apply the height for the final tree end
-    if (this.showEndBlock) { // FIXME correct condition?
+    if (true || this.displayNode?.cluster) { // TODO FIXME when should we set the flex style?
       const hasSelectedNode = this.selectedNodes.length > 0;
       const selectedBlockLevel = hasSelectedNode ? this.selectedNodes[0].level : 0;
       styles['flex'] = (hasSelectedNode && selectedBlockLevel >= this.displayNode!.level && !this.isSelected) ? '1' : '' + (this.displayNode!.prevalence * 1000); //proper value is 100, using 1000 to force this to shrink super small when selected
@@ -145,7 +143,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     //update tier (if supplied)
     this.selectionService.setPhylogenySelectedTier(tier);
     //toggle table
-    this.selectionService.setPhylogenyShowTable(!this.phylogenyShowTable);
+    this.selectionService.setShowTable(!this.showTable);
   };
 
   onSelectBlock(): void {

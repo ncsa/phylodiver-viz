@@ -1,4 +1,4 @@
-<div class="single_sample_viewer" [class.navigation_mode]="phylogenyShowTable && hasSelectedNode">
+<div class="single_sample_viewer" [class.navigation_mode]="showTable && hasSelectedNode">
     <div class="header">
         <input type="text" size="30" placeholder="Search" />
     </div>
@@ -20,5 +20,8 @@
     </div>
 
 <!-- todo: change phylo-table ngIf to angular animation so it can grow/shrink before show/hide -->
-    <phylo-table *ngIf="hasSelectedNode && phylogenyShowTable"></phylo-table>
+    <phylo-table *ngIf="hasSelectedNode && showTable"></phylo-table>
+    <select (change)="selectTree($any($event.target).value)">
+        <option *ngFor="let tree of trees" [value]="tree.tree_id" [selected]="tree.tree_id === selectedTree?.tree_id">{{ tree.tree_name }}</option>
+    </select>
 </div>

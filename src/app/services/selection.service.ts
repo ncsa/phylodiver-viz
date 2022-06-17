@@ -16,14 +16,14 @@ export class SelectionService {
 
   phylogenySelectedTier: BehaviorSubject<any>; // TODO FIXME
 
-  phylogenyShowTable: BehaviorSubject<boolean>;
+  showTable: BehaviorSubject<boolean>;
 
   constructor() {
     this.selectedNodes = new BehaviorSubject<DisplayNode[]>([]);
     this.sample = new BehaviorSubject<Sample|null>(null);
     this.tree = new BehaviorSubject<Tree|null>(null);
     this.phylogenySelectedTier = new BehaviorSubject<any>(null);
-    this.phylogenyShowTable = new BehaviorSubject<boolean>(false);
+    this.showTable = new BehaviorSubject<boolean>(false);
   }
 
   getSelectedNodes(): Observable<DisplayNode[]> {
@@ -58,11 +58,11 @@ export class SelectionService {
     this.phylogenySelectedTier.next(block);
   }
 
-  getPhylogenyShowTable(): Observable<boolean> {
-    return this.phylogenyShowTable.asObservable();
+  getShowTable(): Observable<boolean> {
+    return this.showTable.asObservable();
   }
 
-  setPhylogenyShowTable(show: boolean): void {
-    this.phylogenyShowTable.next(show);
+  setShowTable(show: boolean): void {
+    this.showTable.next(show);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Sample } from 'src/app/models/dto';
+import { Sample, Tree } from 'src/app/models/dto';
 import { DisplayNode } from 'src/app/models/models';
 import { CellData } from 'src/app/models/toy-dto';
 import { DataService, LegendSample } from 'src/app/services/data.service';
@@ -20,8 +20,11 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
   hasSelectedNode = false;
   selectedSample: Sample|null = null;
   legendSamples: LegendSample[] = [];
-  phylogenyShowTable = false;
+  showTable = false;
   rootNode: DisplayNode|null = null;
+
+  selectedTree: Tree|null = null;
+  trees: Tree[] = [];
 
   constructor(
     private dataService: DataService,
@@ -36,19 +39,32 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.dataService.getLegendSamples().subscribe(legendSamples => {
       this.legendSamples = legendSamples;
     }));
+    this.subscriptions.push(this.dataService.getTrees().subscribe(trees => {
+      this.trees = trees;
+    }));
     this.subscriptions.push(this.selectionService.getSelectedNodes().subscribe(selectedNodes => {
       this.hasSelectedNode = selectedNodes.length > 0;
     }));
     this.subscriptions.push(this.selectionService.getSample().subscribe(selectedSample => {
       this.selectedSample = selectedSample;
     }));
-    this.subscriptions.push(this.selectionService.getPhylogenyShowTable().subscribe(showTable => {
-      this.phylogenyShowTable = showTable;
+    this.subscriptions.push(this.selectionService.getShowTable().subscribe(showTable => {
+      this.showTable = showTable;
+    }));
+    this.subscriptions.push(this.selectionService.getTree().subscribe(tree => {
+      this.selectedTree = tree;
     }));
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  selectTree(treeId: string): void {
+    const newTree = this.trees.find(tree => (tree.tree_id + '') === treeId);
+    if (newTree) {
+      this.selectionService.setTree(newTree);
+    }
   }
 
 }

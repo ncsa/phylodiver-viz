@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, of, map, withLatestFrom, filter, combineLa
 
 import { DisplayNode } from '../models/models';
 import { PhylogenyData } from '../models/toy-dto';
-import { Aggregate, Cluster, Sample, SNV } from '../models/dto';
+import { Aggregate, Cluster, Sample, SNV, Tree } from '../models/dto';
 import * as amlTree from './phylogeny_aml_tree.json';
 import * as amlTree2 from './test.json';
 import { SelectionService } from './selection.service';
@@ -37,6 +37,12 @@ export class DataService {
     return of(amlTree);
   }
 
+  getTrees(): Observable<Tree[]> {
+    return this.getAggregate().pipe(
+      map(aggregate => aggregate.trees)
+    );
+  }
+
   getClusterIds(): Observable<number[]> {
     return this.getAggregate().pipe(
       map(aggregate => [
@@ -65,7 +71,7 @@ export class DataService {
         // a map from clusterId and sampleId to prevalence
         const clusterIdAndSampleIdToPrevalance = new Map<string, number>();
         tree!.nodes.forEach(node => {
-          if (node.cluster_id) {
+          if (node.cluster_id !== undefined && node.cluster_id !== null) {
             node.prevalence.forEach(samplePrevalance => {
               clusterIdAndSampleIdToPrevalance.set(node.cluster_id! + '-' + samplePrevalance.sample_id, samplePrevalance.value);
             });

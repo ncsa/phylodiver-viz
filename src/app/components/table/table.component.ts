@@ -58,7 +58,7 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   closeTable() {
-    this.selectionService.setPhylogenyShowTable(false);
+    this.selectionService.setShowTable(false);
   }
 
   selectRow(data: any) {

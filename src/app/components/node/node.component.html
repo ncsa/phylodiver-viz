@@ -1,11 +1,11 @@
-<div class="block" [class.is_parent_block]="displayNode && (!this.displayNode.children || this.displayNode.children.length === 0)">
+<div class="block" [class.is_subclone_block]="displayNode?.cluster">
     <div class="count" *ngIf="false">{{ this.displayNode!.node_name }}</div>
 </div>
 
 <div *ngIf="displayNode" class="block_info"><!--  v-if="children || is_selected" -->
-    <div class="info" *ngIf="(displayNode.children && displayNode.children.length > 0) || isFirstSelected">
+    <div class="info" *ngIf="displayNode.children.length > 0 || isFirstSelected">
         <div class="info_container">
-            <ng-container *ngIf="showEndBlock">
+            <ng-container *ngIf="displayNode?.cluster">
                 <div class="label">Aggregated Totals:</div>
                 <div class="value">
                     <div class="group group_red">M: {{parentsAggregate.t1_mutations}}</div>
@@ -17,7 +17,7 @@
                     <div class="group">D: {{parentsAggregate.drugs}}</div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="!showEndBlock">
+            <ng-container *ngIf="!displayNode?.cluster">
                 <div class="label">
                     <span class="full">T1&nbsp;</span>M<span class="full">utations</span>:
                 </div>
@@ -63,11 +63,11 @@
                     </tbody>
                 </table>
             </div>
-            <div class="summary_button" (click)="$event.stopPropagation(); onToggleTable(undefined)">{{(!phylogenyShowTable) ? 'Open in' : 'Hide'}} Table</div>
+            <div class="summary_button" (click)="$event.stopPropagation(); onToggleTable(undefined)">{{(!showTable) ? 'Open in' : 'Hide'}} Table</div>
         </div>
     </div>
 
-    <div class="block_background" *ngIf="displayNode.children && displayNode.children.length > 0">
+    <div class="block_background" *ngIf="displayNode.children.length > 0">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <linearGradient x1="0" y1="0" x2="100%" y2="0" [id]="gradientId">
                 <stop class="gradient_start" offset="0" />
@@ -80,12 +80,12 @@
     </div>
 </div>
 
-<div class="children" *ngIf="displayNode">
-    <phylo-node *ngFor="let child of displayNode.children; index as index"
+<div class="children">
+    <phylo-node *ngFor="let child of displayNode?.children; index as index"
         [displayNode]="child"
     ></phylo-node>
 </div>
 
-<div class="end_block" *ngIf="showEndBlock">
+<div class="end_block" *ngIf="displayNode?.cluster">
     <div class="percentage">{{ displayNode!.prevalence }}%</div>
 </div>
