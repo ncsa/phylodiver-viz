@@ -2,8 +2,7 @@ import { Component, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnIn
 import { Subscription } from 'rxjs';
 
 import { Sample } from 'src/app/models/dto';
-import { CellData } from 'src/app/models/toy-dto';
-import { DataService } from 'src/app/services/data.service';
+import { DisplayNode } from 'src/app/models/models';
 import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
@@ -23,49 +22,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   @Input()
-  blockLabel = '';
-
-  @Input()
-  blockLevel = 1;
-
-  @Input()
-  blockList: any[] = []; // TODO FIXME
-
-  @Input()
-  children: CellData[] = [];
-
-  @Input()
-  color: string = '#555';
-
-  @Input()
-  genes = 0;
-
-  @Input()
-  ignoreScaling = false;
-
-  @Input()
-  jsonData?: CellData;
-
-  @Input()
-  key = '';
-
-  @Input()
-  label = '';
-
-  @Input()
-  parent: NodeComponent|undefined;
-
-  @Input()
-  parentTotal = 0;
-
-  @Input()
-  sample = '';
-
-  @Input()
-  showEndBlock = false;
-
-  @Input()
-  showStats = true;
+  displayNode: DisplayNode|null = null;
 
   subscriptions: Subscription[] = [];
 
@@ -78,7 +35,10 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   };
   selectedSample: Sample|null = null;
   phylogenyShowTable = false;
-  selectedBlocks: NodeComponent[] = [];
+  selectedNodes: DisplayNode[] = [];
+
+  gradientId = 'uninitialized';
+  showEndBlock = false;
 
   summaryColumns = [
     { field: "tier", label: "Tier" },
@@ -89,23 +49,18 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   ];
 
   constructor(
-    private dataService: DataService,
     private selectionService: SelectionService) { }
 
   ngOnInit(): void {
     this.subscriptions.push(this.selectionService.getPhylogenyShowTable().subscribe(showTable => {
       this.phylogenyShowTable = showTable;
     }));
-    this.subscriptions.push(this.selectionService.getSelectedBlocks().subscribe(blocks => {
+    this.subscriptions.push(this.selectionService.getSelectedNodes().subscribe(nodes => {
       //determine if this is the first in the selected array (which is the one clicked on)
-      //reference this variable so this computed value will update when this variable does
-      //https://logaretm.com/blog/2019-10-11-forcing-recomputation-of-computed-properties
-      this.isFirstSelected = blocks.length > 0 && blocks[0] == this;
+      this.isFirstSelected = nodes.length > 0 && nodes[0] === this.displayNode;
       //consider it selected if in the selected array (selected or parent of)
-      //reference this variable so this computed value will update when this variable does
-      //https://logaretm.com/blog/2019-10-11-forcing-recomputation-of-computed-properties
-      this.isSelected = blocks.indexOf(this) > -1;
-      this.selectedBlocks = blocks;
+      this.isSelected = nodes.find(node => node === this.displayNode) !== undefined;
+      this.selectedNodes = nodes;
     }));
     this.subscriptions.push(this.selectionService.getSample().subscribe(selectedSample => {
       this.selectedSample = selectedSample;
@@ -115,10 +70,10 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('parent' in changes) {
+    if ('displayNode' in changes && this.displayNode) {
+      this.showEndBlock = this.displayNode && !!this.displayNode!.cluster && !!this.displayNode!.parent;
+      this.gradientId = 'gradient_' + this.displayNode!.node_name.replace(/\W/, '-');
       this.updateParentsAggregate();
-    }
-    if ('selected' in changes || 'parentTotal' in changes || 'jsonData' in changes) {
       this.updateStyle();
     }
   }
@@ -131,32 +86,21 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     return this;
   }
 
-  getProportion(): number {
-    return this.jsonData?.proportion ? (this.jsonData.proportion[this.selectedSample!.sample_id] || 0) : 0;
-  }
-
   getChildrenTotal(): number {
-    let total = 0;
-    if (this.children) {
-      for (let i=0; i < this.children.length; i++) {
-        if (typeof this.children[i].proportion[this.selectedSample!.sample_id] != 'undefined') {
-          total += this.children[i].proportion[this.selectedSample!.sample_id];
-        }
-      }
-    }
-    //return the total OR the number of genes specified
-    return total; //(this.children) ? total : this.genes;
+    return this.displayNode?.children?.map(child => child.prevalence).reduce((prev, cur) => prev + cur, 0) || 0;
   }
 
-  getAllParents(list: NodeComponent[]): NodeComponent[] {
-    if (this.parent) {
-      //add this parent reference
-      list.push(this.parent);
-      return this.parent.getAllParents(list);
-    } else {
-      //return the final list
-      return list;
+  getAllParents(): DisplayNode[] {
+    const returnVal: DisplayNode[] = [];
+    let currentNode = this.displayNode;
+    while (currentNode) {
+      let parent = currentNode.parent;
+      if (parent) {
+        returnVal.push(parent);
+      }
+      currentNode = parent;
     }
+    return returnVal;
   }
 
   updateParentsAggregate(): void {
@@ -168,32 +112,30 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       'drugs': 0,
     };
     //walk up each parent and create aggregate
-    let parents = this.getAllParents([]);
-    for(let i=0; i<parents.length; i++) {
-      let parent_data = parents[i];
-      totals['t1_mutations'] += parent_data.jsonData?.t1_mutations || 0;
-      totals['mutations'] += parent_data.jsonData?.mutations || 0;
-      totals['t1_cgc_genes'] += parent_data.jsonData?.t1_cgc_genes || 0;
-      totals['genes'] += parent_data.genes;
-      totals['drugs'] += parent_data.jsonData?.drugs || 0;
-    }
+    this.getAllParents().forEach(node => {
+      totals['t1_mutations'] += 0; // node?.cluster?.variants?. || 0;
+      totals['mutations'] += 0; //parent_data.jsonData?.mutations || 0;
+      totals['t1_cgc_genes'] += 0; //parent_data.jsonData?.t1_cgc_genes || 0;
+      totals['genes'] += 0; //parent_data.genes;
+      totals['drugs'] += 0; //parent_data.jsonData?.drugs || 0;
+    });
     this.parentsAggregate = totals;
   }
 
   updateStyle(): void {
+    const startColor = this.displayNode!.color;
     //get children color (assume first is the same as all of them)
-    const startColor = this.color || '#555';
-    const childrenColor = (this.children && this.children[0]?.color) || startColor;
+    const childrenColor = (this.displayNode?.children && this.displayNode.children[0]?.color) || startColor;
     let styles = {
       '--cell_block_color': startColor,
       '--gradient_start': startColor,
       '--gradient_end': childrenColor
     } as any;
     //only apply the height for the final tree end
-    if (this.parentTotal) {
-      const hasSelectedBlock = this.selectedBlocks.length > 0;
-      const selectedBlockLevel = hasSelectedBlock ? this.selectedBlocks[0].blockLevel : 0;
-      styles['flex'] = (!this.ignoreScaling && hasSelectedBlock && selectedBlockLevel >= this.blockLevel && !this.isSelected) ? '1' : '' + (this.getProportion() * 1000); //proper value is 100, using 1000 to force this to shrink super small when selected
+    if (this.showEndBlock) { // FIXME correct condition?
+      const hasSelectedNode = this.selectedNodes.length > 0;
+      const selectedBlockLevel = hasSelectedNode ? this.selectedNodes[0].level : 0;
+      styles['flex'] = (hasSelectedNode && selectedBlockLevel >= this.displayNode!.level && !this.isSelected) ? '1' : '' + (this.displayNode!.prevalence * 1000); //proper value is 100, using 1000 to force this to shrink super small when selected
       //styles['flex'] = (has_selected_block && selected_block_level >= this.block_level && !this.is_selected) ? '1' : '' + (this.genes / this.parent_total * 1000); //proper value is 100, using 1000 to force this to shrink super small when selected
     }
     this.cssStyles = styles;
@@ -207,25 +149,12 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   };
 
   onSelectBlock(): void {
-    //determine if we override the on_click
-    /* TODO FIXME
-    if (this.on_click) {
-      this.on_click((this.callback_value) ? this.callback_value : this);
-      return;
-    }
-    */
     //globally change the indicate which blocks are selected (or none at all)
     if (this.isFirstSelected) {
       //deselect this block
-      this.selectionService.setSelectedBlocks([]);
+      this.selectionService.setSelectedNodes([]);
     } else {
-      //walk through and find any parent blocks for this selected block
-      let selectedBlocks: NodeComponent[] = [];
-      //make sure this is added (and first in the array)
-      selectedBlocks.push(this);
-      //recursively walk through parents
-      selectedBlocks = selectedBlocks.concat(this.getAllParents([]));
-      this.selectionService.setSelectedBlocks(selectedBlocks);
+      this.selectionService.setSelectedNodes([this.displayNode!, ...this.getAllParents()]);
     }
   }
 

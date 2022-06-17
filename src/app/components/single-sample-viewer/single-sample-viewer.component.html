@@ -1,21 +1,14 @@
-<div class="single_sample_viewer" [class.navigation_mode]="phylogenyShowTable && hasSelectedBlock">
+<div class="single_sample_viewer" [class.navigation_mode]="phylogenyShowTable && hasSelectedNode">
     <div class="header">
         <input type="text" size="30" placeholder="Search" />
     </div>
 
     <div class="content">
-        <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedBlock">
+        <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedNode">
             <div class="subclone_label">{{selectedSample!.name}}</div>
 
-            <phylo-node *ngFor="let data of cellData; index as i"
-                [jsonData]="data"
-                [sample]="data.sample || 'primary'"
-                [label]="data.label"
-                [color]="data.color"
-                [genes]="data.genes || 0"
-                [showEndBlock]="data.show_end_block || false"
-                [children]="data.children || []"
-                [key]="i + ''"
+            <phylo-node *ngIf="rootNode"
+                [displayNode]="rootNode"
             ></phylo-node>
         </div>
 
@@ -27,5 +20,5 @@
     </div>
 
 <!-- todo: change phylo-table ngIf to angular animation so it can grow/shrink before show/hide -->
-    <phylo-table *ngIf="hasSelectedBlock && phylogenyShowTable"></phylo-table>
+    <phylo-table *ngIf="hasSelectedNode && phylogenyShowTable"></phylo-table>
 </div>

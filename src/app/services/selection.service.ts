@@ -1,34 +1,37 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Sample } from '../models/dto';
+import { Sample, Tree } from '../models/dto';
+import { DisplayNode } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SelectionService {
 
-  selectedBlocks: BehaviorSubject<any[]>; // TODO FIXME
+  selectedNodes: BehaviorSubject<DisplayNode[]>;
 
   sample: BehaviorSubject<Sample|null>;
+  tree: BehaviorSubject<Tree|null>;
 
   phylogenySelectedTier: BehaviorSubject<any>; // TODO FIXME
 
   phylogenyShowTable: BehaviorSubject<boolean>;
 
   constructor() {
-    this.selectedBlocks = new BehaviorSubject<any>([]);
+    this.selectedNodes = new BehaviorSubject<DisplayNode[]>([]);
     this.sample = new BehaviorSubject<Sample|null>(null);
+    this.tree = new BehaviorSubject<Tree|null>(null);
     this.phylogenySelectedTier = new BehaviorSubject<any>(null);
     this.phylogenyShowTable = new BehaviorSubject<boolean>(false);
   }
 
-  getSelectedBlocks(): Observable<any[]> {
-    return this.selectedBlocks.asObservable();
+  getSelectedNodes(): Observable<DisplayNode[]> {
+    return this.selectedNodes.asObservable();
   }
 
-  setSelectedBlocks(blocks: any[]): void {
-    this.selectedBlocks.next(blocks);
+  setSelectedNodes(nodes: DisplayNode[]): void {
+    this.selectedNodes.next(nodes);
   }
 
   getSample(): Observable<Sample|null> {
@@ -37,6 +40,14 @@ export class SelectionService {
 
   setSample(sample: Sample): void {
     this.sample.next(sample);
+  }
+
+  getTree(): Observable<Tree|null> {
+    return this.tree.asObservable();
+  }
+
+  setTree(tree: Tree): void {
+    this.tree.next(tree);
   }
 
   getPhylogenySelectedTier(): Observable<any> {

@@ -16,13 +16,12 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
   @HostListener('click', ['$event'])
   onClick(e:any) {
      e.stopPropagation();
-     this.selectProportion();
+     this.selectSample();
   }
 
   @Input()
   legendSample?: LegendSample;
 
-  hasSelectedBlock = false;
   selectedSample: Sample|null = null;
 
   subscriptions: Subscription[] = [];
@@ -31,8 +30,6 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
     private selectionService: SelectionService) { }
 
   ngOnInit(): void {
-    this.subscriptions.push(this.selectionService.getSelectedBlocks().subscribe(blocks => {
-    }));
     this.subscriptions.push(this.selectionService.getSample().subscribe(selectedSample => {
       this.selectedSample = selectedSample;
       this.isSelected = selectedSample?.sample_id === this.legendSample!.sample.sample_id;
@@ -43,8 +40,8 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  selectProportion(): void {
-    this.selectionService.setSelectedBlocks([]);
+  selectSample(): void {
+    this.selectionService.setSelectedNodes([]);
     this.selectionService.setSample(this.legendSample!.sample);
   }
 }

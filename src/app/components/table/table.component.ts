@@ -39,10 +39,10 @@ export class TableComponent implements OnInit, OnDestroy {
   constructor(private selectionService: SelectionService) { }
 
   ngOnInit(): void {
-    this.subscriptions.push(this.selectionService.getSelectedBlocks().subscribe(blocks => {
-      this.label = blocks[0]?.jsonData?.label;
-      this.edgeLabel = blocks[0]?.jsonData?.edge_label;
-      this.detailsData = blocks[0]?.jsonData?.details;
+    this.subscriptions.push(this.selectionService.getSelectedNodes().subscribe(selectedNodes => {
+      this.label = 'FIXME label'; //selectedNodes[0]?.jsonData?.label;
+      this.edgeLabel = 'FIXME edge label'; //selectedNodes[0]?.jsonData?.edge_label;
+      this.detailsData = []; //selectedNodes[0]?.jsonData?.details;
     }));
     this.subscriptions.push(this.selectionService.getPhylogenySelectedTier().subscribe(tier => {
       this.phylogenySelectedTier = tier;

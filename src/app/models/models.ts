@@ -1,6 +1,13 @@
-import { NodeComponent } from "../components/node/node.component";
+import { Cluster } from "./dto";
 
-export interface PhylogenyProportionSet {
+export interface DisplayNode {
+  cluster_id?: number;
+  cluster?: Cluster;
   color: string;
-  proportion: number;
+  node_name: string;
+  prevalence: number;
+  children: DisplayNode[];
+  childClusterNodeNames: string[];
+  parent: DisplayNode|null;
+  level: number;
 }
