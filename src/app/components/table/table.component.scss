@@ -206,10 +206,7 @@
 			&.column_chr,
 			&.column_start,
 			&.column_strand,
-			&.column_ucsc_cons,
-			&.column_NORMAL_ALLDNA_VAF,
-			&.column_TUMOR_ALLDNA_VAF,
-			&.column_RELAPSE_ALLDNA_VAF,
+			&.column_alldna_vaf,
 			&.column_cgc_gene {
 				text: {
 					align: right;

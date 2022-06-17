@@ -1,0 +1,5842 @@
+{
+    "ABL2": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 27.0
+    },
+    "EWSR1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma",
+            "desmoplastic small round cell tumour ",
+            "ALL",
+            "clear cell sarcoma",
+            "sarcoma",
+            "myoepithelioma",
+            "mesothelioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2130.0
+    },
+    "ACSL3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2181.0
+    },
+    "LHFPL6": {
+        "Tumour Types(Somatic)": [
+            "lipoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10186.0
+    },
+    "TCL1A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8115.0
+    },
+    "NPM1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NHL",
+            "APL",
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4869.0
+    },
+    "SND1": {
+        "Tumour Types(Somatic)": [
+            "pancreas acinar carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 27044.0
+    },
+    "TNC": {
+        "Tumour Types(Somatic)": [
+            "SCC",
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 3371.0
+    },
+    "LSM14A": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 26065.0
+    },
+    "USP6": {
+        "Tumour Types(Somatic)": [
+            "aneurysmal bone cyst"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9098.0
+    },
+    "KIAA1549": {
+        "Tumour Types(Somatic)": [
+            "pilocytic astrocytoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 57670.0
+    },
+    "NR4A3": {
+        "Tumour Types(Somatic)": [
+            "extraskeletal myxoid chondrosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8013.0
+    },
+    "WWTR1": {
+        "Tumour Types(Somatic)": [
+            "epithelioid haemangioendothelioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 25937.0
+    },
+    "RET": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "medullary thyroid",
+            "papillary thyroid",
+            "pheochromocytoma",
+            "NSCLC",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5979.0
+    },
+    "LMO1": {
+        "Tumour Types(Somatic)": [
+            "T-ALL",
+            "neuroblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4004.0
+    },
+    "CREB1": {
+        "Tumour Types(Somatic)": [
+            "clear cell sarcoma",
+            "angiomatoid fibrous histiocytoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1385.0
+    },
+    "SLC34A2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10568.0
+    },
+    "CARS": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 833.0
+    },
+    "FOXO1": {
+        "Tumour Types(Somatic)": [
+            "alveolar rhabdomyosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2308.0
+    },
+    "SALL4": {
+        "Tumour Types(Somatic)": [
+            "colorectal cancer",
+            "breast cancer",
+            "prostate cancer",
+            "glioblastoma",
+            "melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57167.0
+    },
+    "PBX1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pre B-ALL",
+            "myoepithelioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5087.0
+    },
+    "BAX": {
+        "Tumour Types(Somatic)": [
+            "colorectal cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 581.0
+    },
+    "TEC": {
+        "Tumour Types(Somatic)": [
+            "myxoid chondrosarcoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 7006.0
+    },
+    "HOXD11": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3237.0
+    },
+    "LEPROTL1": {
+        "Tumour Types(Somatic)": [
+            "lung cancer",
+            "colon cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 23484.0
+    },
+    "XPA": {
+        "Tier": 1,
+        "Entrez GeneId": 7507.0
+    },
+    "FGFR4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "rhabdomyosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2264.0
+    },
+    "NUTM2D": {
+        "Tumour Types(Somatic)": [
+            "endometrial stromal sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 728130.0
+    },
+    "SETBP1": {
+        "Tumour Types(Somatic)": [
+            "aCML",
+            "sAML",
+            "MDS/MPN-U",
+            "CMML",
+            "JMML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 26040.0
+    },
+    "FLI1": {
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2313.0
+    },
+    "NAB2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "solitary fibrous tumour",
+            "meningeal haemangiopericytoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4665.0
+    },
+    "B2M": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "DLBCL",
+            "melanoma",
+            "colorectal adenocarcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 567.0
+    },
+    "KAT6A": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7994.0
+    },
+    "SDHD": {
+        "Tier": 1,
+        "Entrez GeneId": 6392.0
+    },
+    "HIP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CMML",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3092.0
+    },
+    "FAM135B": {
+        "Tumour Types(Somatic)": [
+            "SCLC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 51059.0
+    },
+    "SMC1A": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 8243.0
+    },
+    "SEPT6": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 23157.0
+    },
+    "CREB3L1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "myxofibrosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 90993.0
+    },
+    "ERBB2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast",
+            "ovarian",
+            "other tumour types",
+            "NSCLC",
+            "gastric"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2064.0
+    },
+    "PTPRD": {
+        "Tumour Types(Somatic)": [
+            "lung cancer",
+            "kidney cancer",
+            "HNSCC",
+            "glioblastoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5789.0
+    },
+    "IL7R": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL",
+            "ETP ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3575.0
+    },
+    "PTPRT": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "HNSCC",
+            "colorectal cancer",
+            "gastric cancer",
+            "lung cancer",
+            "melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 11122.0
+    },
+    "LARP4B": {
+        "Tumour Types(Somatic)": [
+            "CRC",
+            "glioma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 23185.0
+    },
+    "VTI1A": {
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 143187.0
+    },
+    "SMO": {
+        "Tumour Types(Somatic)": [
+            "skin basal cell"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6608.0
+    },
+    "SRSF3": {
+        "Tumour Types(Somatic)": [
+            "follicular lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6428.0
+    },
+    "RFWD3": {
+        "Tumour Types(Somatic)": [
+            "lung cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 55159.0
+    },
+    "DICER1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "sex cord-stromal tumour",
+            "TGCT",
+            "embryonal rhabdomyosarcoma",
+            "pleuropulmonary blastoma",
+            "pituitary blastoma",
+            "Wilms tumour",
+            "thyroid cancer",
+            "other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23405.0
+    },
+    "PCM1": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "CML",
+            "MPN"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5108.0
+    },
+    "ARID1B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast",
+            "hepatocellular carcinoma",
+            "clear cell ovarian carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57492.0
+    },
+    "FBXO11": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 80204.0
+    },
+    "BCL9L": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal cancer",
+            "endometrial carcinoma",
+            "gastric cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 283149.0
+    },
+    "HOOK3": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 84376.0
+    },
+    "ELN": {
+        "Tumour Types(Somatic)": [
+            "B-ALL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2006.0
+    },
+    "TMPRSS2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7113.0
+    },
+    "CDKN2A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "multiple other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1029.0
+    },
+    "STK11": {
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "pancreatic"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6794.0
+    },
+    "ARHGEF12": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23365.0
+    },
+    "EZH2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2146.0
+    },
+    "CREB3L2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "fibromyxoid sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 64764.0
+    },
+    "KRAS": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pancreatic",
+            "colorectal",
+            "lung",
+            "thyroid",
+            "AML",
+            "other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3845.0
+    },
+    "DDX3X": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "medulloblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1654.0
+    },
+    "CDH1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "lobular breast",
+            "gastric"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 999.0
+    },
+    "ZRSR2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MDS",
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8233.0
+    },
+    "WIF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pleomorphic salivary gland adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 11197.0
+    },
+    "MYCN": {
+        "Tumour Types(Somatic)": [
+            "neuroblastoma",
+            "Wilms tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4613.0
+    },
+    "HIST1H4I": {
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8294.0
+    },
+    "SEPT5": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5413.0
+    },
+    "CDC73": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "parathyroid adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 79577.0
+    },
+    "TCEA1": {
+        "Tumour Types(Somatic)": [
+            "salivary adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6917.0
+    },
+    "SSX1": {
+        "Tumour Types(Somatic)": [
+            "synovial sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6756.0
+    },
+    "MAPK1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "ovarian mixed germ cell tumour",
+            "cervical carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5594.0
+    },
+    "PHOX2B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "neuroblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8929.0
+    },
+    "FCRL4": {
+        "Tumour Types(Somatic)": [
+            "B-NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 83417.0
+    },
+    "NACA": {
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 4666.0
+    },
+    "FOXP1": {
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 27086.0
+    },
+    "ZNF429": {
+        "Tumour Types(Somatic)": [
+            "GBM"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 353088.0
+    },
+    "PTPRK": {
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5796.0
+    },
+    "SPEN": {
+        "Tumour Types(Somatic)": [
+            "SMZL",
+            "adenoid cystic carcinoma",
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23013.0
+    },
+    "MACC1": {
+        "Tumour Types(Somatic)": [
+            "liver",
+            "CRC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 346389.0
+    },
+    "PRDM1": {
+        "Tumour Types(Somatic)": [
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 639.0
+    },
+    "HMGA2": {
+        "Tumour Types(Somatic)": [
+            "lipoma",
+            "leiomyoma",
+            "pleomorphic salivary gland adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8091.0
+    },
+    "JAK1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3716.0
+    },
+    "STRN": {
+        "Tumour Types(Somatic)": [
+            "anaplastic thyroid",
+            "papillary thyroid",
+            "lung"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6801.0
+    },
+    "MLH1": {
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "endometrial",
+            "ovarian",
+            "CNS tumours"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4292.0
+    },
+    "MTCP1": {
+        "Tumour Types(Somatic)": [
+            "T cell prolymphocytic leukaemia"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4515.0
+    },
+    "ERCC5": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 2073.0
+    },
+    "TRIP11": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9321.0
+    },
+    "KDM6A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "renal cell carcinoma",
+            "bladder carcinoma",
+            "oesophageal SCC",
+            "MM",
+            "medulloblastoma",
+            "T-ALL",
+            "other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7403.0
+    },
+    "BRIP1": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 83990.0
+    },
+    "OLIG2": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10215.0
+    },
+    "PDGFB": {
+        "Tumour Types(Somatic)": [
+            "DFSP"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5155.0
+    },
+    "SS18": {
+        "Tumour Types(Somatic)": [
+            "synovial sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6760.0
+    },
+    "BCL10": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MALT"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8915.0
+    },
+    "COX6C": {
+        "Tumour Types(Somatic)": [
+            "uterine leiomyoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1345.0
+    },
+    "IL21R": {
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 50615.0
+    },
+    "FEN1": {
+        "Tier": 2,
+        "Entrez GeneId": 2237.0
+    },
+    "TENT5C": {
+        "Tumour Types(Somatic)": [
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 54855.0
+    },
+    "FGFR3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "bladder",
+            "MM",
+            "T-cell lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2261.0
+    },
+    "BCL7A": {
+        "Tumour Types(Somatic)": [
+            "BNHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 605.0
+    },
+    "FSTL3": {
+        "Tumour Types(Somatic)": [
+            "B-CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10272.0
+    },
+    "BCORL1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "HNSCC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 63035.0
+    },
+    "DAXX": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pancreatic neuroendocrine tumour",
+            "paediatric glioblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1616.0
+    },
+    "DNM2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1785.0
+    },
+    "RAF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pilocytic astrocytoma",
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5894.0
+    },
+    "LRP1B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "ovarian cancer",
+            "oesophageal squamous cell carcinoma",
+            "urothelial cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 53353.0
+    },
+    "RGPD3": {
+        "Tumour Types(Somatic)": [
+            "endometrioid adenocarcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 653489.0
+    },
+    "RSPO3": {
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 84870.0
+    },
+    "NUTM1": {
+        "Tumour Types(Somatic)": [
+            "lethal midline carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 256646.0
+    },
+    "SYK": {
+        "Tumour Types(Somatic)": [
+            "MDS",
+            "peripheral T-cell lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6850.0
+    },
+    "RAC1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5879.0
+    },
+    "P2RY8": {
+        "Tumour Types(Somatic)": [
+            "B-ALL",
+            "Down syndrome associated ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 286530.0
+    },
+    "AFF3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL",
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3899.0
+    },
+    "NKX2-1": {
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7080.0
+    },
+    "NOTCH1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-ALL",
+            "breast",
+            "bladder",
+            "skin SCC",
+            "lung SCC",
+            "head and neck SCC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4851.0
+    },
+    "CSF3R": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "aCML",
+            "CNL",
+            " leukaemia lymphoma and MDS associated with severe congenital neutropenia",
+            "CMML",
+            "de novo AML",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1441.0
+    },
+    "FGFR1OP": {
+        "Tumour Types(Somatic)": [
+            "MPN",
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 11116.0
+    },
+    "PAX3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "alveolar rhabdomyosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5077.0
+    },
+    "AFDN": {
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4301.0
+    },
+    "APC": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "pancreatic",
+            "desmoid",
+            "hepatoblastoma",
+            "glioma",
+            "other CNS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 324.0
+    },
+    "CCDC6": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "CML",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8030.0
+    },
+    "HOXA11": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3207.0
+    },
+    "RABEP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CMML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9135.0
+    },
+    "WAS": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 7454.0
+    },
+    "QKI": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "angiocentric glioma",
+            "colorectal cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9444.0
+    },
+    "CRNKL1": {
+        "Tumour Types(Somatic)": [
+            "base cell carcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 51340.0
+    },
+    "PRKCB": {
+        "Tumour Types(Somatic)": [
+            "adult T-cell lymphoma-leukaemia"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5579.0
+    },
+    "APOBEC3B": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 9582.0
+    },
+    "TRIM27": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5987.0
+    },
+    "ARHGEF10": {
+        "Tumour Types(Somatic)": [
+            "colon cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 9639.0
+    },
+    "TPR": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7175.0
+    },
+    "BCR": {
+        "Tumour Types(Somatic)": [
+            "CML",
+            "ALL",
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 613.0
+    },
+    "RNF43": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "cholangiocarcinoma",
+            "ovary",
+            "pancreas"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 54894.0
+    },
+    "GLI1": {
+        "Tumour Types(Somatic)": [
+            "CRC",
+            "oesophagus cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2735.0
+    },
+    "KIT": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "GIST",
+            "AML",
+            "TGCT",
+            "mastocytosis",
+            "mucosal melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3815.0
+    },
+    "SMARCB1": {
+        "Tumour Types(Somatic)": [
+            "malignant rhabdoid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6598.0
+    },
+    "EIF3E": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3646.0
+    },
+    "DDX5": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1655.0
+    },
+    "FLNA": {
+        "Tumour Types(Somatic)": [
+            "phyllodes tumour of the breast"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2316.0
+    },
+    "FNBP1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 23048.0
+    },
+    "MLLT11": {
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10962.0
+    },
+    "RGS7": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 6000.0
+    },
+    "ATF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "malignant melanoma of soft parts",
+            "angiomatoid fibrous histiocytoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 466.0
+    },
+    "ABI1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10006.0
+    },
+    "HOXA9": {
+        "Tumour Types(Somatic)": [
+            "AML*"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3205.0
+    },
+    "SDHA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "GIST",
+            "paraganglioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6389.0
+    },
+    "HOXD13": {
+        "Tumour Types(Somatic)": [
+            "AML*"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3239.0
+    },
+    "CBL": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "JMML",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 867.0
+    },
+    "CUL3": {
+        "Tumour Types(Somatic)": [
+            "lung cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 8452.0
+    },
+    "ERCC4": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 2072.0
+    },
+    "CHD4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "uterine serous carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1108.0
+    },
+    "CBLB": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 868.0
+    },
+    "NUP214": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8021.0
+    },
+    "ARID1A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "clear cell ovarian carcinoma",
+            "RCC",
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8289.0
+    },
+    "CCND2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NHL,CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 894.0
+    },
+    "PTPN13": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "lung",
+            "NSCLC",
+            "gastric",
+            "peritoneal carcinomatosis"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5783.0
+    },
+    "RANBP2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "inflammatory myofibroblastic tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5903.0
+    },
+    "DDB2": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 1643.0
+    },
+    "ESR1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2099.0
+    },
+    "PRKAR1A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "papillary thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5573.0
+    },
+    "MLF1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4291.0
+    },
+    "PAX7": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "alveolar rhabdomyosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5081.0
+    },
+    "NUTM2B": {
+        "Tumour Types(Somatic)": [
+            "endometrial stromal sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 729262.0
+    },
+    "U2AF1": {
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7307.0
+    },
+    "CANT1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 124583.0
+    },
+    "CDH17": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1015.0
+    },
+    "NFE2L2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "HNSCC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4780.0
+    },
+    "PSIP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 11168.0
+    },
+    "ACKR3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "lipoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57007.0
+    },
+    "CRLF2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "B-ALL",
+            "Downs associated ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 64109.0
+    },
+    "TET1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 80312.0
+    },
+    "YWHAE": {
+        "Tumour Types(Somatic)": [
+            "endometrial stromal sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7531.0
+    },
+    "MDM2": {
+        "Tumour Types(Somatic)": [
+            "sarcoma",
+            "glioma",
+            "colorectal",
+            "other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4193.0
+    },
+    "DCAF12L2": {
+        "Tumour Types(Somatic)": [
+            "CRC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 340578.0
+    },
+    "PDCD1LG2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "PMBL",
+            "Hodgkin lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 80380.0
+    },
+    "LIFR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "salivary adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3977.0
+    },
+    "SH2B3": {
+        "Tumour Types(Somatic)": [
+            "MPN",
+            "sAML",
+            "erythrocytosis",
+            "B-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10019.0
+    },
+    "LMO2": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4005.0
+    },
+    "IGL": {
+        "Tumour Types(Somatic)": [
+            "Burkitt lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3535.0
+    },
+    "C15orf65": {
+        "Tumour Types(Somatic)": [
+            "PMBL",
+            "Hodgkin lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 145788.0
+    },
+    "EIF4A2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1974.0
+    },
+    "NOTCH2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "marginal zone lymphoma",
+            "DLBCL",
+            "bladder"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4853.0
+    },
+    "ALDH2": {
+        "Tumour Types(Somatic)": [
+            "leiomyoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 217.0
+    },
+    "PLCG1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "angiosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5335.0
+    },
+    "TMEM127": {
+        "Tier": 1,
+        "Entrez GeneId": 55654.0
+    },
+    "ZNRF3": {
+        "Tumour Types(Somatic)": [
+            "colorectal cancer",
+            "adrenocortical carcinoma",
+            "gastric cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 84133.0
+    },
+    "EGFR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioma",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1956.0
+    },
+    "MAP3K13": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9175.0
+    },
+    "AXIN2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal carcinoma",
+            "stomach carcinoma",
+            "hepatocellular carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8313.0
+    },
+    "MSN": {
+        "Tumour Types(Somatic)": [
+            "ALCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4478.0
+    },
+    "ECT2L": {
+        "Tumour Types(Somatic)": [
+            "ETP ALL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 345930.0
+    },
+    "FKBP9": {
+        "Tumour Types(Somatic)": [
+            "glioma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 11328.0
+    },
+    "DCC": {
+        "Tumour Types(Somatic)": [
+            "CRC",
+            "melanoma",
+            "SCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1630.0
+    },
+    "TSHR": {
+        "Tumour Types(Somatic)": [
+            "toxic thyroid adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7253.0
+    },
+    "STAT3": {
+        "Tumour Types(Somatic)": [
+            "T-cell large granular lymphocytic leukaemia"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6774.0
+    },
+    "ATP1A1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "adrenal aldosterone producing adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 476.0
+    },
+    "CCND3": {
+        "Tumour Types(Somatic)": [
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 896.0
+    },
+    "ZNF331": {
+        "Tumour Types(Somatic)": [
+            "follicular thyroid adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 55422.0
+    },
+    "KAT7": {
+        "Tumour Types(Somatic)": [
+            "CCRCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 11143.0
+    },
+    "CBFA2T3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 863.0
+    },
+    "SDHAF2": {
+        "Tier": 1,
+        "Entrez GeneId": 54949.0
+    },
+    "FUS": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "liposarcoma",
+            "AML",
+            "Ewing sarcoma",
+            "angiomatoid fibrous histiocytoma",
+            "fibromyxoid sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2521.0
+    },
+    "SBDS": {
+        "Tier": 1,
+        "Entrez GeneId": 51119.0
+    },
+    "MED12": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "uterine leiomyoma",
+            "fibroadenoma",
+            "phyllodes tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9968.0
+    },
+    "IKZF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL",
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10320.0
+    },
+    "SKI": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 6497.0
+    },
+    "CDH10": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1008.0
+    },
+    "AKT3": {
+        "Tumour Types(Somatic)": [
+            "GBM"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10000.0
+    },
+    "MN1": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4330.0
+    },
+    "TP63": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "HNSCC",
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8626.0
+    },
+    "MYB": {
+        "Tumour Types(Somatic)": [
+            "adenoid cystic carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4602.0
+    },
+    "SPOP": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate",
+            "endometrial"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8405.0
+    },
+    "CD79B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "DLBCL",
+            "WM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 974.0
+    },
+    "DNAJB1": {
+        "Tumour Types(Somatic)": [
+            "fibrolamellar hepatocellular carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3337.0
+    },
+    "AFF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4299.0
+    },
+    "CCND1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "B-ALL",
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 595.0
+    },
+    "MNX1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 3110.0
+    },
+    "RSPO2": {
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 340419.0
+    },
+    "CD274": {
+        "Tumour Types(Somatic)": [
+            "PMBL",
+            "Hodgkin lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 29126.0
+    },
+    "TAF15": {
+        "Tumour Types(Somatic)": [
+            "extraskeletal myxoid chondrosarcoma",
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8148.0
+    },
+    "NSD2": {
+        "Tumour Types(Somatic)": [
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7468.0
+    },
+    "LPP": {
+        "Tumour Types(Somatic)": [
+            "lipoma",
+            "leukaemia"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4026.0
+    },
+    "FANCD2": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 2177.0
+    },
+    "BCOR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "retinoblastoma",
+            "AML",
+            "APL (translocation)"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 54880.0
+    },
+    "NFKBIE": {
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "desmoplastic melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4794.0
+    },
+    "USP44": {
+        "Tumour Types(Somatic)": [
+            "lung cancer",
+            "colon cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 84101.0
+    },
+    "GNAS": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pituitary adenoma",
+            "pancreatic intraductal papillary mucinous neoplasm",
+            "fibrous dysplasia"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2778.0
+    },
+    "TRB": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6957.0
+    },
+    "MITF": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4286.0
+    },
+    "RUNX1": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "pre B-ALL",
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 861.0
+    },
+    "CDKN1A": {
+        "Tumour Types(Somatic)": [
+            "bladder cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1026.0
+    },
+    "ERCC2": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 2068.0
+    },
+    "EXT1": {
+        "Tier": 1,
+        "Entrez GeneId": 2131.0
+    },
+    "ISX": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 91464.0
+    },
+    "DDX6": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "B-NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1656.0
+    },
+    "FANCG": {
+        "Tier": 1,
+        "Entrez GeneId": 2189.0
+    },
+    "RAD51B": {
+        "Tumour Types(Somatic)": [
+            "lipoma",
+            "uterine leiomyoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5890.0
+    },
+    "ETV6": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "congenital fibrosarcoma",
+            "multiple different leukaemia and lymphoma tumour types including ALL",
+            "secretory breast",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2120.0
+    },
+    "POU5F1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5460.0
+    },
+    "LATS2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "malignant mesothelioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 26524.0
+    },
+    "KTN1": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3895.0
+    },
+    "TNFRSF17": {
+        "Tumour Types(Somatic)": [
+            "intestinal T-cell lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 608.0
+    },
+    "BAZ1A": {
+        "Tumour Types(Somatic)": [
+            "uterine carcinosarcoma",
+            "colon cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 11177.0
+    },
+    "AFF4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 27125.0
+    },
+    "NIN": {
+        "Tumour Types(Somatic)": [
+            "MPN"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 51199.0
+    },
+    "PICALM": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-ALL",
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8301.0
+    },
+    "ARNT": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 405.0
+    },
+    "RNF213": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57674.0
+    },
+    "NCOA1": {
+        "Tumour Types(Somatic)": [
+            "alveolar rhabdomyosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8648.0
+    },
+    "CCR7": {
+        "Tumour Types(Somatic)": [
+            "adult T-cell leukaemia/lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1236.0
+    },
+    "FLT3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2322.0
+    },
+    "LEF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "B-ALL",
+            "T-ALL",
+            "eyelid sebaceous carcinoma",
+            "AML",
+            "lymphomas"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 51176.0
+    },
+    "IDH1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3417.0
+    },
+    "IKZF3": {
+        "Tumour Types(Somatic)": [
+            "B-ALL",
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 22806.0
+    },
+    "GOPC": {
+        "Tumour Types(Somatic)": [
+            "glioblastoma",
+            "cholangiocarcinoma",
+            "borderline ovarian"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57120.0
+    },
+    "FOXL2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "granulosa-cell tumour of the ovary"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 668.0
+    },
+    "BRCA1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ovarian"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 672.0
+    },
+    "REL": {
+        "Tumour Types(Somatic)": [
+            "Hodgkin lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5966.0
+    },
+    "NBN": {
+        "Tier": 1,
+        "Entrez GeneId": 4683.0
+    },
+    "KIF5B": {
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3799.0
+    },
+    "IL2": {
+        "Tumour Types(Somatic)": [
+            "intestinal T-cell lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3558.0
+    },
+    "MYH9": {
+        "Tumour Types(Somatic)": [
+            "ALCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4627.0
+    },
+    "PRCC": {
+        "Tumour Types(Somatic)": [
+            "papillary renal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5546.0
+    },
+    "SMARCD1": {
+        "Tumour Types(Somatic)": [
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6602.0
+    },
+    "ARID2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "hepatocellular carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 196528.0
+    },
+    "POU2AF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5450.0
+    },
+    "CUX1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "endometrial",
+            "melanoma",
+            "colorectal",
+            "AML",
+            "MDS",
+            "other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1523.0
+    },
+    "MYC": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Burkitt lymphoma",
+            "amplified in other cancers",
+            "B-CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4609.0
+    },
+    "CYLD": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "cylindroma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1540.0
+    },
+    "JUN": {
+        "Tumour Types(Somatic)": [
+            "sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3725.0
+    },
+    "ASXL1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MDS",
+            "CMML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 171023.0
+    },
+    "HOXC13": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3229.0
+    },
+    "SIX2": {
+        "Tumour Types(Somatic)": [
+            "Wilms tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10736.0
+    },
+    "MUTYH": {
+        "Tier": 1,
+        "Entrez GeneId": 4595.0
+    },
+    "SOCS1": {
+        "Tumour Types(Somatic)": [
+            "Hodgkin lymphoma",
+            "PMBL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8651.0
+    },
+    "RAD17": {
+        "Tumour Types(Somatic)": [
+            "lymphoma",
+            "colon cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5884.0
+    },
+    "PBRM1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "clear cell renal carcinoma",
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 55193.0
+    },
+    "KLF6": {
+        "Tumour Types(Somatic)": [
+            "prostate",
+            "glioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1316.0
+    },
+    "NRG1": {
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3084.0
+    },
+    "CEP89": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 84902.0
+    },
+    "TCF12": {
+        "Tumour Types(Somatic)": [
+            "extraskeletal myxoid chondrosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6938.0
+    },
+    "PML": {
+        "Tumour Types(Somatic)": [
+            "APL",
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5371.0
+    },
+    "ATM": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-PLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 472.0
+    },
+    "TPM3": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "ALCL",
+            "NSCLC",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7170.0
+    },
+    "PDE4DIP": {
+        "Tumour Types(Somatic)": [
+            "MPN"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9659.0
+    },
+    "NCOR1": {
+        "Tumour Types(Somatic)": [
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9611.0
+    },
+    "ZNF479": {
+        "Tumour Types(Somatic)": [
+            "lung cancer",
+            "bladder carcinoma",
+            "prostate carcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 90827.0
+    },
+    "PRDM2": {
+        "Tumour Types(Somatic)": [
+            "glioma",
+            "colon adenocarcinoma",
+            "gastric carcinoma",
+            "ovarian carcinoma",
+            "HNSCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 7799.0
+    },
+    "ITK": {
+        "Tumour Types(Somatic)": [
+            "peripheral T-cell lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3702.0
+    },
+    "BCL2": {
+        "Tumour Types(Somatic)": [
+            "NHL",
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 596.0
+    },
+    "ERBB3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colon",
+            "gastric",
+            "head and neck",
+            "bladder",
+            "skin"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2065.0
+    },
+    "NCOA2": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "chondrosarcoma",
+            "rhabdomyosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10499.0
+    },
+    "ABL1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CML",
+            "ALL",
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 25.0
+    },
+    "HRAS": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "infrequent sarcomas",
+            "rare other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3265.0
+    },
+    "NUMA1": {
+        "Tumour Types(Somatic)": [
+            "APL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4926.0
+    },
+    "PRPF40B": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "colon carcinoma",
+            "MDS"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 25766.0
+    },
+    "SH3GL1": {
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6455.0
+    },
+    "BCL9": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "B-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 607.0
+    },
+    "CDX2": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1045.0
+    },
+    "ATIC": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 471.0
+    },
+    "ATR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "endometrial",
+            "gastric",
+            "epithelial ovarian",
+            "myeloma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 545.0
+    },
+    "TCF7L2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6934.0
+    },
+    "PDGFRB": {
+        "Tumour Types(Somatic)": [
+            "MPN",
+            "AML",
+            "CMML",
+            "CML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5159.0
+    },
+    "CSF1R": {
+        "Tumour Types(Somatic)": [
+            "MDS",
+            "CML",
+            "AML",
+            "hemangioblastoma",
+            "CCRCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1436.0
+    },
+    "TFE3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "papillary renal",
+            "alveolar soft part sarcoma",
+            "renal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7030.0
+    },
+    "PTCH1": {
+        "Tumour Types(Somatic)": [
+            "skin basal cell",
+            "medulloblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5727.0
+    },
+    "CTNND1": {
+        "Tumour Types(Somatic)": [
+            "large intestine carcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1500.0
+    },
+    "ARHGEF10L": {
+        "Tumour Types(Somatic)": [
+            "lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 55160.0
+    },
+    "EPAS1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "paraganglioma",
+            "pheochromocytoma",
+            "central nervous system hemangioblastomas"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2034.0
+    },
+    "ARAF": {
+        "Tumour Types(Somatic)": [
+            "cholangiocarcinoma",
+            "lung adenocarcinoma",
+            "Langerhans cell histiocytosis"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 369.0
+    },
+    "CXCR4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "WM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7852.0
+    },
+    "COL1A1": {
+        "Tumour Types(Somatic)": [
+            "DFSP",
+            "aneurysmal bone cyst"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1277.0
+    },
+    "CBLC": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23624.0
+    },
+    "EZR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7430.0
+    },
+    "RPL10": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6134.0
+    },
+    "SGK1": {
+        "Tumour Types(Somatic)": [
+            "Nodular lymphocyte predominant Hodgkin lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 6446.0
+    },
+    "MYCL": {
+        "Tumour Types(Somatic)": [
+            "small cell lung carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4610.0
+    },
+    "CCNE1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "serous ovarian"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 898.0
+    },
+    "NONO": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "papillary renal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4841.0
+    },
+    "FBXW7": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "endometrial",
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 55294.0
+    },
+    "BTG1": {
+        "Tumour Types(Somatic)": [
+            "B-CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 694.0
+    },
+    "CSMD3": {
+        "Tumour Types(Somatic)": [
+            "ovarian cancer",
+            "oral SCC",
+            "lung cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 114788.0
+    },
+    "ZMYM3": {
+        "Tumour Types(Somatic)": [
+            "CRC",
+            "breast cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 9203.0
+    },
+    "CD79A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "DLBCL",
+            "WM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 973.0
+    },
+    "GPHN": {
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10243.0
+    },
+    "DCTN1": {
+        "Tumour Types(Somatic)": [
+            "inflammatory myofibroblastic tumour",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1639.0
+    },
+    "PTEN": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioma",
+            "prostate",
+            "endometrial"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5728.0
+    },
+    "TBX3": {
+        "Tumour Types(Somatic)": [
+            "breast",
+            "large intestine",
+            "skin"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6926.0
+    },
+    "NRAS": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "MM",
+            "AML",
+            "thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4893.0
+    },
+    "IGH": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MM",
+            "Burkitt lymphoma",
+            "NHL",
+            "CLL",
+            "B-ALL",
+            "MALT",
+            "MLCLS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3492.0
+    },
+    "TGFBR2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "head and neck",
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7048.0
+    },
+    "MDM4": {
+        "Tumour Types(Somatic)": [
+            "glioblastoma",
+            "bladder",
+            "retinoblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4194.0
+    },
+    "STAT6": {
+        "Tumour Types(Somatic)": [
+            "solitary fibrous tumour",
+            "meningeal haemangiopericytoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6778.0
+    },
+    "KMT2D": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "medulloblastoma",
+            "renal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8085.0
+    },
+    "PREX2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "pancreatic ductal adenocarcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 80243.0
+    },
+    "FOXR1": {
+        "Tumour Types(Somatic)": [
+            "neuroblastoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 283150.0
+    },
+    "SUFU": {
+        "Tumour Types(Somatic)": [
+            "medulloblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 51684.0
+    },
+    "AKT2": {
+        "Tumour Types(Somatic)": [
+            "ovarian",
+            "pancreatic"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 208.0
+    },
+    "KMT2A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4297.0
+    },
+    "KLF4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "meningioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9314.0
+    },
+    "SS18L1": {
+        "Tumour Types(Somatic)": [
+            "synovial sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 26039.0
+    },
+    "MAML2": {
+        "Tumour Types(Somatic)": [
+            "salivary gland mucoepidermoid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 84441.0
+    },
+    "STIL": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6491.0
+    },
+    "MEN1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "parathyroid tumours",
+            "pancreatic neuroendocrine tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4221.0
+    },
+    "XPO1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7514.0
+    },
+    "TFRC": {
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 7037.0
+    },
+    "BCL6": {
+        "Tumour Types(Somatic)": [
+            "NHL",
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 604.0
+    },
+    "RALGDS": {
+        "Tumour Types(Somatic)": [
+            "PMBL",
+            "Hodgkin lymphoma,"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5900.0
+    },
+    "PRKACA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "fibrolamellar hepatocellular carcinoma",
+            "cortisol secreting adrenal adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5566.0
+    },
+    "MAX": {
+        "Tumour Types(Somatic)": [
+            "pheochromocytoma",
+            "endometrioid carcinoma",
+            "colon carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4149.0
+    },
+    "CLP1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10978.0
+    },
+    "PRDM16": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MDS",
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 63976.0
+    },
+    "ELK4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2005.0
+    },
+    "BCLAF1": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "SCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 9774.0
+    },
+    "RPL22": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "CML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6146.0
+    },
+    "TP53": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast",
+            "colorectal",
+            "lung",
+            "sarcoma",
+            "adrenocortical",
+            "glioma",
+            "Spitzoid tumour",
+            "multiple other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7157.0
+    },
+    "FOXO3": {
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2309.0
+    },
+    "HLA-A": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3105.0
+    },
+    "SEPT9": {
+        "Tumour Types(Somatic)": [
+            "AML*"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10801.0
+    },
+    "CHCHD7": {
+        "Tumour Types(Somatic)": [
+            "salivary adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 79145.0
+    },
+    "DUX4L1": {
+        "Tumour Types(Somatic)": [
+            "soft tissue sarcoma"
+        ],
+        "Tier": 2
+    },
+    "TFEB": {
+        "Tumour Types(Somatic)": [
+            "renal cell carcinoma (childhood epithelioid)"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7942.0
+    },
+    "CD74": {
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 972.0
+    },
+    "CDK12": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "serous ovarian"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 51755.0
+    },
+    "HOXC11": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3227.0
+    },
+    "RHOH": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 399.0
+    },
+    "BTK": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "mantle cell lymphoma",
+            "WM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 695.0
+    },
+    "MYD88": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ABC-DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4615.0
+    },
+    "SETD2": {
+        "Tumour Types(Somatic)": [
+            "clear cell renal carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 29072.0
+    },
+    "PPFIBP1": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour",
+            "inflammatory myofibroblastic tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8496.0
+    },
+    "FAT3": {
+        "Tumour Types(Somatic)": [
+            "SCC",
+            "colon adenocarcinoma",
+            "gastric adenocarcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 120114.0
+    },
+    "RUNX1T1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 862.0
+    },
+    "FANCE": {
+        "Tier": 1,
+        "Entrez GeneId": 2178.0
+    },
+    "TFPT": {
+        "Tumour Types(Somatic)": [
+            "pre-B ALL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 29844.0
+    },
+    "CLTC": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALCL",
+            "renal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1213.0
+    },
+    "ID3": {
+        "Tumour Types(Somatic)": [
+            "Burkitt lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 3399.0
+    },
+    "KAT6B": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "leiomyoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23522.0
+    },
+    "HIF1A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "endometrioid carcinoma",
+            "glioblastoma",
+            "colorectal",
+            "renal",
+            "lung",
+            "pancreatic"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3091.0
+    },
+    "BMPR1A": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 657.0
+    },
+    "RECQL4": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 9401.0
+    },
+    "TSC2": {
+        "Tumour Types(Somatic)": [
+            "pulmonary lymphangioleiomyomatosis (LAM)",
+            "renal angiomyolipoma",
+            "HNSCC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7249.0
+    },
+    "CCR4": {
+        "Tumour Types(Somatic)": [
+            "adult T-cell leukaemia/lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1233.0
+    },
+    "ERG": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma",
+            "prostate",
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2078.0
+    },
+    "OMD": {
+        "Tumour Types(Somatic)": [
+            "aneurysmal bone cyst"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 4958.0
+    },
+    "ATP2B3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "adrenal aldosterone producing adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 492.0
+    },
+    "CLIP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6249.0
+    },
+    "ETV1": {
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma",
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2115.0
+    },
+    "TLX3": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 30012.0
+    },
+    "SHTN1": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 57698.0
+    },
+    "ERCC3": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 2071.0
+    },
+    "CHD2": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "large intestine",
+            "CLL",
+            "monoclonal B lymphocytosis"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1106.0
+    },
+    "EML4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 27436.0
+    },
+    "CD209": {
+        "Tumour Types(Somatic)": [
+            "prostate carcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 30835.0
+    },
+    "DDR2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "squamous cell carcinoma",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4921.0
+    },
+    "PWWP2A": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 114825.0
+    },
+    "KDM5C": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "clear cell renal carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8242.0
+    },
+    "HIST1H3B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8358.0
+    },
+    "AKAP9": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10142.0
+    },
+    "BTG2": {
+        "Tumour Types(Somatic)": [
+            "DLBCL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 7832.0
+    },
+    "CAMTA1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "epithelioid haemangioendothelioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23261.0
+    },
+    "SDHB": {
+        "Tier": 1,
+        "Entrez GeneId": 6390.0
+    },
+    "NCKIPSD": {
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 51517.0
+    },
+    "PABPC1": {
+        "Tumour Types(Somatic)": [
+            "HNSCC",
+            "biliary tract carcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 26986.0
+    },
+    "MYH11": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4629.0
+    },
+    "MUC1": {
+        "Tumour Types(Somatic)": [
+            "B-NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4582.0
+    },
+    "TRD": {
+        "Tumour Types(Somatic)": [
+            "T-cell leukaemia"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6964.0
+    },
+    "ELF3": {
+        "Tumour Types(Somatic)": [
+            "pancreatic cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1999.0
+    },
+    "BCL11A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "B-CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 53335.0
+    },
+    "SDHC": {
+        "Tier": 1,
+        "Entrez GeneId": 6391.0
+    },
+    "GOLGA5": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9950.0
+    },
+    "ERC1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23085.0
+    },
+    "MLLT6": {
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4302.0
+    },
+    "BUB1B": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 701.0
+    },
+    "CACNA1D": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "adrenal aldosterone producing adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 776.0
+    },
+    "PCBP1": {
+        "Tumour Types(Somatic)": [
+            "CRC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5093.0
+    },
+    "KDSR": {
+        "Tumour Types(Somatic)": [
+            "B-NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2531.0
+    },
+    "CREBBP": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL",
+            "AML",
+            "DLBCL",
+            "B-NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1387.0
+    },
+    "HEY1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "mesenchymal chondrosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23462.0
+    },
+    "DGCR8": {
+        "Tumour Types(Somatic)": [
+            "Wilms tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 54487.0
+    },
+    "SIRPA": {
+        "Tumour Types(Somatic)": [
+            "HNSCC",
+            "colorectal cancer",
+            "Lung SCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 140885.0
+    },
+    "CCNC": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 892.0
+    },
+    "FLT4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "soft tissue sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2324.0
+    },
+    "SUZ12": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "endometrial stromal tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23512.0
+    },
+    "BCL3": {
+        "Tumour Types(Somatic)": [
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 602.0
+    },
+    "HMGN2P46": {
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 2
+    },
+    "PATZ1": {
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23598.0
+    },
+    "NF2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "meningioma",
+            "acoustic neuroma",
+            "renal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4771.0
+    },
+    "ZBTB16": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "APL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7704.0
+    },
+    "MB21D2": {
+        "Tumour Types(Somatic)": [
+            "lung cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 151963.0
+    },
+    "MAP2K4": {
+        "Tumour Types(Somatic)": [
+            "pancreatic",
+            "breast",
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6416.0
+    },
+    "HSP90AB1": {
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3326.0
+    },
+    "LCK": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3932.0
+    },
+    "KDR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "angiosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3791.0
+    },
+    "HLF": {
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3131.0
+    },
+    "NSD3": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 54904.0
+    },
+    "POLQ": {
+        "Tumour Types(Somatic)": [
+            "oral SCC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10721.0
+    },
+    "RPN1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6184.0
+    },
+    "FOXA1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast",
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3169.0
+    },
+    "SOX21": {
+        "Tumour Types(Somatic)": [
+            "multiple myeloma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 11166.0
+    },
+    "TBL1XR1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "splenic marginal zone lymphoma",
+            "primary central nervous system lymphoma",
+            "colorectal carcinoma",
+            "gallbladder carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 79718.0
+    },
+    "BLM": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 641.0
+    },
+    "LZTR1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8216.0
+    },
+    "TERT": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "glioblastoma",
+            "hepatocellular carcinoma",
+            "bladder",
+            "skin basal cell",
+            "skin squamous cell",
+            "mesothelioma",
+            "medulloblastoma",
+            "other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7015.0
+    },
+    "RARA": {
+        "Tumour Types(Somatic)": [
+            "APL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5914.0
+    },
+    "FAM47C": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "clear cell sarcoma of soft parts",
+            "SCLC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 442444.0
+    },
+    "VAV1": {
+        "Tumour Types(Somatic)": [
+            "T-cell lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 7409.0
+    },
+    "IRS4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioma",
+            "rhabdomyosarcoma",
+            "melanoma",
+            "breast cancer",
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8471.0
+    },
+    "MPL": {
+        "Tumour Types(Somatic)": [
+            "MPN"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4352.0
+    },
+    "ETNK1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "aCML",
+            "CMML",
+            "SM-AHD",
+            "HES"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 55500.0
+    },
+    "RHOA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "diffuse gastric",
+            "T cell lymphomas",
+            "paediatric Burkitt lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 387.0
+    },
+    "EIF1AX": {
+        "Tumour Types(Somatic)": [
+            "uveal melanoma",
+            "thyroid cancer (PDTC and ATC)",
+            "low grade serous ovarian cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 107984923.0
+    },
+    "FLCN": {
+        "Tier": 1,
+        "Entrez GeneId": 201163.0
+    },
+    "HNRNPA2B1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3181.0
+    },
+    "GNA11": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "uveal melanoma",
+            "primary central nervous system melanocytic neoplasms"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2767.0
+    },
+    "MSH6": {
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2956.0
+    },
+    "SMAD2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal carcinoma",
+            "hepatocellular carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4087.0
+    },
+    "JAK2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL",
+            "AML",
+            "MPN",
+            " CML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3717.0
+    },
+    "MALT1": {
+        "Tumour Types(Somatic)": [
+            "MALT"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10892.0
+    },
+    "ARHGAP5": {
+        "Tumour Types(Somatic)": [
+            "colon cancer",
+            "glioma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 394.0
+    },
+    "DDIT3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "liposarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1649.0
+    },
+    "ITGAV": {
+        "Tumour Types(Somatic)": [
+            "large intestine carcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 3685.0
+    },
+    "LMNA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4000.0
+    },
+    "FHIT": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pleomorphic salivary gland adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2272.0
+    },
+    "N4BP2": {
+        "Tumour Types(Somatic)": [
+            "lung cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 55728.0
+    },
+    "SDC4": {
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6385.0
+    },
+    "TRRAP": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8295.0
+    },
+    "WRN": {
+        "Tier": 1,
+        "Entrez GeneId": 7486.0
+    },
+    "LATS1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "skin basal cell carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9113.0
+    },
+    "PPP2R1A": {
+        "Tumour Types(Somatic)": [
+            "clear cell ovarian carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5518.0
+    },
+    "ETV5": {
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2119.0
+    },
+    "SMAD4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "pancreatic",
+            "small intestine"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4089.0
+    },
+    "STAG1": {
+        "Tumour Types(Somatic)": [
+            "colorectal cancer",
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10274.0
+    },
+    "SOX2": {
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "oesophageal squamous carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6657.0
+    },
+    "IKBKB": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "SMZL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3551.0
+    },
+    "ROS1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioblastoma",
+            "NSCLC",
+            "Spitzoid tumour",
+            "cholangiocarcinoma",
+            "borderline ovarian"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6098.0
+    },
+    "CDKN2C": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioma",
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1031.0
+    },
+    "KNSTRN": {
+        "Tumour Types(Somatic)": [
+            "SCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 90417.0
+    },
+    "ZFHX3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "endometrial",
+            "gastric",
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 463.0
+    },
+    "SET": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6418.0
+    },
+    "FGFR1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MPN",
+            "NHL",
+            "salivary adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2260.0
+    },
+    "PAFAH1B2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MLCLS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5049.0
+    },
+    "LRIG3": {
+        "Tumour Types(Somatic)": [
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 121227.0
+    },
+    "PTPRB": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "angiosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5787.0
+    },
+    "CTNNB1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "ovarian",
+            " hepatoblastoma",
+            "pleomorphic salivary gland adenoma",
+            "other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1499.0
+    },
+    "ARHGAP26": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23092.0
+    },
+    "CRTC3": {
+        "Tumour Types(Somatic)": [
+            "salivary gland mucoepidermoid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 64784.0
+    },
+    "GPC5": {
+        "Tumour Types(Somatic)": [
+            "lung adenocarcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2262.0
+    },
+    "KMT2C": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "medulloblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 58508.0
+    },
+    "DDX10": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML*"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1662.0
+    },
+    "BRD3": {
+        "Tumour Types(Somatic)": [
+            "lethal midline carcinoma of young people"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8019.0
+    },
+    "TRIM24": {
+        "Tumour Types(Somatic)": [
+            "APL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8805.0
+    },
+    "MLLT10": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8028.0
+    },
+    "DEK": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7913.0
+    },
+    "MAP2K1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "melanoma",
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5604.0
+    },
+    "TRA": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6955.0
+    },
+    "PRF1": {
+        "Tier": 1,
+        "Entrez GeneId": 5551.0
+    },
+    "PMS2": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 5395.0
+    },
+    "AXIN1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "endometrial",
+            "prostate",
+            "hepatocellular carcinoma",
+            "hepatoblastoma",
+            "sporadic medulloblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8312.0
+    },
+    "FANCF": {
+        "Tier": 1,
+        "Entrez GeneId": 2188.0
+    },
+    "COL2A1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "chondrosarcoma",
+            "enchondroma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1280.0
+    },
+    "GRM3": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "oral SCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2913.0
+    },
+    "MSI2": {
+        "Tumour Types(Somatic)": [
+            "CML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 124540.0
+    },
+    "MAFB": {
+        "Tumour Types(Somatic)": [
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9935.0
+    },
+    "AR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 367.0
+    },
+    "BIRC6": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "gastric adenocarcinoma",
+            "lung adenocarcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 57448.0
+    },
+    "BARD1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 580.0
+    },
+    "PIK3CA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "gastric",
+            "glioblastoma",
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5290.0
+    },
+    "HMGA1": {
+        "Tumour Types(Somatic)": [
+            "microfollicular thyroid adenoma",
+            "various benign mesenchymal tumours"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3159.0
+    },
+    "MDS2": {
+        "Tumour Types(Somatic)": [
+            "MDS"
+        ],
+        "Tier": 2
+    },
+    "FANCC": {
+        "Tier": 1,
+        "Entrez GeneId": 2176.0
+    },
+    "ACSL6": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "AEL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 23305.0
+    },
+    "THRAP3": {
+        "Tumour Types(Somatic)": [
+            "aneurysmal bone cyst"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 9967.0
+    },
+    "MAP3K1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "luminal A breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4214.0
+    },
+    "BMP5": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 653.0
+    },
+    "GPC3": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 2719.0
+    },
+    "KCNJ5": {
+        "Tumour Types(Somatic)": [
+            "adrenal adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3762.0
+    },
+    "PPARG": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "follicular thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5468.0
+    },
+    "NTRK3": {
+        "Tumour Types(Somatic)": [
+            "congenital fibrosarcoma",
+            "secretory breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4916.0
+    },
+    "MECOM": {
+        "Tumour Types(Somatic)": [
+            "AML",
+            "CML",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2122.0
+    },
+    "PDGFRA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "GIST",
+            "idiopathic hypereosinophilic syndrome",
+            "paediatric glioblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5156.0
+    },
+    "POLE": {
+        "Tumour Types(Somatic)": [
+            "colorectal carcinoma",
+            "endometrioid carcinoma",
+            "stomach carcinoma",
+            "skin cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5426.0
+    },
+    "DNMT3A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1788.0
+    },
+    "CHIC2": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 26511.0
+    },
+    "POLG": {
+        "Tumour Types(Somatic)": [
+            "CRC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5428.0
+    },
+    "MAP2K2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5605.0
+    },
+    "CTNNA2": {
+        "Tumour Types(Somatic)": [
+            "gastric cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1496.0
+    },
+    "TSC1": {
+        "Tumour Types(Somatic)": [
+            "renal cell carcinoma",
+            "bladder carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7248.0
+    },
+    "CDKN1B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast",
+            "small intestine neuroendocrine tumours"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1027.0
+    },
+    "EBF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "lipoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1879.0
+    },
+    "PIK3CB": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "SCC",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5291.0
+    },
+    "LYL1": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4066.0
+    },
+    "EP300": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "breast",
+            "pancreatic",
+            "AML",
+            "ALL",
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2033.0
+    },
+    "CHEK2": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 11200.0
+    },
+    "PTK6": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "renal",
+            "gastric",
+            "head and neck",
+            "ovarian",
+            "others"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5753.0
+    },
+    "CPEB3": {
+        "Tumour Types(Somatic)": [
+            "lung cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 22849.0
+    },
+    "MET": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "papillary renal",
+            "head-neck squamous cell"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4233.0
+    },
+    "CNBD1": {
+        "Tumour Types(Somatic)": [
+            "gastric cancer",
+            "colon cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 168975.0
+    },
+    "AKT1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast",
+            "colorectal",
+            "ovarian",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 207.0
+    },
+    "RPL5": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6125.0
+    },
+    "SMARCA4": {
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "SCCOHT"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6597.0
+    },
+    "BCL11B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 64919.0
+    },
+    "TLX1": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3195.0
+    },
+    "EED": {
+        "Tumour Types(Somatic)": [
+            "malignant peripheral nerve sheath tumours",
+            "MDS and related",
+            "lung adenocarcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 8726.0
+    },
+    "ALK": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALCL",
+            "NSCLC",
+            "neuroblastoma",
+            "inflammatory myofibroblastic tumour",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 238.0
+    },
+    "ARHGAP35": {
+        "Tumour Types(Somatic)": [
+            "endometrial carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2909.0
+    },
+    "BRCA2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast",
+            "ovarian",
+            "pancreatic"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 675.0
+    },
+    "KDM5A": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5927.0
+    },
+    "TET2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 54790.0
+    },
+    "PALB2": {
+        "Tier": 1,
+        "Entrez GeneId": 79728.0
+    },
+    "EPHA7": {
+        "Tumour Types(Somatic)": [
+            "CRC",
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2045.0
+    },
+    "GMPS": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 8833.0
+    },
+    "CDK6": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1021.0
+    },
+    "NCOR2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9612.0
+    },
+    "PIK3R1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioblastoma",
+            "ovarian",
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5295.0
+    },
+    "MYO5A": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4644.0
+    },
+    "JAZF1": {
+        "Tumour Types(Somatic)": [
+            "endometrial stromal tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 221895.0
+    },
+    "RMI2": {
+        "Tumour Types(Somatic)": [
+            "PMBL",
+            "Hodgkin lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 116028.0
+    },
+    "NTRK1": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "Spitzoid tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4914.0
+    },
+    "SRSF2": {
+        "Tumour Types(Somatic)": [
+            "MDS",
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6427.0
+    },
+    "STAG2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "bladder carcinoma",
+            "glioblastoma",
+            "melanoma",
+            "Ewing's sarcoma",
+            "myeloid neoplasms"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10735.0
+    },
+    "MLLT1": {
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4298.0
+    },
+    "HNF1A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "hepatic adenoma",
+            "hepatocellular"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6927.0
+    },
+    "SFPQ": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "papillary renal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6421.0
+    },
+    "TNFAIP3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "marginal zone B-cell lymphomas",
+            "Hodgkin lymphoma",
+            "PMBL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7128.0
+    },
+    "CDK4": {
+        "Hallmark": "Yes",
+        "Tier": 1,
+        "Entrez GeneId": 1019.0
+    },
+    "NFKB2": {
+        "Tumour Types(Somatic)": [
+            "B-NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4791.0
+    },
+    "PIM1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5292.0
+    },
+    "BIRC3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL",
+            "MALT",
+            "MCL",
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 330.0
+    },
+    "GATA1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "megakaryoblastic leukaemia of Downs syndrome"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2623.0
+    },
+    "TNFRSF14": {
+        "Tumour Types(Somatic)": [
+            "follicular lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8764.0
+    },
+    "CDH11": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "aneurysmal bone cyst"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1009.0
+    },
+    "FBLN2": {
+        "Tumour Types(Somatic)": [
+            "breast cancer",
+            "colorectal adenocarcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2199.0
+    },
+    "ERBB4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "gastric",
+            "NSCLC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2066.0
+    },
+    "TCF3": {
+        "Tumour Types(Somatic)": [
+            "pre B-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6929.0
+    },
+    "TAL1": {
+        "Tumour Types(Somatic)": [
+            "lymphoblastic leukaemia/biphasic"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6886.0
+    },
+    "TFG": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid",
+            "ALCL",
+            "NSCLC",
+            "extraskeletal myxoid chondrosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10342.0
+    },
+    "ASPSCR1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "alveolar soft part sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 79058.0
+    },
+    "IL6ST": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "hepatocellular carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3572.0
+    },
+    "SMARCE1": {
+        "Tier": 1,
+        "Entrez GeneId": 6605.0
+    },
+    "LYN": {
+        "Tumour Types(Somatic)": [
+            "DLBCL",
+            "B-ALL",
+            "MPN"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 4067.0
+    },
+    "FCGR2B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2213.0
+    },
+    "SSX4": {
+        "Tumour Types(Somatic)": [
+            "synovial sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6759.0
+    },
+    "ELL": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8178.0
+    },
+    "TRIM33": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 51592.0
+    },
+    "COL3A1": {
+        "Tumour Types(Somatic)": [
+            "lipoblastoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1281.0
+    },
+    "ZNF384": {
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 171017.0
+    },
+    "NF1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "neurofibroma",
+            "glioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4763.0
+    },
+    "RAD21": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "endometrium",
+            "colorectal",
+            "lung"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5885.0
+    },
+    "BAP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "uveal melanoma",
+            "breast",
+            "NSCLC",
+            "RCC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8314.0
+    },
+    "HSP90AA1": {
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3320.0
+    },
+    "MRTFA": {
+        "Tumour Types(Somatic)": [
+            "acute megakaryocytic leukaemia"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57591.0
+    },
+    "KEAP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NSCLC",
+            "breast carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9817.0
+    },
+    "USP9X": {
+        "Tumour Types(Somatic)": [
+            "colon carcinoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 8239.0
+    },
+    "CRTC1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "salivary gland mucoepidermoid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23373.0
+    },
+    "CASP9": {
+        "Tumour Types(Somatic)": [
+            "glioma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 842.0
+    },
+    "SETD1B": {
+        "Tumour Types(Somatic)": [
+            "CRC",
+            "endometrium"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 23067.0
+    },
+    "SF3B1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "myelodysplastic syndrome"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23451.0
+    },
+    "LASP1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3927.0
+    },
+    "FAT4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "lymphoma",
+            "pancreatic",
+            "head and neck",
+            "melanoma",
+            "hepatocellular carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 79633.0
+    },
+    "ACVR1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "DIPG"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 90.0
+    },
+    "NBEA": {
+        "Tumour Types(Somatic)": [
+            "large intestine carcinoma",
+            "multiple myeloma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 26960.0
+    },
+    "PPM1D": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioma",
+            "ovarian cancer",
+            "breast cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8493.0
+    },
+    "MGMT": {
+        "Tumour Types(Somatic)": [
+            "glioma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 4255.0
+    },
+    "LCP1": {
+        "Tumour Types(Somatic)": [
+            "NHL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 3936.0
+    },
+    "PTPN11": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "JMML",
+            "AML",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5781.0
+    },
+    "IDH2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3418.0
+    },
+    "XPC": {
+        "Tier": 1,
+        "Entrez GeneId": 7508.0
+    },
+    "ETV4": {
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma",
+            "prostate carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2118.0
+    },
+    "SMAD3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "colorectal carcinoma",
+            "oral squamous cell carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4088.0
+    },
+    "CYSLTR2": {
+        "Tumour Types(Somatic)": [
+            "uveal melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 57105.0
+    },
+    "EPHA3": {
+        "Tumour Types(Somatic)": [
+            "lung cancer",
+            "CRC",
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 2042.0
+    },
+    "WDCP": {
+        "Tumour Types(Somatic)": [
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 80304.0
+    },
+    "CIC": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "oligodendroglioma",
+            "soft tissue sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23152.0
+    },
+    "SSX2": {
+        "Tumour Types(Somatic)": [
+            "synovial sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6757.0
+    },
+    "A1CF": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 29974.0
+    },
+    "FOXO4": {
+        "Tumour Types(Somatic)": [
+            "AL",
+            "soft tissue sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4303.0
+    },
+    "CIITA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "PMBL",
+            "Hodgkin lymphoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4261.0
+    },
+    "EXT2": {
+        "Tier": 1,
+        "Entrez GeneId": 2132.0
+    },
+    "FAS": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "TGCT",
+            "nasal NK/T lymphoma",
+            "skin squamous cell carcinoma-burn scar related"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 355.0
+    },
+    "SIX1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Wilms tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6495.0
+    },
+    "CTCF": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "endometrial",
+            "breast",
+            "head and neck cancer"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10664.0
+    },
+    "SRC": {
+        "Tumour Types(Somatic)": [
+            "colorectal cancer",
+            "endometrial carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6714.0
+    },
+    "KLK2": {
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3817.0
+    },
+    "GAS7": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML*"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8522.0
+    },
+    "NFATC2": {
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4773.0
+    },
+    "RBM15": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "acute megakaryocytic leukaemia"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 64783.0
+    },
+    "SLC45A3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 85414.0
+    },
+    "BRAF": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "colorectal",
+            "papillary thyroid",
+            "borderline ovarian",
+            "NSCLC",
+            "cholangiocarcinoma",
+            "pilocytic astrocytoma",
+            "Spitzoid tumour",
+            "pancreas acinar carcinoma",
+            "melanocytic nevus",
+            "prostate",
+            "gastric"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 673.0
+    },
+    "SRGAP3": {
+        "Tumour Types(Somatic)": [
+            "pilocytic astrocytoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 9901.0
+    },
+    "FANCA": {
+        "Tier": 1,
+        "Entrez GeneId": 2175.0
+    },
+    "CNOT3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4849.0
+    },
+    "RBM10": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "lung adenocarcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8241.0
+    },
+    "CYP2C8": {
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1558.0
+    },
+    "WT1": {
+        "Tumour Types(Somatic)": [
+            "Wilms tumour",
+            "desmoplastic small round cell tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7490.0
+    },
+    "MALAT1": {
+        "Tumour Types(Somatic)": [
+            "renal cell carcinoma (childhood epithelioid)",
+            "lung"
+        ],
+        "Tier": 2
+    },
+    "ASXL2": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "CCRCC",
+            "AML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 55252.0
+    },
+    "PRRX1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5396.0
+    },
+    "MTOR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "endometrial carcinoma",
+            "head and neck",
+            "clear cell renal cell carcinoma",
+            "anaplastic thyroid cancer",
+            "urothelial cell carcinoma",
+            "central nervous system tumours",
+            "testicular germ cell tumours and other tumour types"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2475.0
+    },
+    "TMSB4X": {
+        "Tumour Types(Somatic)": [
+            "DLBCL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 7114.0
+    },
+    "GRIN2A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "colorectal carcinoma",
+            "gastric carcinoma",
+            "lung carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2903.0
+    },
+    "BRD4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "lethal midline carcinoma of young people"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 23476.0
+    },
+    "SETDB1": {
+        "Tumour Types(Somatic)": [
+            "malignant mesothelioma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 9869.0
+    },
+    "ROBO2": {
+        "Tumour Types(Somatic)": [
+            "colorectal adenocarcinoma",
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 6092.0
+    },
+    "GATA2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML (CML blast transformation)"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2624.0
+    },
+    "NFIB": {
+        "Tumour Types(Somatic)": [
+            "adenoid cystic carcinoma",
+            "lipoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4781.0
+    },
+    "MSH2": {
+        "Tumour Types(Somatic)": [
+            "colorectal",
+            "endometrial",
+            "ovarian"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4436.0
+    },
+    "H3F3A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "glioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3020.0
+    },
+    "PTPN6": {
+        "Tumour Types(Somatic)": [
+            "DLBCL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 5777.0
+    },
+    "FUBP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "oligodendroglioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8880.0
+    },
+    "CCNB1IP1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "leiomyoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57820.0
+    },
+    "ZMYM2": {
+        "Tumour Types(Somatic)": [
+            "MPN",
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7750.0
+    },
+    "KNL1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 57082.0
+    },
+    "JAK3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "acute megakaryocytic leukaemia",
+            "ETP ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3718.0
+    },
+    "TOP1": {
+        "Tumour Types(Somatic)": [
+            "AML*"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7150.0
+    },
+    "CHST11": {
+        "Tumour Types(Somatic)": [
+            "B-CLL"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 50515.0
+    },
+    "STAT5B": {
+        "Tumour Types(Somatic)": [
+            "large granular lymphocytic leukaemia",
+            "skin basal cell",
+            "APL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6777.0
+    },
+    "WNK2": {
+        "Tumour Types(Somatic)": [
+            "gastric cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 65268.0
+    },
+    "ANK1": {
+        "Tumour Types(Somatic)": [
+            "CCRCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 286.0
+    },
+    "IGK": {
+        "Tumour Types(Somatic)": [
+            "Burkitt lymphoma",
+            "B-NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 50802.0
+    },
+    "CARD11": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "DLBCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 84433.0
+    },
+    "ZCCHC8": {
+        "Tumour Types(Somatic)": [
+            "Spitzoid tumour"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 55596.0
+    },
+    "CASP3": {
+        "Tumour Types(Somatic)": [
+            "ovarian cancer"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 836.0
+    },
+    "PAX5": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "NHL",
+            "ALL",
+            "B-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5079.0
+    },
+    "VHL": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "renal",
+            "haemangioma",
+            "pheochromocytoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7428.0
+    },
+    "CALR": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "MPN",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 811.0
+    },
+    "ACVR2A": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "large intestine carcinoma",
+            "stomach carcinoma",
+            "pancreatic carcinoma",
+            "biliary tract",
+            "oesophagus"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 92.0
+    },
+    "BCL2L12": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "SCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 83596.0
+    },
+    "FGFR2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "gastric",
+            "NSCLC",
+            "endometrial"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2263.0
+    },
+    "EPS15": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2060.0
+    },
+    "GNAQ": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "uveal melanoma",
+            "primary central nervous system melanocytic neoplasms"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2776.0
+    },
+    "CEBPA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "MDS"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 1050.0
+    },
+    "CBFB": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 865.0
+    },
+    "MAF": {
+        "Tumour Types(Somatic)": [
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4094.0
+    },
+    "TRAF7": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "meningioma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 84231.0
+    },
+    "CTNND2": {
+        "Tumour Types(Somatic)": [
+            "prostae adenocarcinoma",
+            "GIST"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 1501.0
+    },
+    "MYOD1": {
+        "Tumour Types(Somatic)": [
+            "embryonal rhabdomyosarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4654.0
+    },
+    "MLLT3": {
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4300.0
+    },
+    "TAL2": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6887.0
+    },
+    "FEV": {
+        "Tumour Types(Somatic)": [
+            "Ewing sarcoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 54738.0
+    },
+    "POLD1": {
+        "Tumour Types(Somatic)": [
+            "CRC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5424.0
+    },
+    "FAT1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "oral squamous cell",
+            "chemorefractory CLL",
+            "head and neck",
+            "pancreatic acinar cell carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2195.0
+    },
+    "MUC4": {
+        "Tumour Types(Somatic)": [
+            "HNSCC"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 4585.0
+    },
+    "SFRP4": {
+        "Tumour Types(Somatic)": [
+            "colorectal cancer",
+            "melanoma",
+            "SCC",
+            "gastric cancer",
+            "oesophageal SCC"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 6424.0
+    },
+    "RB1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "retinoblastoma",
+            "sarcoma",
+            "breast",
+            "small cell lung carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5925.0
+    },
+    "NDRG1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 10397.0
+    },
+    "FIP1L1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "idiopathic hypereosinophilic syndrome"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 81608.0
+    },
+    "PHF6": {
+        "Tumour Types(Somatic)": [
+            "ETP ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 84295.0
+    },
+    "NT5C2": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "relapse ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 22978.0
+    },
+    "HERPUD1": {
+        "Tumour Types(Somatic)": [
+            "prostate"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9709.0
+    },
+    "HOXA13": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3209.0
+    },
+    "H3F3B": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "chondroblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3021.0
+    },
+    "CNTRL": {
+        "Tumour Types(Somatic)": [
+            "MPN",
+            "NHL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 11064.0
+    },
+    "CLTCL1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "ALCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8218.0
+    },
+    "PER1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML",
+            "CMML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5187.0
+    },
+    "USP8": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "corticotroph adenoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 9101.0
+    },
+    "NUP98": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 4928.0
+    },
+    "ELF4": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2000.0
+    },
+    "POT1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "CLL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 25913.0
+    },
+    "FH": {
+        "Tier": 1,
+        "Entrez GeneId": 2271.0
+    },
+    "TPM4": {
+        "Tumour Types(Somatic)": [
+            "ALCL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7171.0
+    },
+    "SNX29": {
+        "Tumour Types(Somatic)": [
+            "PMBL",
+            "Hodgkin lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 92017.0
+    },
+    "FES": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "HNSCC",
+            "ovarian carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2242.0
+    },
+    "ZNF521": {
+        "Tumour Types(Somatic)": [
+            "ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 25925.0
+    },
+    "PPP6C": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "melanoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5537.0
+    },
+    "CNTNAP2": {
+        "Tumour Types(Somatic)": [
+            "glioma",
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 26047.0
+    },
+    "NSD1": {
+        "Tumour Types(Somatic)": [
+            "AML"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 64324.0
+    },
+    "CD28": {
+        "Tumour Types(Somatic)": [
+            "T-cell lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 940.0
+    },
+    "AMER1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Wilms tumour"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 139285.0
+    },
+    "CASP8": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "hepatocellular",
+            "oral squamous cell",
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 841.0
+    },
+    "PAX8": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "follicular thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7849.0
+    },
+    "SPECC1": {
+        "Tumour Types(Somatic)": [
+            "JMML"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 92521.0
+    },
+    "PLAG1": {
+        "Tumour Types(Somatic)": [
+            "salivary adenoma",
+            "lipoblastoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5324.0
+    },
+    "DROSHA": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "Wilms tumour",
+            "NSCLC",
+            "bladder carcinoma"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 29102.0
+    },
+    "PMS1": {
+        "Tier": 2,
+        "Entrez GeneId": 5378.0
+    },
+    "CNBP": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "aneurysmal bone cyst"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 7555.0
+    },
+    "FAM131B": {
+        "Tumour Types(Somatic)": [
+            "pilocytic astrocytoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 9715.0
+    },
+    "ATRX": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "pancreatic neuroendocrine tumours",
+            "paediatric GBM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 546.0
+    },
+    "ZEB1": {
+        "Tumour Types(Somatic)": [
+            "CCRCC",
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 6935.0
+    },
+    "S100A7": {
+        "Tumour Types(Somatic)": [
+            "melanoma",
+            "T-cell lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 6278.0
+    },
+    "NTHL1": {
+        "Tier": 2,
+        "Entrez GeneId": 4913.0
+    },
+    "IGF2BP2": {
+        "Tumour Types(Somatic)": [
+            "lymphoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 10644.0
+    },
+    "MUC16": {
+        "Tumour Types(Somatic)": [
+            "HNSCC",
+            "melanoma"
+        ],
+        "Tier": 2,
+        "Entrez GeneId": 94025.0
+    },
+    "IRF4": {
+        "Tumour Types(Somatic)": [
+            "MM"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 3662.0
+    },
+    "PTPRC": {
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5788.0
+    },
+    "RAP1GDS1": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "T-ALL"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 5910.0
+    },
+    "NCOA4": {
+        "Tumour Types(Somatic)": [
+            "papillary thyroid"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 8031.0
+    },
+    "GATA3": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "breast"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 2625.0
+    },
+    "UBR5": {
+        "Hallmark": "Yes",
+        "Tumour Types(Somatic)": [
+            "mantle cell lymphoma",
+            "gastric",
+            "colorectal"
+        ],
+        "Tier": 1,
+        "Entrez GeneId": 51366.0
+    }
+}

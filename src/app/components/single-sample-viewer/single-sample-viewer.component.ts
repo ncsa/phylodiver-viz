@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Sample, Tree } from 'src/app/models/dto';
+import { Sample, Tree } from 'src/app/models/pipeline-dto';
 import { DisplayNode } from 'src/app/models/models';
 import { CellData } from 'src/app/models/toy-dto';
 import { DataService, LegendSample } from 'src/app/services/data.service';
@@ -42,8 +42,8 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.dataService.getTrees().subscribe(trees => {
       this.trees = trees;
     }));
-    this.subscriptions.push(this.selectionService.getSelectedNodes().subscribe(selectedNodes => {
-      this.hasSelectedNode = selectedNodes.length > 0;
+    this.subscriptions.push(this.selectionService.getDisplayNode().subscribe(selectedNode => {
+      this.hasSelectedNode = !!selectedNode;
     }));
     this.subscriptions.push(this.selectionService.getSample().subscribe(selectedSample => {
       this.selectedSample = selectedSample;

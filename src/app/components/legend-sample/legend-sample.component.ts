@@ -1,7 +1,7 @@
 import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Sample } from 'src/app/models/dto';
+import { Sample } from 'src/app/models/pipeline-dto';
 import { LegendSample } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
@@ -41,7 +41,7 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
   }
 
   selectSample(): void {
-    this.selectionService.setSelectedNodes([]);
+    this.selectionService.setDisplayNode(null);
     this.selectionService.setSample(this.legendSample!.sample);
   }
 }

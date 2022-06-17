@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, map, withLatestFrom, filter, combineLatest } from 'rxjs';
 
-import { DisplayNode } from '../models/models';
-import { PhylogenyData } from '../models/toy-dto';
-import { Aggregate, Cluster, Sample, SNV, Tree } from '../models/dto';
-import * as amlTree from './phylogeny_aml_tree.json';
-import * as amlTree2 from './test.json';
+import { CgcGenes } from '../models/annotation-dto';
+import { CgcGeneInfo, DisplayNode, DisplayVariant } from '../models/models';
+import { Aggregate, Cluster, Sample, Tree } from '../models/pipeline-dto';
+import * as amlTree from './test.json';
+import * as cgcGenes from './cgc_genes.json';
 import { SelectionService } from './selection.service';
 
 @Injectable({
@@ -13,7 +13,7 @@ import { SelectionService } from './selection.service';
 })
 export class DataService {
 
-  $aggregate = new BehaviorSubject<Aggregate>(amlTree2 as Aggregate);
+  $aggregate = new BehaviorSubject<Aggregate>(amlTree as Aggregate);
 
   rootColor = '#90959B';
   clusterColors = ['#173858', '#2A5E72', '#C9C943', '#E89680', '#B26799', '#7524A1'];
@@ -33,8 +33,28 @@ export class DataService {
     return this.$aggregate.asObservable();
   }
 
-  getPhylogenyData(): Observable<PhylogenyData> {
-    return of(amlTree);
+  // map keys are gene symbols in all caps
+  getCgcGenes(): Observable<Map<string, CgcGeneInfo>> {
+    return of(cgcGenes as CgcGenes).pipe(
+      map(raw => {
+        const returnVal = new Map<string, CgcGeneInfo>();
+        Object.entries(raw).forEach(([geneSymbol, rawInfo]) => {
+          returnVal.set(geneSymbol.toUpperCase(), {
+            isHallmark: rawInfo.Hallmark === 'Yes',
+            somaticTumorTypes: rawInfo['Tumour Types(Somatic)'] ? rawInfo['Tumour Types(Somatic)'] : [],
+            tier: rawInfo.Tier !== undefined ? rawInfo.Tier : null,
+            entrezGeneId: rawInfo['Entrez GeneId'] !== undefined ? rawInfo['Entrez GeneId'] : null
+          });
+        });
+        return returnVal;
+      })
+    );
+  }
+
+  getSamples(): Observable<Sample[]> {
+    return this.getAggregate().pipe(
+      map(aggregate => aggregate.samples)
+    );
   }
 
   getTrees(): Observable<Tree[]> {
@@ -43,13 +63,17 @@ export class DataService {
     );
   }
 
-  getClusterIds(): Observable<number[]> {
+  getClusterIdToCluster(): Observable<Map<number, Cluster>> {
     return this.getAggregate().pipe(
-      map(aggregate => [
-        ...(new Set<number>(aggregate.clusters.map(cluster => cluster.cluster_id))).values()
-        ].sort((a, b) => a - b)
+      map(aggregate => new Map<number, Cluster>(aggregate.clusters.map(cluster => [cluster.cluster_id, cluster])))
+    );
+  }
+
+  getClusterIds(): Observable<number[]> {
+    return this.getClusterIdToCluster().pipe(
+      map(clusterIdToCluster => [...clusterIdToCluster.keys()].sort((a, b) => a - b)
       )
-    )
+    );
   }
 
   getClusterColorMapping(): Observable<Map<number, string>> {
@@ -113,18 +137,20 @@ export class DataService {
             cluster_id: node.cluster_id,
             cluster: node.cluster_id !== undefined ? sampleClusterIdToCluster.get(node!.cluster_id) : undefined,
             color: this.rootColor, // we'll update this below
-            node_name: node.node_name,
+            node_name: node.cluster_id !== undefined ? 'Cluster ' + node.cluster_id : 'Root',
             prevalence: node.prevalence.find(prev => prev.sample_id === sample?.sample_id)?.value || 0,
             children: [], // we'll populate this below
             childClusterNodeNames: node.children, // we'll use this to populate children below
             parent: null, // we'll populate this below
+            aggregateClusterIds: [], // we'll populate this below
+            descendedClusterIds: [], // we'll populate this below
             level: 0 // we'll populate this below
           }])
         );
         // keep track of the nodes found at each level (depth) of the tree; root = level 0
         const levelToNodes = new Map<number, DisplayNode[]>();
         // patchNode handles the first pass over the tree
-        // it populates the node parent, color, level, and children (which will be revised again)
+        // it populates the node parent, color, level, children (which will be revised again), aggregateClusterIds, and descendedClusterIds
         // it also appends to levelToNodes
         const patchNode = (node: DisplayNode, parent: DisplayNode|null, level: number) => {
           node.parent = parent;
@@ -137,6 +163,14 @@ export class DataService {
             levelToNodes.set(level, []);
           }
           levelToNodes.get(level)!.push(node);
+          if (parent && node.cluster_id !== undefined) {
+            node.aggregateClusterIds = [...parent.aggregateClusterIds, node.cluster_id!];
+            let ancestor: DisplayNode|null = parent;
+            while (ancestor) {
+              ancestor.descendedClusterIds.push(node.cluster_id);
+              ancestor = ancestor.parent;
+            }
+          }
           node.children = node.childClusterNodeNames.map(childClusterNodeName => nodeNameToDisplayNode.get(childClusterNodeName)!);
           node.children.forEach(child => patchNode(child, node, level + 1));
         };
@@ -148,16 +182,20 @@ export class DataService {
             const newSubtreeNodes: DisplayNode[] = [];
             node.children.forEach(child => {
               child.children.forEach(grandchild => {
+                // create a name for this subtree; note this is crude
+                let nodeName = 'Subtree ' + grandchild.cluster_id + (grandchild.descendedClusterIds.length ? ',' + grandchild.descendedClusterIds.join(',') : '');
                 // create subtree node that will be a sibling of `child`
                 const subtreeNode: DisplayNode = {
                   cluster_id: undefined, // subtree node has no cluster
                   cluster: undefined, // subtree node has no cluster
                   color: child.color, // same color as `child`, because it represents a subpopulation derived from `child`
-                  node_name: child.node_name + '/' + grandchild.node_name,
+                  node_name: nodeName,
                   prevalence: grandchild.prevalence,
                   children: [grandchild],
                   childClusterNodeNames: [grandchild.node_name],
                   parent: node,
+                  aggregateClusterIds: child.aggregateClusterIds, // same as `child`, because at this level in the tree it represents the same evolution as `child`
+                  descendedClusterIds: child.descendedClusterIds, // same as `child`, for same reason as above
                   level: child.level
                 };
                 // attach grandchild to subtree node
@@ -188,40 +226,17 @@ export class DataService {
     );
   }
 
-  getSnvIdToSnv(): Observable<Map<number, SNV>> {
-    return this.getAggregate().pipe(
-      map(aggregate => new Map<number, SNV>(aggregate.SNV.map(snv => [snv.SNV_id, snv])))
-    );
-  }
-
-  /*
-  getClusterIdToTierToMutationSetSummary(): Observable<Map<number, TierToMutationSetSummary>> {
+  getSnvIdToDisplayVariant(): Observable<Map<number, DisplayVariant>> {
     return combineLatest([
       this.getAggregate(),
-      this.getSnvIdToSnv()
+      this.getCgcGenes()
     ]).pipe(
-      map(([aggregate, snvIdToSnv]) => {
-        const returnVal = new Map<number, TierToMutationSetSummary>();
-        aggregate.clusters.forEach(cluster => {
-          const tierToMutationSetSummary = new Map<1|2, MutationSetSummary>(
-            [1, 2].map(tier => [tier as 1|2, getEmptyMutationSetSummary()])
-          );
-          cluster.variants.forEach(variant => {
-            const snv = snvIdToSnv.get(variant);
-            if (snv !== undefined) {
-              snv.
-            } else {
-              console.warn('No SNV found for variant ' + variant);
-            }
-          });
-          returnVal.set(cluster.cluster_id, tierToMutationSetSummary);
-        });
-        return returnVal;
-      })
+      map(([aggregate, cgcGenes]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
+        ...snv,
+        cgcGeneInfo: snv.symbol && cgcGenes.has(snv.symbol.toUpperCase()) ? cgcGenes.get(snv.symbol.toUpperCase()) : null
+      } as DisplayVariant])))
     );
   }
-*/
-
 }
 
 export interface LegendSample {
@@ -233,31 +248,3 @@ export interface LegendNode {
   color: string;
   proportion: number;
 }
-
-export interface MutationSetSummary {
-  mutations: number;
-  cgcGenes: Set<string>;
-  drugs: Set<string>;
-}
-
-/*
-export function getEmptyMutationSetSummary(): MutationSetSummary {
-  return {
-    numMutations: 0,
-    numCgcGenes: 0,
-    numDrugs: 0
-  };
-}
-
-export function aggregateMutationSetSummaries(summaries: MutationSetSummary[]): MutationSetSummary {
-  const returnVal = getEmptyMutationSetSummary();
-  summaries.forEach(summary => {
-    returnVal.numMutations += summary.numMutations;
-    returnVal.numCgcGenes += summary.numCgcGenes;
-    returnVal.numDrugs += summary.numDrugs;
-  });
-  return returnVal;
-}
-
-export type TierToMutationSetSummary = Map<1|2, MutationSetSummary>;
-*/
