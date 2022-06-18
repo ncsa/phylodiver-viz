@@ -1,0 +1,347 @@
+/**************** modal ******************/
+
+@import '../../styles/core';
+
+$progress_bar_width: 30px;
+
+
+//**************** animation ******************
+
+@include keyframes(progress_bar) {
+  0% {
+    @include translate(0px, 0px);
+  }
+  100% {
+    @include translate(#{-$progress_bar_width}, 0px);
+  }
+}
+
+
+//**************** css ******************
+
+:host {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: get_index(modal);
+
+  background: {
+    color: rgba(#000, .7);
+  }
+
+  .modal_container {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+
+    max: {
+      width: 400px;
+    }
+    width: 100%;
+
+    background: {
+      color: color_variable('background');
+    }
+
+    @include translate(-50%, -50%);
+    @include shadow(8, rgba(#000, .5), 2, 2);
+    @include border-radius($border_radius);
+  }
+
+  .modal_header {
+    padding: $padding;
+
+    font: {
+      size: 120%;
+      weight: bold;
+    }
+    text: {
+      align: center;
+    }
+  }
+
+  .modal_content {
+    flex-grow: 1;
+
+    overflow: {
+      y: auto;
+    }
+
+    max: {
+      height: 40vh;
+    }
+
+    padding: {
+      bottom: $padding; //extra padding to help with separation between footer
+    }
+  }
+
+  .modal_footer {
+    display: flex;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    gap: $padding;
+
+    padding: $padding;
+
+    text: {
+      align: center;
+    }
+  }
+
+  .button {
+    cursor: pointer;
+
+    color: color_variable('button');
+
+    padding: ($padding * .35) ($padding);
+
+    font: {
+      size: 120%;
+      weight: bold;
+    }
+
+    border: 1px solid color_variable('button');
+
+    @include border-radius($border_radius);
+
+    &:hover {
+      color: color_variable('background');
+      background: {
+        color: color_variable('button');
+      }
+
+      border: {
+        color: color_variable('button');
+      }
+    }
+
+    &.button_plain {
+      border: {
+        color: transparent;
+      }
+    }
+  }
+}
+
+.dataset_list {
+  .dataset {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: $padding * .25;
+
+    padding: ($padding * .35) $padding;
+
+    & + .dataset {
+    }
+
+/*
+    &:hover {
+      .name {
+        color: color_variable('button');
+      }
+    }
+*/
+    .radio_button {
+    }
+
+    .name {
+      @include hide_overflow();
+    }
+
+    .badge {
+      background: {
+        color: color_variable('badge_background');
+      }
+
+      padding: ($padding * .2) ($padding * .5);
+
+      font: {
+        size: $font_size_min;
+      }
+
+      @include border-radius(2000px);
+    }
+
+    .browse_button {
+      cursor: pointer;
+
+      color: color_variable('background');
+      background: {
+        color: color_variable('button');
+      }
+
+      padding: ($padding * .25) ($padding * .5);
+
+      font: {
+        size: $font_size_min;
+      }
+      text: {
+        transform: uppercase;
+      }
+
+      @include border-radius($border_radius);
+
+      &:hover {
+        background: {
+          color: color_variable('button_hover');
+        }
+      }
+
+      &.disabled {
+        cursor: auto;
+
+        color: color_variable('button_disabled');
+        background: {
+          color: color_variable('button_disabled_background');
+        }
+
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.upload_dataset {
+  margin: {
+    left: $padding; //indent a bit
+  }
+  padding: ($padding * .25) $padding;
+
+  .step {
+    position: relative;
+
+    margin: {
+      right: $padding;
+      left: -($padding * .25);
+    }
+    padding: ($padding * .25);
+
+    & + .step {
+      margin: {
+        top: $padding * .5;
+      }
+    }
+
+    &.step_emphasis {
+      color: color_variable('button');
+
+      font: {
+        weight: bold;
+      }
+    }
+
+    .step_progress {
+      overflow: hidden;
+
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      bottom: 0px;
+      z-index: -10;
+
+      width: 0%;
+
+      @include border-radius($border_radius);
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        bottom: 0px;
+        z-index: 100;
+
+        width: calc(100% + #{$progress_bar_width});
+
+        background: {
+          image: repeating-linear-gradient(-45deg, color_variable('progress_bar') 25%, color_variable('progress_bar') 50%, transparent 50%, transparent 75%);
+          size: $progress_bar_width $progress_bar_width;
+        }
+
+        @include animation(progress_bar 1.2s linear infinite);
+      }
+    }
+  }
+
+  .label {
+    font: {
+      size: $font_size_min;
+    }
+  }
+
+  .selected_filename {
+    display: flex;
+    align-items: center;
+    gap: $padding * .25;
+
+    .remove_button {
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 16px;
+      height: 16px;
+
+      color: color_variable('background');
+      background: {
+        color: color_variable('button');
+      }
+
+      font-size: 10px;
+
+      @include border-radius(50%);
+
+      &:hover {
+        background: {
+          color: color_variable('button_hover');
+        }
+      }
+    }
+  }
+}
+
+.links {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: $padding * .25;
+
+  margin: {
+    right: -($padding * .25);
+    left: -($padding * .25);
+  }
+
+  .link {
+    padding: ($padding * .1) ($padding * .25); //only add padding when the link is inside the .links block, otherwise, treat as normal text
+
+    font: {
+      size: 80%;
+    }
+  }
+}
+
+.link {
+  cursor: pointer;
+
+  color: color_variable('link');
+
+  text: {
+    decoration: underline;
+  }
+
+  &:hover {
+    color: color_variable('link_hover');
+  }
+}

@@ -1,6 +1,5 @@
 /**************** single sample viewer ******************/
 
-@use "sass:math";
 @import '../../styles/core';
 
 
@@ -10,12 +9,13 @@
   display: flex;
   flex-direction: column;
 
-	position: fixed;
+	position: absolute;
 	left: 0px;
 	right: 0px;
 	top: 0px;
 	bottom: 0px;
-	z-index: get_index(interface);
+//	z-index: get_index(interface);
+  z-index: 100;
 
 	color: color_variable('text');
 	background: {
@@ -48,7 +48,7 @@
 		padding: ($padding * .25) ($padding);
 
 		input {
-			padding: math.div($padding, 4);
+			padding: ($padding * 0.25);
 
 			border: 1px solid color_variable('header_border');
 
