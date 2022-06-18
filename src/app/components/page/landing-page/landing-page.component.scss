@@ -1,0 +1,214 @@
+/**************** landing-page ******************/
+
+@import '../../../styles/core';
+
+
+//**************** css ******************
+
+:host {
+}
+
+.intro {
+  font: {
+    size: 110%;
+    weight: 200;
+  }
+  line: {
+    height: 150%;
+  }
+}
+
+.intro_diagram {
+  img {
+    width: 100%;
+    height: auto;
+
+    @include shadow(8, rgba(#000, .3), 2, 2);
+  }
+
+  @include on_page_width() {
+    img {
+      width: 130%; //hang the image off the right margin a bit
+
+      margin: {
+        top: -$padding;
+      }
+    }
+  }
+
+  @include not_page_width() {
+    order: -1;
+  }
+}
+
+.block_list {
+  @include on_mobile() {
+  }
+
+  @include not_mobile() {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; //flex-start;
+    gap: $padding;
+
+    margin: {
+      top: $padding;
+    }
+  }
+}
+
+.block {
+  border: 1px solid #989898;
+
+  @include on_mobile() {
+    margin: {
+      top: $padding;
+    }
+  }
+
+  @include not_mobile() {
+    display: flex;
+    flex-direction: column;
+
+    min: {
+      height: 250px;
+    }
+    max: {
+      width: 320px;
+    }
+
+    width: 100%;
+  }
+
+  .block_title {
+    background: {
+      color: color_variable('landing_block_title');
+    }
+
+    margin: 1px;
+    padding: $padding;
+
+    font: {
+      size: 140%;
+      weight: bold;
+    }
+    text: {
+      align: center;
+    }
+  }
+
+  .block_content {
+    flex-grow: 1;
+
+    padding: $padding;
+
+    font: {
+      size: 80%;
+    }
+  }
+
+  .block_button {
+    cursor: pointer;
+
+    color: color_variable('landing_button');
+    background: {
+      color: color_variable('landing_button_background');
+    }
+
+    margin: $padding * .5;
+    padding: ($padding * .75) $padding;
+
+    font: {
+      size: 110%;
+      weight: bold;
+    }
+    text: {
+      align: center;
+    }
+
+    @include border-radius($border_radius);
+
+    &:hover {
+      background: {
+        color: color_variable('landing_button_hover');
+      }
+    }
+  }
+}
+
+.diagram {
+  margin: {
+    top: $padding;
+  }
+
+  & + p {
+    margin: {
+      top: $padding;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  @include on_page_width() {
+    margin: {
+      right: -$padding;
+      left: -$padding;
+    }
+  }
+}
+
+section {
+  .links {
+    margin: {
+      top: $padding;
+    }
+  }
+
+  .link {
+    cursor: pointer;
+
+    color: color_variable('link');
+
+    text: {
+      decoration: underline;
+    }
+
+    &:hover {
+      color: color_variable('link_hover');
+    }
+
+    & + .link {
+      margin: {
+        top: $padding * .5;
+      }
+    }
+  }
+}
+
+footer {
+  .links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $padding * .5;
+
+    & + p {
+      margin: {
+        top: $padding;
+      }
+    }
+
+    .link {
+      cursor: pointer;
+
+      color: color_variable('footer_link');
+
+      &:hover {
+        color: color_variable('footer_link_hover');
+      }
+    }
+  }
+}

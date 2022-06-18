@@ -16,8 +16,8 @@ class TestComponent {
 
 describe('AppComponent', () => {
   let simpleRoutes: Routes = [
-    { path: 'pgx-root/drugs', component: TestComponent },
-    { path: 'pgx-root/reports', component: TestComponent},
+    { path: 'demo', component: TestComponent },
+    { path: 'welcome', component: TestComponent},
   ];
   beforeEach(async () => {
     await TestBed.configureTestingModule({

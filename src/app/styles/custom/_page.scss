@@ -1,0 +1,201 @@
+//**************** page ******************
+
+
+//**************** custom mixin ******************
+
+@mixin header($header_list: 'h1, h2, h3, h4, h5') {
+  @each $header in $header_list {
+    #{$header} {
+      @content;
+    }
+  }
+}
+
+@mixin page_section($name) {
+  &.section_#{$name} {
+    color: color_variable(#{'page_section_' + $name});
+
+    //background is under the div so it can be sized full browser width
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0px;
+      bottom: 0px;
+      z-index: -10;
+
+      width: 100vw;
+
+      background: {
+        color: color_variable(#{'page_section_' + $name + '_background'});
+      }
+
+      @include translate(-50%, 0%);
+    }
+  }
+}
+
+@mixin section_background_color($name) {
+  //background is under the div so it can be sized full browser width
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    bottom: 0px;
+    z-index: -10;
+
+    width: 100vw;
+
+    background: {
+      color: color_variable($name);
+    }
+
+    @include translate(-50%, 0%);
+  }
+}
+
+//**************** css ******************
+
+.page {
+  @include header() {
+    &.left {
+      text: {
+        align: left !important;
+      }
+    }
+  }
+
+  h1 {
+    font: {
+      size: 300%;
+      weight: bold;
+    }
+  }
+
+  h2 {
+    font: {
+      size: 160%;
+      weight: bold;
+    }
+  }
+
+  h3 {
+    font: {
+      size: 130%;
+    }
+  }
+
+  h4 {
+    font: {
+      weight: bold;
+    }
+  }
+
+  p {
+    font: {
+      weight: 200;
+    }
+
+    & + p {
+      margin: {
+        top: $padding * .5;
+      }
+    }
+
+    &.narrow {
+      @include not_mobile() {
+        width: 60%;
+      }
+    }
+  }
+
+  section,
+  footer {
+    position: relative;
+    z-index: 10;
+
+    max: {
+      width: $page_width;
+    }
+
+    margin: {
+      right: auto;
+      left: auto;
+    }
+    padding: ($padding * 2) $padding;
+  }
+
+  section {
+    @include header() {
+      margin: {
+        bottom: $padding;
+      }
+
+      text: {
+        align: center;
+      }
+
+      &.nopadding {
+        margin: {
+          bottom: 0px;
+        }
+      }
+    }
+
+    //loop through each page_section
+    //creates .section_{name} class
+    @each $name in $page_sections {
+      @include page_section($name);
+    }
+
+    &.section_full {
+      min-height: 65vh; //100vh; //viewer height
+    }
+
+    &.section_gradient {
+      &:after {
+  	    background-image: linear-gradient(180deg, color_variable('page_section_gradient_background') 0%, color_variable('background') 100%);
+  	  }
+    }
+
+    &.section_padded {
+      padding: {
+        top: ($padding * 4);
+        bottom: ($padding * 4);
+      }
+    }
+  }
+
+  footer {
+    color: color_variable('page_footer');
+    @include section_background_color('page_footer_background');
+
+    padding: ($padding * 2) $padding;
+
+    font: {
+      size: 80%;
+    }
+  }
+
+  .columns {
+    display: flex;
+    gap: $padding;
+
+    .column {
+      width: 50%;
+    }
+
+    @include not_page_width() {
+      flex-direction: column;
+
+      .column {
+        width: auto;
+      }
+    }
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+}

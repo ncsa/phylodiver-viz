@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SingleSampleViewerComponent } from './components/single-sample-viewer/single-sample-viewer.component';
+import { LandingPageComponent } from './components/page/landing-page/landing-page.component';
 
 const appRoutes: Routes = [
   { path: 'demo', component: SingleSampleViewerComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'demo' }
+  { path: 'welcome', component: LandingPageComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'welcome' }
 ];
 
 @NgModule({

@@ -1,0 +1,50 @@
+<div class="modal_container">
+  <div class="modal_header">Select Data for Display</div>
+
+  <div class="modal_content">
+    <div class="dataset_list">
+<!-- todo: create array of files to populate this list -->
+      <label class="dataset">
+        <input type="radio" name="dataset" />
+        <div class="name">AML_dataset_JSON_05192022</div>
+        <div class="badge">Demo</div>
+      </label>
+
+<!-- todo: link this to data store -->
+      <label class="dataset">
+        <input type="radio" name="dataset" />
+        <div class="name">Your Dataset <!-- todo: replace label with filename once loaded / validated --></div>
+
+<!-- todo: only show this button when this row is selected -->
+        <div class="browse_button disabled">Browse for your file</div>
+      </label>
+    </div>
+
+<!-- todo: only show these steps flow when the "your dataset" is selected and only show one at a time as needed (before uploaded file, during validation, and after validated -->
+    <div class="upload_dataset">
+      <div class="step">
+        <div class="links">
+          <div class="link">Help</div>
+          <div class="link">GitHub</div>
+          <div class="link">Sample JSON</div>
+        </div>
+      </div>
+
+      <div class="step step_emphasis">
+        Validating...57%
+        <!-- todo: percentage is optional, if unable to determine the upload and validation percentage, change this to 100% width and remove from label above -->
+        <div class="step_progress" style="width: 57%;"></div>
+      </div>
+
+      <div class="step">
+        <div class="label">You selected:</div>
+        <div class="selected_filename">My_file.json <div class="remove_button">X</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal_footer">
+    <div class="button button_plain">cancel</div>
+    <div class="button">Launch</div>
+  </div>
+<div>
