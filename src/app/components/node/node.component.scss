@@ -46,12 +46,12 @@
 
       .block_background {
         svg {
-          #curve_selected,
-          #curve_selected_white {
+          .curve_selected,
+          .curve_selected_white {
             display: block;
           }
 
-          #curve_background {
+          .curve_background {
           }
         }
       }
@@ -83,7 +83,7 @@
 
     @include border-radius(6px);
 
-    &:not(.is_parent_block) {
+    &:not(.is_subclone_block) {
       @include repeating-bars(45deg, rgba(#fff, .3), transparent, 2px);
     }
 
@@ -286,21 +286,21 @@
         stop-color: var(--gradient_end, #aaa);
       }
 
-      #curve_selected {
+      .curve_selected {
         display: none;
 
         stroke: color_variable('selected_color');
         stroke-width: $selected_border_size;
       }
 
-      #curve_selected_white {
+      .curve_selected_white {
         display: none;
 
         stroke: #fff;
         stroke-width: $selected_border_size * 2;
       }
 
-      #curve_background {
+      .curve_background {
         @include opacity(60);
       }
     }

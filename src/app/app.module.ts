@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/page/landing-page/landing-page.component';
-import { LegendNodeComponent } from './components/legend-node/legend-node.component';
+import { LegendSampleComponent } from './components/legend-sample/legend-sample.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NodeComponent } from './components/node/node.component';
 import { PageHeaderComponent } from './components/page/page-header/page-header.component';
@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
 
     LandingPageComponent,
-    LegendNodeComponent,
+    LegendSampleComponent,
     ModalComponent,
     NodeComponent,
     PageHeaderComponent,

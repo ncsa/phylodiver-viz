@@ -1,55 +1,65 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { Sample, Tree } from '../models/pipeline-dto';
+import { DisplayNode } from '../models/models';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SelectionService {
 
-  selectedBlocks: BehaviorSubject<any[]>; // TODO FIXME
-
-  phylogenyProportionId: BehaviorSubject<any>; // TODO FIXME
-
-  phylogenySelectedTier: BehaviorSubject<any>; // TODO FIXME
-
-  phylogenyShowTable: BehaviorSubject<boolean>;
+  consequence: BehaviorSubject<string|null>;
+  displayNode: BehaviorSubject<DisplayNode|null>;
+  sample: BehaviorSubject<Sample|null>;
+  showTable: BehaviorSubject<boolean>;
+  tree: BehaviorSubject<Tree|null>;
 
   constructor() {
-    this.selectedBlocks = new BehaviorSubject<any>([]);
-    this.phylogenyProportionId = new BehaviorSubject<any>('primary'); //null);
-    this.phylogenySelectedTier = new BehaviorSubject<any>(null);
-    this.phylogenyShowTable = new BehaviorSubject<boolean>(false);
+    this.consequence = new BehaviorSubject<string|null>(null);
+    this.displayNode = new BehaviorSubject<DisplayNode|null>(null);
+    this.sample = new BehaviorSubject<Sample|null>(null);
+    this.showTable = new BehaviorSubject<boolean>(false);
+    this.tree = new BehaviorSubject<Tree|null>(null);
   }
 
-  getSelectedBlocks(): Observable<any[]> {
-    return this.selectedBlocks.asObservable();
+  getDisplayNode(): Observable<DisplayNode|null> {
+    return this.displayNode.asObservable();
   }
 
-  setSelectedBlocks(blocks: any[]): void {
-    this.selectedBlocks.next(blocks);
+  setDisplayNode(node: DisplayNode|null): void {
+    this.displayNode.next(node);
   }
 
-  getPhylogenyProportionId(): Observable<any> {
-    return this.phylogenyProportionId.asObservable();
+  getSample(): Observable<Sample|null> {
+    return this.sample.asObservable();
   }
 
-  setPhylogenyProportionId(block: any): void {
-    this.phylogenyProportionId.next(block);
+  setSample(sample: Sample): void {
+    this.sample.next(sample);
   }
 
-  getPhylogenySelectedTier(): Observable<any> {
-    return this.phylogenySelectedTier.asObservable();
+  getTree(): Observable<Tree|null> {
+    return this.tree.asObservable();
   }
 
-  setPhylogenySelectedTier(block: any): void {
-    this.phylogenySelectedTier.next(block);
+  setTree(tree: Tree): void {
+    this.tree.next(tree);
   }
 
-  getPhylogenyShowTable(): Observable<boolean> {
-    return this.phylogenyShowTable.asObservable();
+  getConsequence(): Observable<string|null> {
+    return this.consequence.asObservable();
   }
 
-  setPhylogenyShowTable(show: boolean): void {
-    this.phylogenyShowTable.next(show);
+  setConsequence(consequence: string|null): void {
+    this.consequence.next(consequence);
+  }
+
+  getShowTable(): Observable<boolean> {
+    return this.showTable.asObservable();
+  }
+
+  setShowTable(show: boolean): void {
+    this.showTable.next(show);
   }
 }

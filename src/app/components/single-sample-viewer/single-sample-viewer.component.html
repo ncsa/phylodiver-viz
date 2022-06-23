@@ -1,33 +1,27 @@
-<div class="single_sample_viewer" [class.navigation_mode]="phylogenyShowTable && hasSelectedBlock">
+<div class="single_sample_viewer" [class.navigation_mode]="showTable && hasSelectedNode">
     <div class="header">
         <input type="text" size="30" placeholder="Search" />
     </div>
 
     <div class="content">
-        <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedBlock">
-            <div class="subclone_label">{{phylogenyProportionId}}</div>
+        <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedNode">
+            <div class="subclone_label">{{selectedSample!.name}}</div>
 
-            <phylo-node *ngFor="let data of cellData; index as i"
-                [jsonData]="data"
-                [sample]="data.sample || 'primary'"
-                [label]="data.label"
-                [color]="data.color"
-                [genes]="data.genes || 0"
-                [showEndBlock]="data.show_end_block || false"
-                [children]="data.children || []"
-                [key]="i + ''"
+            <phylo-node *ngIf="rootNode"
+                [displayNode]="rootNode"
             ></phylo-node>
         </div>
 
         <div class="legend">
-            <phylo-legend-node *ngFor="let proportionSetEntry of phylogenyProportionSets | keyvalue"
-              [id]="proportionSetEntry.key"
-              [data]="proportionSetEntry.value"
-
-            ></phylo-legend-node>
+            <phylo-legend-sample *ngFor="let legendSample of legendSamples"
+              [legendSample]="legendSample">
+            ></phylo-legend-sample>
         </div>
     </div>
 
 <!-- todo: change phylo-table ngIf to angular animation so it can grow/shrink before show/hide -->
-    <phylo-table *ngIf="hasSelectedBlock && phylogenyShowTable"></phylo-table>
+    <phylo-table *ngIf="hasSelectedNode && showTable"></phylo-table>
+    <select (change)="selectTree($any($event.target).value)">
+        <option *ngFor="let tree of trees" [value]="tree.tree_id" [selected]="tree.tree_id === selectedTree?.tree_id">{{ tree.tree_name }}</option>
+    </select>
 </div>

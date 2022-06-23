@@ -1,0 +1,10 @@
+<div class="legend_node_label">{{legendSample!.sample.name}}</div>
+
+<div class="nodes">
+  <div class="node" *ngFor="let node of legendSample!.nodes" [style.flex]="node.proportion * 1000">
+    <div class="block" [style.backgroundColor]="node.color"></div>
+    <div class="count">
+      {{node.proportion}}%
+    </div>
+  </div>
+</div>

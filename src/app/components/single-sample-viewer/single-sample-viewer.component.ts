@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { PhylogenyProportionSet } from 'src/app/models/models';
+import { Sample, Tree } from 'src/app/models/pipeline-dto';
+import { DisplayNode } from 'src/app/models/models';
 import { CellData } from 'src/app/models/toy-dto';
-import { DataService } from 'src/app/services/data.service';
-
+import { DataService, LegendSample } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
@@ -17,33 +17,42 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   cellData: CellData[] = [];
-  hasSelectedBlock = false;
-  phylogenyProportionId: any; // TODO FIXME
-  phylogenyProportionSets = new Map<string, PhylogenyProportionSet[]>();
-  phylogenyShowTable = false;
+  hasSelectedNode = false;
+  selectedSample: Sample|null = null;
+  legendSamples: LegendSample[] = [];
+  showTable = false;
+  rootNode: DisplayNode|null = null;
+
+  selectedTree: Tree|null = null;
+  trees: Tree[] = [];
 
   constructor(
     private dataService: DataService,
-    private selectionService: SelectionService,
-    private changeDetectorRef: ChangeDetectorRef
+    private selectionService: SelectionService
   ) { }
 
   ngOnInit(): void {
-    this.subscriptions.push(this.dataService.getPhylogenyData().subscribe(phyloData => {
-      this.cellData = phyloData.cell_data;
+    this.subscriptions.push(this.dataService.getRootDisplayNode().subscribe(root => {
+      this.rootNode = root;
+      console.log(root);
     }));
-    this.subscriptions.push(this.dataService.getPhylogenyProportionSets().subscribe(proportionSets => {
-      this.phylogenyProportionSets = proportionSets;
-      this.changeDetectorRef.detectChanges();
+    this.subscriptions.push(this.dataService.getLegendSamples().subscribe(legendSamples => {
+      this.legendSamples = legendSamples;
     }));
-    this.subscriptions.push(this.selectionService.getSelectedBlocks().subscribe(blocks => {
-      this.hasSelectedBlock = blocks.length > 0;
+    this.subscriptions.push(this.dataService.getTrees().subscribe(trees => {
+      this.trees = trees;
     }));
-    this.subscriptions.push(this.selectionService.getPhylogenyProportionId().subscribe(proportionId => {
-      this.phylogenyProportionId = proportionId;
+    this.subscriptions.push(this.selectionService.getDisplayNode().subscribe(selectedNode => {
+      this.hasSelectedNode = !!selectedNode;
     }));
-    this.subscriptions.push(this.selectionService.getPhylogenyShowTable().subscribe(showTable => {
-      this.phylogenyShowTable = showTable;
+    this.subscriptions.push(this.selectionService.getSample().subscribe(selectedSample => {
+      this.selectedSample = selectedSample;
+    }));
+    this.subscriptions.push(this.selectionService.getShowTable().subscribe(showTable => {
+      this.showTable = showTable;
+    }));
+    this.subscriptions.push(this.selectionService.getTree().subscribe(tree => {
+      this.selectedTree = tree;
     }));
   }
 
@@ -51,9 +60,11 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  selectProportion(proportion: any): void {
-    this.selectionService.setSelectedBlocks([]);
-    this.selectionService.setPhylogenyProportionId(proportion);
+  selectTree(treeId: string): void {
+    const newTree = this.trees.find(tree => (tree.tree_id + '') === treeId);
+    if (newTree) {
+      this.selectionService.setTree(newTree);
+    }
   }
 
 }
