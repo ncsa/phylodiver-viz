@@ -6,11 +6,11 @@
     <div class="columns">
       <div class="column intro">
         <p>PhyloDiver is a interactive tool for visualizing and exploring evolutionary phylogenies constructed from analyses of genetic variations in tumor samples. This tool was designed to simultaneously enable end-users to examine mutation histories while maintaining sample proportions of different <span class="nowrap">subclone populations.</span></p>
-        <p>PhyloDiver’s unique visualizations also connect to the underlying annotated mutations allowing for a comprehensive examination of the history, composition, and proportion of clonal subpopulations in <span class="nowrap">cancer tumors.</span></p>
+        <p>PhyloDiver's unique visualizations also connect to the underlying annotated mutations allowing for a comprehensive examination of the history, composition, and proportion of clonal subpopulations in <span class="nowrap">cancer tumors.</span></p>
       </div>
 
       <div class="column intro_diagram">
-        <img src="assets/images/landing_screenshot_001.png" />
+        <img src="assets/images/landing_screenshot_001.png" alt="tree explorer screenshot" />
       </div>
     </div>
   </section>
@@ -24,7 +24,7 @@
 
         <div class="block_content">
           <p>The PhyloDiver demo visualizes example data from an ultra-deep (300x-400x) bulk sequencing dataset containing the somatic mutations of a primary acute myeloid leukemia (AML) and its <span class="nowrap">subsequent relapse.</span></p>
-          <p>M. Griffith, et al. "Optimizing cancer genome sequencing and analysis." <span class="nowrap">Cell systems. 2015</span></p>
+          <p><a href="https://www.cell.com/fulltext/S2405-4712(15)00113-1" target="_blank">M. Griffith, et al.</a> "Optimizing cancer genome sequencing and analysis." <span class="nowrap">Cell systems. 2015</span></p>
         </div>
 
         <div class="block_button">Take Me to the Demo!</div>
@@ -34,11 +34,11 @@
         <div class="block_title">Visualize Your Data</div>
 
         <div class="block_content">
-          <p>Upload your JSON file in the format <span class="nowrap">specified here:</span><p>
+          <p>Upload the results of your phylogenic analysis workflow using the JSON format <span class="nowrap">specified here:</span></p>
           <p>
-            <span class="link">Help</span>
+            <span class="link">JSON Format Documentation</span>
           </p>
-          <p>Data will never be travelin on <span class="nowrap">the internet.</span></p>
+          <p>Your uploaded data is secured locally in your browser and is not transferred across <span class="nowrap">the internet.</span></p>
         </div>
 
         <div class="block_button">Upload Your Data</div>
@@ -49,13 +49,14 @@
   <section class="section_alt">
     <h2>How It Works</h2>
 
-    <h3 class="left">Analysis</h3>
+    <h3 class="left">Analysis Overview</h3>
+
+    <p class="narrow">Many cancer phylogenics workflows analyze somatic variants from bulk sequencing of normal and tumor tissues.  These workflows identify clusters of related mutations and then construct an evolutionary tree (phylogeny) that explains the occurrence patterns of those mutation clusters in the sample data. PhyloDiver visualizes the predicted tumor mutational evolution, summarizes the unique mutations along each edge, and shows the cellular proportions of each <span class="nowrap">cancer subclone.</span></p>
 
     <div class="diagram">
-      <img src="assets/images/landing_how_it_works_diagram.png" />
+      <img src="assets/images/landing_how_it_works_diagram.png" alt="components of tool diagram"/>
     </div>
 
-    <p class="narrow">PhyloDiver visualizes the predicted tumor mutational evolution, unique mutations along each edge and the cellular proportions of <span class="nowrap">each subclone.</span></p>
   </section>
 
   <section>
@@ -64,14 +65,18 @@
     <p class="narrow">PhyloDiver includes many  features that enable users to explore the tree results and the genes and mutations present in the data. Users can click on any edge between nodes to scan mutation, gene and drug information and expand any edge to a <span class="nowrap">full table display.</span></p>
 
     <div class="diagram">
-      <img src="assets/images/landing_screenshot_002.png" />
+      <img src="assets/images/landing_screenshot_002.png" alt="interactive details screenshot" />
     </div>
   </section>
 
   <section>
-    <h2>Documentation and Citations</h2>
-    <p>View our documentation and citations <span class="nowrap">on GitHub</span></p>
+    <h2>Documentation</h2>
+    <p>Check out our repositories below for <span class="nowrap">more information:</span></p>
 
+    <p>For this PhyloDiver phylogeny visualization application [<a href="https://github.com/ncsa/phylodiver-viz" target="_blank">GitHub</a>]</p>
+    <p>For its accompanying phylogeny analysis workflow, PhyloFlow, [<a href="https://www.dockstore.org/workflows/github.com/ncsa/phyloflow/phyloflow_standalone:master" target="_blank">Dockstore</a>] [<a href="https://gallery.ecr.aws/?searchTerm=phyloflow" target="_blank">Container Repo</a>] [<a href="https://github.com/ncsa/phyloflow/tree/master" target="_blank">GitHub</a>] </p>
+    <p>For information about the JSON file schema that connects the two [<span class="link">JSON Format Documentation</span>] </p>
+    
     <div class="links">
       <div class="link">Go to Documentation</div>
       <div class="link">Go to Citations</div>
@@ -83,6 +88,6 @@
       <div class="link">Contact</div>
     </div>
 
-    <p>PhyloDiver is developed by the Visual Analytics Group() and El-Kebir Lab() at the University of Illinois at Urbana-Champaign(), is supported by the Cancer Center of Illinois(), and is an open source project available on <span class="nowrap">GitHub: PhyloDiver().</span></p>
+    <p>PhyloDiver is developed by the <a href="http://vi-bio.ncsa.illinois.edu/" target="_blank">Visual Analytics Group</a> and <a href="https://www.el-kebir.net/" target="_blank">El-Kebir Lab</a> at the <a href="https://illinois.edu/" target="_blank">University of Illinois at Urbana-Champaign</a>, is supported by the <a href="https://cancer.illinois.edu/" target="_blank">Cancer Center of Illinois</a>, and is an open source project available on <span class="nowrap">GitHub: <a href="https://github.com/ncsa/phylodiver-viz" target="_blank">PhyloDiver</a>.</span></p>
   </footer>
 </div>
