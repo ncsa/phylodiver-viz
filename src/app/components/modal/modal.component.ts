@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'modal',
@@ -6,11 +6,23 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['../../styles/styles.scss', './modal.component.scss'],
 })
 export class ModalComponent implements OnInit, OnDestroy {
+  @Output()
+  onClose = new EventEmitter();
+
+  @HostListener('click', ['$event'])
+  onClick() {
+    this.close();
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
+  }
+
+  close():void {
+    this.onClose.emit();
   }
 }

@@ -11,6 +11,8 @@ export class PageHeaderComponent implements OnInit, OnDestroy {
 	@Input()
 	showDataset:boolean = true;
 
+  showModal:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,5 +24,9 @@ export class PageHeaderComponent implements OnInit, OnDestroy {
 //todo: this toggleheader function is not needed, instead, this should be controlled by the scroll position...after 50? pixels of scrolling, switch to isSmallHeader = true, if near the top, then back to isSmallHeader = false. 50px value will need to be played with to find the best breakpoint
   toggleHeader(): void {
     this.isSmallHeader = !this.isSmallHeader;
+  }
+
+  toggleModal(override?:boolean):void {
+    this.showModal = (typeof override != 'undefined') ? override : !this.showModal;
   }
 }
