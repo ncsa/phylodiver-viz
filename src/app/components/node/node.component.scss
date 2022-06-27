@@ -24,19 +24,21 @@
 
   &.is_selected {
     min: {
-      height: 400px;
+      height: 420px;
     }
 
     > .block_info {
       .summary {
         max: {
-          height: 300px;
+          height: 300px; //220px;
         }
 
         @include transition-delay(.1s);
       }
 
       .info {
+//        max-width: 480px; //by setting this now, it forces the info box to be full width right away (instead of only on hover)
+
         .full {
           max: {
             width: 80px;
@@ -132,7 +134,7 @@
       .info {
         z-index: 1000;
 
-        max-width: 400px;
+        max-width: 480px;
 
         background: {
           color: var(--cell_block_color, #888);
@@ -320,6 +322,9 @@
 
   .summary {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     max: {
       height: 0px;
@@ -346,13 +351,21 @@
     }
 
     .summary_table {
+      position: relative;
+      flex-grow: 1;
+
+      width: calc(100% - #{$padding});
+
       overflow: hidden;
+      overflow: {
+        x: auto;
+        y: auto;
+      }
 
       margin: {
-        right: ($padding * -0.5);
-        left: ($padding -0.5);
+        right: $padding * .5;
+        left: $padding * .5;
       }
-      padding: ($padding * 0.25) ($padding);
     }
 
     .summary_button {
@@ -383,6 +396,8 @@
     table {
       width: 100%;
 
+      border: 0px;
+
       th,
       td {
         padding: ($padding * 0.2) ($padding * 0.5);
@@ -391,14 +406,15 @@
           align: left;
         }
 
-        @include hide_overflow();
-
         &.column_mutations,
         &.column_cgc_genes,
         &.column_drugs {
           text: {
             align: right;
           }
+        }
+
+        &.column_consequence {
         }
       }
 
@@ -412,6 +428,14 @@
         }
 
         vertical-align: bottom;
+
+        @include translate(0px, -1px); //fix display bug where tbody would scroll above thead sticky
+      }
+
+      thead {
+        @include position(sticky);
+        top: 0px;
+        z-index: get_index(interface);
       }
 
       tbody {
@@ -422,6 +446,15 @@
             background-color: #f6e9eb;
           }
         }
+      }
+
+      .summary_table_value {
+//TODO - change to better structure as this is a bit of a hack to get it to work (on wider screens, wide columns are still truncated)
+        max: {
+          width: 140px;
+        }
+
+        @include hide_overflow();
       }
     }
   }

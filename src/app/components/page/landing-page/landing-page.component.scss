@@ -187,28 +187,3 @@ section {
     }
   }
 }
-
-footer {
-  .links {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: $padding * .5;
-
-    & + p {
-      margin: {
-        top: $padding;
-      }
-    }
-
-    .link {
-      cursor: pointer;
-
-      color: color_variable('footer_link');
-
-      &:hover {
-        color: color_variable('footer_link_hover');
-      }
-    }
-  }
-}
