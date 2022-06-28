@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LegendSample } from 'src/app/services/data.service';
 import { LegendSampleComponent } from './legend-sample.component';
+import { PrevalenceFormatterPipe } from 'src/app/pipes/prevalence-formatter.pipe';
 
 describe('LegendSampleComponent', () => {
   let component: LegendSampleComponent;
@@ -17,7 +18,10 @@ describe('LegendSampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LegendSampleComponent ]
+      declarations: [
+        LegendSampleComponent,
+        PrevalenceFormatterPipe
+      ]
     })
     .compileComponents();
   });

@@ -4,6 +4,7 @@ import { LegendSampleComponent } from '../legend-sample/legend-sample.component'
 import { NodeComponent } from '../node/node.component';
 import { SingleSampleViewerComponent } from './single-sample-viewer.component';
 import { TableComponent } from '../table/table.component';
+import { PrevalenceFormatterPipe } from 'src/app/pipes/prevalence-formatter.pipe';
 
 describe('SingleSampleViewerComponent', () => {
   let component: SingleSampleViewerComponent;
@@ -15,7 +16,9 @@ describe('SingleSampleViewerComponent', () => {
         LegendSampleComponent,
         NodeComponent,
         SingleSampleViewerComponent,
-        TableComponent
+        TableComponent,
+
+        PrevalenceFormatterPipe
       ]
     })
     .compileComponents();

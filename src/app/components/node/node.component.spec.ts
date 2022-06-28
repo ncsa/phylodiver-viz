@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NodeComponent } from './node.component';
+import { PrevalenceFormatterPipe } from 'src/app/pipes/prevalence-formatter.pipe';
 
 describe('NodeComponent', () => {
   let component: NodeComponent;
@@ -8,7 +9,10 @@ describe('NodeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NodeComponent ]
+      declarations: [
+        NodeComponent,
+        PrevalenceFormatterPipe
+      ]
     })
     .compileComponents();
   });
