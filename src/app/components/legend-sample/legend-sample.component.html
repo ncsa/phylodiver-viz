@@ -4,8 +4,7 @@
   <div class="node" *ngFor="let node of legendSample!.nodes" [style.flex]="node.proportion * 1000">
     <div class="block" [style.backgroundColor]="node.color"></div>
     <div class="count">
-      <ng-container *ngIf="node.proportion * 100 >= 10">{{ (node.proportion * 100) | number: '1.1-1' }}%</ng-container>
-      <ng-container *ngIf="node.proportion * 100 < 10">{{ (node.proportion * 100) | number: '1.2-2' }}%</ng-container>
+      {{ (node.proportion * 100) | prevalenceFormatter }}%
     </div>
   </div>
 </div>

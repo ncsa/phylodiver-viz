@@ -9,6 +9,7 @@ import { NodeComponent } from './components/node/node.component';
 import { PageHeaderComponent } from './components/page/page-header/page-header.component';
 import { SingleSampleViewerComponent } from './components/single-sample-viewer/single-sample-viewer.component';
 import { TableComponent } from './components/table/table.component';
+import { PrevalenceFormatterPipe } from './pipes/prevalence-formatter.pipe';
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -22,7 +23,9 @@ import { AppRoutingModule } from './app-routing.module';
     NodeComponent,
     PageHeaderComponent,
     SingleSampleViewerComponent,
-    TableComponent
+    TableComponent,
+
+    PrevalenceFormatterPipe
   ],
   imports: [
     BrowserModule,
