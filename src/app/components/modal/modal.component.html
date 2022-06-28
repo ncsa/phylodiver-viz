@@ -1,4 +1,4 @@
-<div class="modal_container">
+<div class="modal_container" (click)="$event.stopPropagation();">
   <div class="modal_header">Select Data for Display</div>
 
   <div class="modal_content">
@@ -44,7 +44,7 @@
   </div>
 
   <div class="modal_footer">
-    <div class="button button_plain">cancel</div>
+    <div class="button button_plain" (click)="close();$event.stopPropagation();">cancel</div>
     <div class="button">Launch</div>
   </div>
 <div>

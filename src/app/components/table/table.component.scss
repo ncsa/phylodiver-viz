@@ -46,6 +46,7 @@
 	.title {
 		display: flex;
 		align-items: center;
+//		gap: $padding * .2;
 
 		margin: {
 			bottom: $padding;
@@ -76,13 +77,14 @@
 		}
 
 		.tier_label {
-			display: flex;
-			align-items: center;
+		  display: flex;
+		  align-items: center;
 
 			cursor: pointer;
 
 			padding: {
 				right: $padding;
+				left: $padding * .5;
 			}
 
 			font: {
@@ -90,6 +92,14 @@
 			}
 
 			white-space: nowrap;
+
+      .value {
+        max: {
+          width: 640px;
+        }
+
+        @include hide_overflow();
+      }
 
 			&:hover {
 				color: get_color(primary);
@@ -101,23 +111,23 @@
 					}
 				}
 			}
-
-			.close_icon {
-				display: block;
-
-				width: 16px;
-				height: 16px;
-
-				margin: {
-					left: $padding * .2;
-				}
-
-				background: transparent inline-svg($svg_close, get_color(interface_border)) no-repeat center center;
-				background: {
-					size: 16px 16px;
-				}
-			}
 		}
+
+    .close_icon {
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      margin: {
+        left: $padding * .2;
+      }
+
+      background: transparent inline-svg($svg_close, get_color(interface_border)) no-repeat center center;
+      background: {
+        size: 16px 16px;
+      }
+    }
 
 		.edge_label {
 			&:before {
@@ -156,6 +166,17 @@
 		width: 100%;
 
 		thead {
+      @include position(sticky);
+      top: 0px;
+      z-index: get_index(interface);
+
+      th {
+        background-color: #fff;
+
+        border: {
+          bottom: 2px solid #aaa;
+        }
+      }
 		}
 
 		tbody {
@@ -170,10 +191,6 @@
 					td {
 						padding: {
 //							top: $padding;
-						}
-
-						border: {
-							top: 2px solid #aaa;
 						}
 					}
 				}
@@ -195,6 +212,7 @@
 				bottom: 1px solid #eee;
 			}
 
+      &.column_cluster,
 			&.column_reference,
 			&.column_variant {
 				text: {
@@ -211,6 +229,14 @@
 					align: right;
 				}
 			}
+
+      &.column_consequence {
+        max: {
+          width: 300px;
+        }
+
+        @include hide_overflow();
+      }
 		}
 
 		th {

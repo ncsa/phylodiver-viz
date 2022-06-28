@@ -1,27 +1,46 @@
-<div class="single_sample_viewer" [class.navigation_mode]="showTable && hasSelectedNode">
-    <div class="header">
-        <input type="text" size="30" placeholder="Search" />
+<div class="page single_sample_viewer" [class.navigation_mode]="showTable && hasSelectedNode">
+  <div class="header">
+    <div class="header_container">
+      <input type="text" size="24" placeholder="Search" />
+
+      <div class="tree_selector">
+        <select (change)="selectTree($any($event.target).value)">
+          <option *ngFor="let tree of trees" [value]="tree.tree_id" [selected]="tree.tree_id === selectedTree?.tree_id">{{ tree.tree_name }}</option>
+        </select>
+      </div>
+
+      <div class="links">
+        <div class="link">PhyloDiver <a href="https://github.com/ncsa/phylodiver-viz" target="_blank">GitHub</a></div>
+        <div class="link">PhyloFlow <a href="https://www.dockstore.org/workflows/github.com/ncsa/phyloflow/phyloflow_standalone:master" target="_blank">Dockstore</a><a href="https://gallery.ecr.aws/?searchTerm=phyloflow" target="_blank">Container Repo</a><a href="https://github.com/ncsa/phyloflow/tree/master" target="_blank">GitHub</a></div>
+        <div class="link">JSON <a href="#">Documentation</a></div>
+      </div>
     </div>
+  </div>
 
-    <div class="content">
-        <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedNode">
-            <div class="subclone_label">{{selectedSample!.name}}</div>
+  <div class="content">
+      <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedNode">
+          <div class="subclone_label">{{selectedSample!.name}}</div>
 
-            <phylo-node *ngIf="rootNode"
-                [displayNode]="rootNode"
-            ></phylo-node>
-        </div>
+          <phylo-node *ngIf="rootNode"
+              [displayNode]="rootNode"
+          ></phylo-node>
+      </div>
 
-        <div class="legend">
-            <phylo-legend-sample *ngFor="let legendSample of legendSamples"
-              [legendSample]="legendSample">
-            ></phylo-legend-sample>
-        </div>
-    </div>
+      <div class="legend">
+          <phylo-legend-sample *ngFor="let legendSample of legendSamples"
+            [legendSample]="legendSample">
+          ></phylo-legend-sample>
+      </div>
+  </div>
 
 <!-- todo: change phylo-table ngIf to angular animation so it can grow/shrink before show/hide -->
-    <phylo-table *ngIf="hasSelectedNode && showTable"></phylo-table>
-    <select (change)="selectTree($any($event.target).value)">
-        <option *ngFor="let tree of trees" [value]="tree.tree_id" [selected]="tree.tree_id === selectedTree?.tree_id">{{ tree.tree_name }}</option>
-    </select>
+  <phylo-table *ngIf="hasSelectedNode && showTable"></phylo-table>
+
+  <footer>
+    <div class="links">
+      <div class="link">Contact</div>
+    </div>
+
+    <p>PhyloDiver is developed by the <a href="http://vi-bio.ncsa.illinois.edu/" target="_blank">Visual Analytics Group</a> and <a href="https://www.el-kebir.net/" target="_blank">El-Kebir Lab</a> at the <a href="https://illinois.edu/" target="_blank">University of Illinois at Urbana-Champaign</a>, is supported by the <a href="https://cancer.illinois.edu/" target="_blank">Cancer Center of Illinois</a>, and is an open source project available on <span class="nowrap">GitHub: <a href="https://github.com/ncsa/phylodiver-viz" target="_blank">PhyloDiver</a>.</span></p>
+  </footer>
 </div>

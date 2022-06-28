@@ -73,10 +73,10 @@ export class TableComponent implements OnInit, OnDestroy {
 
   updateTableColumns(): void {
     const columns = [
+      { label: 'Cluster', cssSuffix: 'cluster', accessor: (variant: DisplayVariant, clusterId: number) => clusterId },
+      { label: 'Type', cssSuffix: 'type', accessor: (variant: DisplayVariant, clusterId: number) => 'SNP' },
       { label: 'Consequence', cssSuffix: 'consequence', accessor: (variant: DisplayVariant, clusterId: number) => variant.consequence ?? '' },
       { label: 'Tier', cssSuffix: 'tier', accessor: (variant: DisplayVariant, clusterId: number) => variant.cgcGeneInfo?.tier ?? '' },
-      { label: 'Type', cssSuffix: 'type', accessor: (variant: DisplayVariant, clusterId: number) => 'SNP' },
-      { label: 'Cluster', cssSuffix: 'cluster', accessor: (variant: DisplayVariant, clusterId: number) => clusterId },
       { label: 'chr', cssSuffix: 'chr', accessor: (variant: DisplayVariant, clusterId: number) => variant.chr ?? '' },
       { label: 'Start', cssSuffix: 'start', accessor: (variant: DisplayVariant, clusterId: number) => variant.start ?? '' },
       { label: 'Gene', cssSuffix: 'gene', accessor: (variant: DisplayVariant, clusterId: number) => variant.symbol ?? '' },

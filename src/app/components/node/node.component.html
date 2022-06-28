@@ -31,7 +31,12 @@
         </div>
 
         <div class="summary" *ngIf="!showTable">
-            <div class="summary_header">Mutation Edge Info</div>
+            <div class="summary_header">
+<!-- TODO: change from one label to the other based on selected -->
+              Cluster X Mutation Summary
+              Subclone X Mutation Summary
+            </div>
+
             <div class="summary_table">
                 <table>
                     <thead>
@@ -44,7 +49,7 @@
                     <tbody>
                         <tr *ngFor="let row of sortedSummaryTableRows" (click)="$event.stopPropagation(); onToggleTable(row)">
                             <td *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.cssSuffix">
-                                <div class="group group_red">
+                                <div class="summary_table_value" [title]="column.accessor(row.consequence, row.variantInfo)">
                                     {{ column.accessor(row.consequence, row.variantInfo) }}
                                 </div>
                             </td>
@@ -52,6 +57,7 @@
                     </tbody>
                 </table>
             </div>
+
             <div class="summary_button" (click)="$event.stopPropagation(); onToggleTable(null)">{{(!showTable) ? 'Open in' : 'Hide'}} Table</div>
         </div>
     </div>

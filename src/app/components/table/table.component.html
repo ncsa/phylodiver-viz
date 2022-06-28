@@ -6,7 +6,8 @@
         <div class="edge_label" *ngIf="edgeLabel">{{edgeLabel}}</div>
         <div class="tier_label" (click)="$event.stopPropagation(); deselectConsequence()">
             <ng-container *ngIf="consequence">
-                {{ consequence }} <div class="close_icon"></div>
+                <span class="value" [title]="consequence">{{ consequence }}</span>
+                <div class="close_icon"></div>
             </ng-container>
             <ng-container *ngIf="!consequence">
                 All Consequences
@@ -26,7 +27,7 @@
         <tbody>
             <ng-container *ngFor="let row of tableRows">
                 <tr *ngIf="!consequence || consequence === row.variant.consequence" (click)="$event.stopPropagation(); selectRow(row)">
-                    <td *ngFor="let column of tableColumns; index as i" [ngClass]="'column_' + column.cssSuffix">
+                    <td *ngFor="let column of tableColumns; index as i" [ngClass]="'column_' + column.cssSuffix" [title]="column.accessor(row.variant, row.clusterId)">
                         {{ column.accessor(row.variant, row.clusterId) }}
                     </td>
                 </tr>
