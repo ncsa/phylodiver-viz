@@ -27,7 +27,7 @@
         <tbody>
             <ng-container *ngFor="let row of tableRows">
                 <tr *ngIf="!consequence || consequence === row.variant.consequence" (click)="$event.stopPropagation(); selectRow(row)">
-                    <td *ngFor="let column of tableColumns; index as i" [ngClass]="'column_' + column.cssSuffix" [title]="column.accessor(row.variant, row.clusterId)">
+                    <td *ngFor="let column of tableColumns" [ngClass]="'column_' + column.cssSuffix" [title]="column.accessor(row.variant, row.clusterId)">
                         {{ column.accessor(row.variant, row.clusterId) }}
                     </td>
                 </tr>

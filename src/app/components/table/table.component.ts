@@ -86,7 +86,7 @@ export class TableComponent implements OnInit, OnDestroy {
       { label: 'Strand', cssSuffix: 'strand', accessor: (variant: DisplayVariant, clusterId: number) => variant.strand ?? '' },
     ];
     this.samples.forEach((sample, index) => {
-      columns.push({ label: sample.name + ' All DNA VAF', cssSuffix: 'alldna_vaf', accessor: (variant: DisplayVariant, clusterId: number) => variant.vaf?.[index] ?? '' });
+      columns.push({ label: sample.name + ' All DNA VAF', cssSuffix: 'alldna_vaf', accessor: (variant: DisplayVariant, clusterId: number) => formatVaf(variant.vaf?.[index]) });
     });
 
     columns.push({ label: 'CGC Gene', cssSuffix: 'cgc_gene', accessor: (variant: DisplayVariant, clusterId: number) => variant.cgcGeneInfo ? '1' : '' });
@@ -142,4 +142,16 @@ export interface TableColumn {
 export interface TableRow {
   variant: DisplayVariant;
   clusterId: number;
+}
+
+export function formatVaf(value: number|undefined): string {
+  let returnVal: string;
+  if (value === undefined) {
+    returnVal = '';
+  } else if (value === 0) {
+    returnVal = '0';
+  } else {
+    returnVal = value.toExponential(2);
+  }
+  return returnVal;
 }
