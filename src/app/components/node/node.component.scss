@@ -343,11 +343,16 @@
     @include transition(#{max-height .2s easing($ease-in-out)});
 
     .summary_header {
+      width: 100%;
+
       padding: ($padding * 0.5) ($padding);
 
       font: {
         weight: bold;
       }
+
+      @include hide_overflow();
+      @include box-sizing(border-box);
     }
 
     .summary_table {
@@ -358,7 +363,7 @@
 
       overflow: hidden;
       overflow: {
-        x: auto;
+//        x: auto;
         y: auto;
       }
 

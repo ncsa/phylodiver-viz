@@ -1,4 +1,4 @@
-<div class="legend_node_label">{{legendSample!.sample.name}}</div>
+<div class="legend_node_label" [title]="legendSample!.sample.name" *ngIf="showLabel">{{legendSample!.sample.name}}</div>
 
 <div class="nodes">
   <div class="node" *ngFor="let node of legendSample!.nodes" [style.flex]="node.proportion * 1000">

@@ -5,6 +5,13 @@
 
 //**************** css ******************
 
+.diagram_label {
+  font: {
+    size: .8rem;
+    weight: bold;
+  }
+}
+
 .single_sample_viewer {
   display: flex;
   flex-direction: column;
@@ -14,7 +21,6 @@
 	right: 0px;
 	top: 0px;
 	bottom: 0px;
-//	z-index: get_index(interface);
   z-index: 100;
 
 	color: color_variable('text');
@@ -23,10 +29,6 @@
 	}
 
   &.navigation_mode {
-    .phyloviz_diagram {
-//      height: 120px;
-    }
-
     ::ng-deep phylo-node .summary {
       display: none;
     }
@@ -37,10 +39,6 @@
           height: 0px;
         }
       }
-    }
-
-    .legend {
-      height: 120px;
     }
   }
 
@@ -144,6 +142,9 @@
     }
 
     padding: 0px $padding;
+    padding: {
+      top: $padding;
+    }
   }
 
   phylo-table {
@@ -222,47 +223,40 @@
   }
 
   .subclone_label {
-    cursor: pointer;
+    color: #888;
 
+    margin: {
+      top: -2px;
+    }
+
+    font: {
+      size: $font_size_min;
+      weight: normal;
+    }
+  }
+
+  .diagram_label {
     position: absolute;
-    left: calc(100% + 30px); //halfway into end_block
+    left: 0px;
     top: -32px;
     z-index: 100;
 
-    color: #888;
-
-    padding: 2px ($padding * .5);
-
-    font: {
-      size: 90%;
-    }
-    text: {
-      transform: capitalize;
-    }
-
-    border: 2px solid transparent;
-
     white-space: nowrap;
 
-    @include border-radius($border_radius);
-    @include translate(-50%, 0%);
+    &.diagram_subclone_label {
+      left: calc(100% + 30px); //halfway into end_block
 
-    &:hover {
-      color: #fff;
-      background: {
-        color: #888;
+      text: {
+        align: center;
       }
+
+      @include translate(-50%, 0%);
     }
   }
 }
 
 .legend {
-  display: flex;
-
-  min: {
-    height: 120px;
-  }
-  height: 360px;
+  position: relative;
 
   background: {
     color: color_variable('legend_background');
@@ -271,5 +265,34 @@
   padding: ($padding * .75);
 
   @include border-radius($border_radius * 2);
-  @include transition(#{height .2s easing($ease-in-out)});
+
+  .diagram_label {
+    position: absolute; //position outside box because legend-samples need 100% of the height (can swap for display flex to fix if needed)
+    left: 0px;
+    right: 0px;
+    bottom: 100%;
+    z-index: 100;
+
+    margin: {
+      bottom: $padding * .25;
+    }
+
+    text: {
+      align: center;
+    }
+  }
+
+  .legend_samples {
+    display: flex;
+
+    min-height: 360px;
+
+    @include transition(#{min-height .2s easing($ease-in-out)});
+  }
+
+  &.is_collapsed {
+    .legend_samples {
+      min-height: 0px;
+    }
+  }
 }

@@ -22,6 +22,9 @@ export class LegendSampleComponent implements OnInit, OnDestroy {
   @Input()
   legendSample?: LegendSample;
 
+  @Input()
+  showLabel?: boolean = true;
+
   selectedSample: Sample|null = null;
 
   subscriptions: Subscription[] = [];
