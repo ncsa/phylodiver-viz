@@ -82,5 +82,5 @@
 </div>
 
 <div class="end_block" *ngIf="displayNode?.cluster">
-    <div class="percentage">{{ displayNode!.prevalence }}%</div>
+    <div class="percentage">{{ (displayNode!.prevalence * 100) | prevalenceFormatter }}%</div>
 </div>
