@@ -2,7 +2,7 @@ import { Component, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnIn
 import { combineLatest, Subscription } from 'rxjs';
 
 import { Cluster, Sample } from 'src/app/models/pipeline-dto';
-import { DisplayNode, DisplayVariant } from 'src/app/models/models';
+import { DisplayNode, DisplayVariant, Severity } from 'src/app/models/models';
 import { DataService } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
@@ -39,10 +39,10 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   gradientId = 'uninitialized';
 
   summaryColumns = [
-    { label: 'Mutations', cssSuffix: 'mutations', accessor: (consequence: string, info: VariantInfo) => info.mutationsAll.size },
-    { label: 'Consequence', cssSuffix: 'consequence', accessor: (consequence: string, info: VariantInfo) => consequence },
-    { label: 'Type', cssSuffix: 'type', accessor: (consequence: string, info: VariantInfo) => 'SNV' },
-    { label: 'CGC Genes', cssSuffix: 'cgc_genes', accessor: (consequence: string, info: VariantInfo) => info.genesCgc.size }
+    { label: 'Severity', cssSuffix: 'consequence', accessor: (severity: Severity, info: VariantInfo) => severity.label },
+    { label: 'Mutations', cssSuffix: 'mutations', accessor: (severity: Severity, info: VariantInfo) => info.mutationsAll.size },
+    { label: 'Type', cssSuffix: 'type', accessor: (severity: Severity, info: VariantInfo) => 'SNV' },
+    { label: 'CGC Genes', cssSuffix: 'cgc_genes', accessor: (severity: Severity, info: VariantInfo) => info.genesCgc.size }
   ];
 
   constructor(
@@ -114,26 +114,26 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       // DisplayNode represents a subtree, so we want to show only the cluster associated with the next child subclone
       clusterIds = this.displayNode!.children.filter(node => node.cluster).map(node => node.cluster_id!);
     }
-    // build variant info per consequence
-    const consequenceToVariantInfo = new Map<string, VariantInfo>();
+    // build variant info per severity
+    const severityToVariantInfo = new Map<Severity, VariantInfo>();
     clusterIds.forEach(clusterId => {
       const cluster = this.clusterIdToCluster.get(clusterId);
       cluster?.variants.forEach(variant => {
         const snp = this.snvIdToDisplayVariant.get(variant);
         if (snp) {
-          const consequence = snp.consequence ?? '';
-          if (!consequenceToVariantInfo.has(consequence)) {
-            consequenceToVariantInfo.set(consequence, getEmptyVariantInfo());
+          const severity = snp.severity;
+          if (!severityToVariantInfo.has(severity)) {
+            severityToVariantInfo.set(severity, getEmptyVariantInfo());
           }
-          const variantInfo = consequenceToVariantInfo.get(consequence)!;
+          const variantInfo = severityToVariantInfo.get(severity)!;
           variantInfo.mutationsAll.add(variant);
           const geneName = snp.gene;
           if (geneName && geneName.length > 0) {
             variantInfo.genesAll.add(geneName);
             if (snp.cgcGeneInfo) {
               variantInfo.genesCgc.add(geneName);
-              if (snp.cgcGeneInfo.tier === 1) {
-                variantInfo.mutationsTier1.add(variant);
+              if (snp.severity.value === 'HIGH') {
+                variantInfo.mutationsHigh.add(variant);
               }
             }
           }
@@ -144,11 +144,11 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       });
     });
     // consolidate variant info across consequences
-    this.consolidatedVariantInfo = combineVariantInfos([...consequenceToVariantInfo.values()]);
+    this.consolidatedVariantInfo = combineVariantInfos([...severityToVariantInfo.values()]);
     // sort for table
-    this.sortedSummaryTableRows = [...consequenceToVariantInfo.entries()]
-      .map(([consequence, variantInfo]) => ({ consequence, variantInfo }))
-      .sort((a, b) => b.variantInfo.mutationsAll.size - a.variantInfo.mutationsAll.size);
+    this.sortedSummaryTableRows = [...severityToVariantInfo.entries()]
+      .map(([severity, variantInfo]) => ({ severity, variantInfo }))
+      .sort((a, b) => a.severity.sortOrder - b.severity.sortOrder);
   }
 
   updateStyle(): void {
@@ -171,7 +171,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   onToggleTable(row: SummaryTableRow|null): void {
-    this.selectionService.setConsequence(row?.consequence ?? null);
+    this.selectionService.setSeverity(row?.severity ?? null);
     //toggle table
     this.selectionService.setShowTable(!this.showTable);
   };
@@ -189,13 +189,13 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
 }
 
 export interface SummaryTableRow {
-  consequence: string;
+  severity: Severity;
   variantInfo: VariantInfo;
 }
 
 export function getEmptyVariantInfo(): VariantInfo {
   return {
-    mutationsTier1: new Set<number>(),
+    mutationsHigh: new Set<number>(),
     mutationsAll: new Set<number>(),
     genesCgc: new Set<string>(),
     genesAll: new Set<string>(),
@@ -206,7 +206,7 @@ export function getEmptyVariantInfo(): VariantInfo {
 export function combineVariantInfos(infos: VariantInfo[]): VariantInfo {
   const returnVal = getEmptyVariantInfo();
   infos.forEach(info => {
-    (['mutationsTier1', 'mutationsAll', 'genesCgc', 'genesAll', 'drugs'] as Array<keyof VariantInfo>).forEach(key => {
+    (['mutationsHigh', 'mutationsAll', 'genesCgc', 'genesAll', 'drugs'] as Array<keyof VariantInfo>).forEach(key => {
       info[key].forEach(val => (returnVal[key] as Set<string|number>).add(val));
     });
   });
@@ -214,7 +214,7 @@ export function combineVariantInfos(infos: VariantInfo[]): VariantInfo {
 }
 
 export interface VariantInfo {
-  mutationsTier1: Set<number>; // values will be variant ids
+  mutationsHigh: Set<number>; // values will be variant ids
   mutationsAll: Set<number>; // values will be variant ids
   genesCgc: Set<string>; // values will be gene symbols
   genesAll: Set<string>; // values will be gene symbols

@@ -6,13 +6,13 @@
     <div class="info" *ngIf="displayNode.children.length > 0 || isFirstSelected">
         <div class="info_container">
             <div *ngIf="!displayNode?.cluster" class="label">
-                <span class="full">T1&nbsp;</span>M<span class="full">utations</span>:
+                <span class="full">HIGH&nbsp;</span>M<span class="full">utations</span>:
             </div>
             <div *ngIf="displayNode?.cluster" class="label">
                 Aggregated Totals:
             </div>
             <div class="value">
-                <div class="group group_red">{{ consolidatedVariantInfo.mutationsTier1.size }}</div>
+                <div class="group group_red">{{ consolidatedVariantInfo.mutationsHigh.size }}</div>
                 <div class="full">/{{ consolidatedVariantInfo.mutationsAll.size }}</div>
             </div>
             <div class="label">
@@ -49,8 +49,8 @@
                     <tbody>
                         <tr *ngFor="let row of sortedSummaryTableRows" (click)="$event.stopPropagation(); onToggleTable(row)">
                             <td *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.cssSuffix">
-                                <div class="summary_table_value" [title]="column.accessor(row.consequence, row.variantInfo)">
-                                    {{ column.accessor(row.consequence, row.variantInfo) }}
+                                <div class="summary_table_value" [title]="column.accessor(row.severity, row.variantInfo)">
+                                    {{ column.accessor(row.severity, row.variantInfo) }}
                                 </div>
                             </td>
                         </tr>

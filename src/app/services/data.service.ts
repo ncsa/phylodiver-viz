@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
+import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap, tap } from 'rxjs';
 
-import { CgcGenes, ConsequenceSeverity, SeverityKey } from '../models/annotation-dto';
-import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity } from '../models/models';
+import { CgcGenes, ConsequenceSeverities } from '../models/annotation-dto';
+import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity, SeverityKey } from '../models/models';
 import { Aggregate, Cluster, Sample, Tree } from '../models/pipeline-dto';
-import * as cgcGenes from './cgc_genes.json';
-import * as consequenceSeverities from './consequence_severities.json';
+import * as cgcGenesData from './cgc_genes.json';
+import * as consequenceSeveritiesData from './consequence_severities.json';
 import { SelectionService } from './selection.service';
 
 @Injectable({
@@ -52,7 +52,7 @@ export class DataService {
 
   // map keys are gene symbols in all caps
   getCgcGenes(): Observable<Map<string, CgcGeneInfo>> {
-    return of(cgcGenes as CgcGenes).pipe(
+    return of(cgcGenesData as CgcGenes).pipe(
       map(raw => {
         const returnVal = new Map<string, CgcGeneInfo>();
         Object.entries(raw).forEach(([geneSymbol, rawInfo]) => {
@@ -70,9 +70,9 @@ export class DataService {
 
   // map keys are consequences in all caps
   getConsequenceSeverities(): Observable<Map<string, Severity>> {
-    return of(consequenceSeverities as ConsequenceSeverity[]).pipe(
+    return of(consequenceSeveritiesData as ConsequenceSeverities).pipe(
       map(raw => new Map<string, Severity>(
-          raw.map(cs => [cs.consequence.toUpperCase(), severityKeyToSeverity.get(cs.severity)!])
+          Object.entries(raw).map(([consequence, severityKey]) => [consequence.toUpperCase(), severityKeyToSeverity.get(severityKey)!])
       ))
     );
   }
@@ -291,7 +291,7 @@ export const severityKeyToSeverity = new Map<SeverityKey, Severity>([
   ['MODERATE', { label: 'moderate', value: 'MODERATE', sortOrder: 2 }],
   ['LOW', { label: 'low', value: 'LOW', sortOrder: 3 }],
   ['MODIFIER', { label: 'modifier', value: 'MODIFIER', sortOrder: 4 }],
-  ['UNKNOWN', { label: 'unknown', value: '', sortOrder: 5 }]
+  ['UNKNOWN', { label: 'unknown', value: 'UNKNOWN', sortOrder: 5 }]
 ]);
 
 export const DEMO_DATA_SETS: DataSet[] = [

@@ -14,9 +14,11 @@ export interface DisplayNode {
   level: number;
 }
 
+export type SeverityKey = 'HIGH'|'MODERATE'|'LOW'|'MODIFIER'|'UNKNOWN';
+
 export interface Severity {
   label: string;
-  value: string;
+  value: SeverityKey;
   sortOrder: number;
 }
 

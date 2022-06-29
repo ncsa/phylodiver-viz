@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
 
-import { DisplayNode, DisplayVariant } from 'src/app/models/models';
+import { DisplayNode, DisplayVariant, Severity } from 'src/app/models/models';
 import { Cluster, Sample } from 'src/app/models/pipeline-dto';
 import { DataService } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
@@ -18,7 +18,7 @@ export class TableComponent implements OnInit, OnDestroy {
   label: string|null = null;
   edgeLabel: string|null = null;
 
-  consequence: string|null = null;
+  severity: Severity|null = null;
   displayNode: DisplayNode|null = null;
 
   clusterIdToCluster = new Map<number, Cluster>();
@@ -61,8 +61,8 @@ export class TableComponent implements OnInit, OnDestroy {
       this.displayNode = displayNode;
       this.updateTableRows();
     }));
-    this.subscriptions.push(this.selectionService.getConsequence().subscribe(consequence => {
-      this.consequence = consequence;
+    this.subscriptions.push(this.selectionService.getSeverity().subscribe(severity => {
+      this.severity = severity;
       this.updateTableRows();
     }));
   }
@@ -76,7 +76,7 @@ export class TableComponent implements OnInit, OnDestroy {
       { label: 'Cluster', cssSuffix: 'cluster', accessor: (variant: DisplayVariant, clusterId: number) => clusterId },
       { label: 'Type', cssSuffix: 'type', accessor: (variant: DisplayVariant, clusterId: number) => 'SNP' },
       { label: 'Consequence', cssSuffix: 'consequence', accessor: (variant: DisplayVariant, clusterId: number) => variant.consequence ?? '' },
-      { label: 'Tier', cssSuffix: 'tier', accessor: (variant: DisplayVariant, clusterId: number) => variant.cgcGeneInfo?.tier ?? '' },
+      { label: 'Severity', cssSuffix: 'severity', accessor: (variant: DisplayVariant, clusterId: number) => variant.severity?.label ?? '' },
       { label: 'chr', cssSuffix: 'chr', accessor: (variant: DisplayVariant, clusterId: number) => variant.chr ?? '' },
       { label: 'Start', cssSuffix: 'start', accessor: (variant: DisplayVariant, clusterId: number) => variant.start ?? '' },
       { label: 'Gene', cssSuffix: 'gene', accessor: (variant: DisplayVariant, clusterId: number) => variant.symbol ?? '' },
@@ -109,7 +109,7 @@ export class TableComponent implements OnInit, OnDestroy {
       cluster?.variants.forEach(variant => {
         const snp = this.snvIdToDisplayVariant.get(variant);
         if (snp) {
-          if (this.consequence === null || this.consequence === snp.consequence) {
+          if (this.severity === null || this.severity === snp.severity) {
             rows.push({ variant: snp, clusterId: clusterId });
           }
         } else {
@@ -120,16 +120,16 @@ export class TableComponent implements OnInit, OnDestroy {
     this.tableRows = rows;
   }
 
-  deselectConsequence() {
-    this.selectionService.setConsequence(null);
+  deselectSeverity() {
+    this.selectionService.setSeverity(null);
   }
 
   closeTable() {
     this.selectionService.setShowTable(false);
   }
 
-  selectRow(data: any) {
-    this.selectionService.setConsequence(data.tier);
+  selectRow(row: TableRow) {
+    this.selectionService.setSeverity(row.variant.severity);
   }
 }
 
