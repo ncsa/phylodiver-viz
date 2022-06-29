@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
 
-import { CgcGenes } from '../models/annotation-dto';
-import { CgcGeneInfo, DisplayNode, DisplayVariant } from '../models/models';
+import { CgcGenes, ConsequenceSeverity, SeverityKey } from '../models/annotation-dto';
+import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity } from '../models/models';
 import { Aggregate, Cluster, Sample, Tree } from '../models/pipeline-dto';
 import * as cgcGenes from './cgc_genes.json';
+import * as consequenceSeverities from './consequence_severities.json';
 import { SelectionService } from './selection.service';
 
 @Injectable({
@@ -64,6 +65,15 @@ export class DataService {
         });
         return returnVal;
       })
+    );
+  }
+
+  // map keys are consequences in all caps
+  getConsequenceSeverities(): Observable<Map<string, Severity>> {
+    return of(consequenceSeverities as ConsequenceSeverity[]).pipe(
+      map(raw => new Map<string, Severity>(
+          raw.map(cs => [cs.consequence.toUpperCase(), severityKeyToSeverity.get(cs.severity)!])
+      ))
     );
   }
 
@@ -248,11 +258,13 @@ export class DataService {
   getSnvIdToDisplayVariant(): Observable<Map<number, DisplayVariant>> {
     return combineLatest([
       this.getAggregate(),
-      this.getCgcGenes()
+      this.getCgcGenes(),
+      this.getConsequenceSeverities()
     ]).pipe(
-      map(([aggregate, cgcGenes]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
+      map(([aggregate, cgcGenes, consequenceSeverities]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
         ...snv,
-        cgcGeneInfo: snv.symbol && cgcGenes.has(snv.symbol.toUpperCase()) ? cgcGenes.get(snv.symbol.toUpperCase()) : null
+        cgcGeneInfo: snv.symbol && cgcGenes.has(snv.symbol.toUpperCase()) ? cgcGenes.get(snv.symbol.toUpperCase()) : null,
+        severity: snv.consequence && consequenceSeverities.has(snv.consequence.toUpperCase()) ? consequenceSeverities.get(snv.consequence.toUpperCase()) : severityKeyToSeverity.get('UNKNOWN')
       } as DisplayVariant])))
     );
   }
@@ -273,6 +285,14 @@ export interface DataSet {
   url: string;
   isDemo: boolean;
 }
+
+export const severityKeyToSeverity = new Map<SeverityKey, Severity>([
+  ['HIGH', { label: 'high', value: 'HIGH', sortOrder: 1 }],
+  ['MODERATE', { label: 'moderate', value: 'MODERATE', sortOrder: 2 }],
+  ['LOW', { label: 'low', value: 'LOW', sortOrder: 3 }],
+  ['MODIFIER', { label: 'modifier', value: 'MODIFIER', sortOrder: 4 }],
+  ['UNKNOWN', { label: 'unknown', value: '', sortOrder: 5 }]
+]);
 
 export const DEMO_DATA_SETS: DataSet[] = [
   { label: 'Griffith_et_al_AML.json', url: 'assets/Griffith_et_al_AML.json', isDemo: true },

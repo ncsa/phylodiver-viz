@@ -8,3 +8,10 @@ export interface RawCgcGeneInfo {
   'Tier': number;
   'Entrez GeneId'?: number;
 }
+
+export type SeverityKey = 'HIGH'|'MODERATE'|'LOW'|'MODIFIER'|'UNKNOWN';
+
+export interface ConsequenceSeverity {
+  consequence: string;
+  severity: SeverityKey;
+}

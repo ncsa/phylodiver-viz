@@ -14,8 +14,15 @@ export interface DisplayNode {
   level: number;
 }
 
+export interface Severity {
+  label: string;
+  value: string;
+  sortOrder: number;
+}
+
 export interface DisplayVariant extends SNV {
   cgcGeneInfo: CgcGeneInfo|null;
+  severity: Severity;
 }
 
 export interface CgcGeneInfo {
