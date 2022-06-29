@@ -128,23 +128,34 @@
 
   .content {
     overflow: {
+      x: auto;
       y: auto;
     }
 
     flex-grow: 1; //to fill the window height
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start; //center;
 
     min: {
       height: 200px;
     }
+    max: {
+      width: 100%;
+    }
+
+    margin: {
+      right: auto;
+      left: auto;
+    }
 
     padding: 0px $padding;
     padding: {
-      top: $padding;
+      top: $padding * 2;
     }
+
+    @include box-sizing(border-box);
   }
 
   phylo-table {
@@ -286,6 +297,9 @@
     color: color_variable('legend_background');
   }
 
+  margin: {
+    top: $padding * .5;
+  }
   padding: ($padding * .75);
 
   @include border-radius($border_radius * 2);

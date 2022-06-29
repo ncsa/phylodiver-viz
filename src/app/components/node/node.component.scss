@@ -63,6 +63,18 @@
     }
   }
 
+  &.is_condensed {
+    .block_info {
+      width: auto;
+
+      .info_container {
+        .label {
+          display: none;
+        }
+      }
+    }
+  }
+
   .block {
     position: relative;
 
@@ -267,7 +279,22 @@
     right: 0px;
     top: 0px;
     bottom: 0px;
-    z-index: 1; //-10;
+    z-index: 1;
+
+    &:after {
+      content: '';
+
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 50%;
+      z-index: -10;
+
+      border-bottom: 2px dotted #aaa;
+
+      @include translate(0%, -50%);
+      @include box-sizing(border-box);
+    }
 
     svg {
       display: block;

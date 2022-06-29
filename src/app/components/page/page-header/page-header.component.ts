@@ -29,17 +29,13 @@ export class PageHeaderComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showDataset = !this.router.url.includes(WELCOME_PATH);
+        this.isSmallHeader = (this.showDataset && this.dataSet) ? true : false;
       }
     }));
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
-  }
-
-//todo: this toggleheader function is not needed, instead, this should be controlled by the scroll position...after 50? pixels of scrolling, switch to isSmallHeader = true, if near the top, then back to isSmallHeader = false. 50px value will need to be played with to find the best breakpoint
-  toggleHeader(): void {
-    this.isSmallHeader = !this.isSmallHeader;
   }
 
   toggleModal(override?:boolean):void {
