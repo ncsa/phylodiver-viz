@@ -1,6 +1,8 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { WELCOME_PATH } from 'src/app/app-routing.module';
 import { DataService, DataSet } from 'src/app/services/data.service';
 
 @Component({
@@ -20,10 +22,15 @@ export class PageHeaderComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.subscriptions.push(this.dataService.getDataSet().subscribe(ds => this.dataSet = ds));
+    this.subscriptions.push(this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showDataset = !this.router.url.includes(WELCOME_PATH);
+      }
+    }));
   }
 
   ngOnDestroy(): void {
