@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, map, withLatestFrom, filter, combineLatest } from 'rxjs';
+import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
 
 import { CgcGenes } from '../models/annotation-dto';
 import { CgcGeneInfo, DisplayNode, DisplayVariant } from '../models/models';
 import { Aggregate, Cluster, Sample, Tree } from '../models/pipeline-dto';
-import * as amlTree from './test.json';
 import * as cgcGenes from './cgc_genes.json';
 import { SelectionService } from './selection.service';
 
@@ -13,12 +13,19 @@ import { SelectionService } from './selection.service';
 })
 export class DataService {
 
-  $aggregate = new BehaviorSubject<Aggregate>(amlTree as Aggregate);
+  $dataSet = new BehaviorSubject<DataSet>(DEMO_DATA_SETS[0]);
+  $aggregate = new BehaviorSubject<Aggregate|null>(null);
 
   rootColor = '#90959B';
   clusterColors = ['#173858', '#2A5E72', '#C9C943', '#E89680', '#B26799', '#7524A1'];
 
-  constructor(private selectionService: SelectionService) {
+  constructor(private selectionService: SelectionService, private http: HttpClient) {
+    this.getDataSet().pipe(
+      switchMap(ds => this.http.get<Aggregate>(ds.url)),
+    ).subscribe(ds => {
+      console.log(ds);
+      this.$aggregate.next(ds);
+    });
     // auto-select first tumor sample and first tree
     this.getAggregate().subscribe(aggregate => {
       const tumorSamples = aggregate.samples.filter(sample => sample.type === 'tumor');
@@ -29,8 +36,18 @@ export class DataService {
     });
   }
 
+  getDataSet(): Observable<DataSet> {
+    return this.$dataSet.asObservable();
+  }
+
+  setDataSet(dataSet: DataSet): void {
+    this.$dataSet.next(dataSet);
+  }
+
   getAggregate(): Observable<Aggregate> {
-    return this.$aggregate.asObservable();
+    return this.$aggregate.pipe(
+      filter(agg => !!agg)
+    ) as Observable<Aggregate>;
   }
 
   // map keys are gene symbols in all caps
@@ -85,8 +102,11 @@ export class DataService {
   }
 
   getLegendSamples(): Observable<LegendSample[]> {
-    return this.selectionService.getTree().pipe(
-      withLatestFrom(this.getAggregate(), this.getClusterIds()),
+    return combineLatest([
+      this.selectionService.getTree(),
+      this.getAggregate(),
+      this.getClusterIds()
+    ]).pipe(
       filter(([tree, aggregate, clusterIds]) => tree !== null),
       map(([tree, aggregate, clusterIds]) => {
         const returnVal: LegendSample[] = [];
@@ -248,3 +268,14 @@ export interface LegendNode {
   color: string;
   proportion: number;
 }
+
+export interface DataSet {
+  label: string;
+  url: string;
+  isDemo: boolean;
+}
+
+export const DEMO_DATA_SETS: DataSet[] = [
+  { label: 'Griffith_et_al_AML.json', url: 'assets/test.json', isDemo: true },
+  { label: 'CRC.json', url: 'assets/045.aggregated.json', isDemo: true }
+];

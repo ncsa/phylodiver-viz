@@ -34,7 +34,6 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.push(this.dataService.getRootDisplayNode().subscribe(root => {
       this.rootNode = root;
-      console.log(root);
     }));
     this.subscriptions.push(this.dataService.getLegendSamples().subscribe(legendSamples => {
       this.legendSamples = legendSamples;

@@ -1,4 +1,7 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { DataService, DataSet } from 'src/app/services/data.service';
 
 @Component({
   selector: 'page-header',
@@ -6,19 +9,25 @@ import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core'
   styleUrls: ['../../../styles/styles.scss', './page-header.component.scss'],
 })
 export class PageHeaderComponent implements OnInit, OnDestroy {
-  @HostBinding('class.small') isSmallHeader:boolean = false;
+  @HostBinding('class.small') isSmallHeader = false;
 
 	@Input()
-	showDataset:boolean = true;
+	showDataset = true;
 
-  showModal:boolean = false;
+  showModal = false;
 
-  constructor() { }
+  dataSet: DataSet|null = null;
+
+  subscriptions: Subscription[] = [];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.subscriptions.push(this.dataService.getDataSet().subscribe(ds => this.dataSet = ds));
   }
 
   ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 //todo: this toggleheader function is not needed, instead, this should be controlled by the scroll position...after 50? pixels of scrolling, switch to isSmallHeader = true, if near the top, then back to isSmallHeader = false. 50px value will need to be played with to find the best breakpoint

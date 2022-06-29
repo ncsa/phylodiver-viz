@@ -45,6 +45,8 @@ export class SelectionService {
 
   setTree(tree: Tree): void {
     this.tree.next(tree);
+    // reset the display node when switching trees
+    this.setDisplayNode(null);
   }
 
   getConsequence(): Observable<string|null> {
