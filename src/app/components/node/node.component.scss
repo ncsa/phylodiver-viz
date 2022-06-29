@@ -85,7 +85,7 @@
 
     @include border-radius(6px);
 
-    &:not(.is_subclone_block) {
+    &:not(.is_cluster_block) {
       @include repeating-bars(45deg, rgba(#fff, .3), transparent, 2px);
     }
 

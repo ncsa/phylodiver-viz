@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/page/landing-page/landing-page.component';
 import { LegendSampleComponent } from './components/legend-sample/legend-sample.component';
@@ -33,7 +36,10 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    ButtonModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
