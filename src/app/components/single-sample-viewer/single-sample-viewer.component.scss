@@ -136,7 +136,7 @@
 
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start; //center;
 
     min: {
       height: 200px;
@@ -152,7 +152,7 @@
 
     padding: 0px $padding;
     padding: {
-      top: $padding;
+      top: $padding * 2;
     }
 
     @include box-sizing(border-box);
@@ -297,6 +297,9 @@
     color: color_variable('legend_background');
   }
 
+  margin: {
+    top: $padding * .5;
+  }
   padding: ($padding * .75);
 
   @include border-radius($border_radius * 2);

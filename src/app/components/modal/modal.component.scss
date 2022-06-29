@@ -123,6 +123,17 @@ $progress_bar_width: 30px;
       }
     }
 
+    &.disabled {
+      cursor: not-allowed;
+
+      color: #ccc;
+      border: {
+        color: #ccc;
+      }
+
+      pointer-events: none;
+    }
+
     &.button_plain {
       border: {
         color: transparent;

@@ -57,13 +57,23 @@ header {
 }
 
 .logo {
+  cursor: pointer;
+
   width: 80px;
 
   @include transition(#{width .2s easing($ease-in-out)});
 
+  &:hover {
+    svg {
+      @include scale(1.15);
+    }
+  }
+
   svg {
     width: 100%;
     height: auto;
+
+    @include transition(#{transform .2s easing($ease-in-out)});
   }
 }
 
