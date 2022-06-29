@@ -23,7 +23,6 @@ export class DataService {
     this.getDataSet().pipe(
       switchMap(ds => this.http.get<Aggregate>(ds.url)),
     ).subscribe(ds => {
-      console.log(ds);
       this.$aggregate.next(ds);
     });
     // auto-select first tumor sample and first tree

@@ -17,8 +17,9 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.close();
   }
 
+  initialUserDataSetLabel = 'Your Dataset';
   demoDataSets = DEMO_DATA_SETS;
-  userDataSet: DataSet = { label: 'Your Dataset', url: '', isDemo: false };
+  userDataSet: DataSet = getDefaultUserDataSet();
   selection: DataSet|null = null;
 
   subscriptions: Subscription[] = [];
@@ -40,6 +41,22 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   clearSelection(): void {
     this.selection = null;
+    this.userDataSet = getDefaultUserDataSet();
+  }
+
+  onFileSelected(file: File): void {
+    if (file) {
+      this.userDataSet.label = file.name;
+      const reader = new FileReader();
+      reader.onloadend = (progressEvent) => {
+        if (progressEvent.target?.result) {
+          this.userDataSet.url = progressEvent.target.result as string;
+        }
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.userDataSet = getDefaultUserDataSet();
+    }
   }
 
   loadDataSet(): void {
@@ -48,4 +65,8 @@ export class ModalComponent implements OnInit, OnDestroy {
       this.close();
     }
   }
+}
+
+export function getDefaultUserDataSet(): DataSet {
+  return { label: 'Your Dataset', url: '', isDemo: false };
 }

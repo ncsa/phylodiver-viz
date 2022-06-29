@@ -12,9 +12,10 @@
 <!-- todo: link this to data store -->
       <label class="dataset">
         <input type="radio" name="dataset" [value]="userDataSet" [(ngModel)]="selection" />
-        <div class="name">Your Dataset <!-- todo: replace label with filename once loaded / validated --></div>
+        <div class="name">{{ userDataSet.label }}</div>
 
-        <div *ngIf="selection === userDataSet" class="browse_button disabled">Browse for your file</div>
+        <input type="file" class="file_input_hidden" (change)="onFileSelected($any($event.target).files[0])" #fileUpload>
+        <div *ngIf="selection === userDataSet" class="browse_button" (click)="fileUpload.click()">Browse for your file</div>
       </label>
     </div>
 

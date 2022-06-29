@@ -172,6 +172,10 @@ $progress_bar_width: 30px;
       @include border-radius(2000px);
     }
 
+    .file_input_hidden {
+      display: none;
+    }
+
     .browse_button {
       cursor: pointer;
 
