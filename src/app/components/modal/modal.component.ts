@@ -17,7 +17,6 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.close();
   }
 
-  initialUserDataSetLabel = 'Your Dataset';
   demoDataSets = DEMO_DATA_SETS;
   userDataSet: DataSet = getDefaultUserDataSet();
   selection: DataSet|null = null;
