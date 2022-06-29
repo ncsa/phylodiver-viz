@@ -14,6 +14,7 @@ import { SelectionService } from 'src/app/services/selection.service';
 export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding('class.is_selected') isFirstSelected = false;
   @HostBinding('class.is_visible') isSelected = false;
+  @HostBinding('class.is_condensed') isCondensed = true;
   @HostBinding('style') cssStyles:{[key: string]: string} = {};
 
   @HostListener('click', ['$event'])

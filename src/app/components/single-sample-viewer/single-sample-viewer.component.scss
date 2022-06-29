@@ -128,23 +128,34 @@
 
   .content {
     overflow: {
+      x: auto;
       y: auto;
     }
 
     flex-grow: 1; //to fill the window height
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     min: {
       height: 200px;
+    }
+    max: {
+      width: 100%;
+    }
+
+    margin: {
+      right: auto;
+      left: auto;
     }
 
     padding: 0px $padding;
     padding: {
       top: $padding;
     }
+
+    @include box-sizing(border-box);
   }
 
   phylo-table {

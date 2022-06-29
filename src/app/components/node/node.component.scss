@@ -63,6 +63,18 @@
     }
   }
 
+  &.is_condensed {
+    .block_info {
+      width: auto;
+
+      .info_container {
+        .label {
+          display: none;
+        }
+      }
+    }
+  }
+
   .block {
     position: relative;
 
