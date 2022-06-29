@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 
 import { Sample, Tree } from 'src/app/models/pipeline-dto';
 import { DisplayNode } from 'src/app/models/models';
-import { CellData } from 'src/app/models/toy-dto';
 import { DataService, LegendSample } from 'src/app/services/data.service';
 import { SelectionService } from 'src/app/services/selection.service';
 
@@ -16,7 +15,6 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  cellData: CellData[] = [];
   hasSelectedNode = false;
   selectedSample: Sample|null = null;
   legendSamples: LegendSample[] = [];
@@ -34,7 +32,6 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.push(this.dataService.getRootDisplayNode().subscribe(root => {
       this.rootNode = root;
-      console.log(root);
     }));
     this.subscriptions.push(this.dataService.getLegendSamples().subscribe(legendSamples => {
       this.legendSamples = legendSamples;

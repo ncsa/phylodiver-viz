@@ -1,4 +1,7 @@
-import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { DataService, DataSet, DEMO_DATA_SETS } from 'src/app/services/data.service';
 
 @Component({
   selector: 'modal',
@@ -14,15 +17,55 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.close();
   }
 
-  constructor() { }
+  demoDataSets = DEMO_DATA_SETS;
+  userDataSet: DataSet = getDefaultUserDataSet();
+  selection: DataSet|null = null;
+
+  subscriptions: Subscription[] = [];
+
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit(): void {
+    this.subscriptions.push(this.dataService.getDataSet().subscribe(ds => this.selection = ds));
   }
 
   ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   close():void {
     this.onClose.emit();
   }
+
+  clearSelection(): void {
+    this.selection = null;
+    this.userDataSet = getDefaultUserDataSet();
+  }
+
+  onFileSelected(file: File): void {
+    if (file) {
+      this.userDataSet.label = file.name;
+      const reader = new FileReader();
+      reader.onloadend = (progressEvent) => {
+        if (progressEvent.target?.result) {
+          this.userDataSet.url = progressEvent.target.result as string;
+        }
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.userDataSet = getDefaultUserDataSet();
+    }
+  }
+
+  loadDataSet(): void {
+    if (this.selection) {
+      this.dataService.setDataSet(this.selection);
+      this.close();
+    }
+  }
+}
+
+export function getDefaultUserDataSet(): DataSet {
+  return { label: 'Your Dataset', url: '', isDemo: false };
 }

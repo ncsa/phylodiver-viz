@@ -3,14 +3,13 @@
         <div class="close_btn" (click)="$event.stopPropagation(); closeTable()"></div>
         <div class="label">Selected: </div>
         <div class="data_label">{{label || ''}}</div>
-        <div class="edge_label" *ngIf="edgeLabel">{{edgeLabel}}</div>
-        <div class="tier_label" (click)="$event.stopPropagation(); deselectConsequence()">
-            <ng-container *ngIf="consequence">
-                <span class="value" [title]="consequence">{{ consequence }}</span>
+        <div class="tier_label" (click)="$event.stopPropagation(); deselectSeverity()">
+            <ng-container *ngIf="severity">
+                <span class="value" [title]="severity.label">{{ severity.label }}</span>
                 <div class="close_icon"></div>
             </ng-container>
-            <ng-container *ngIf="!consequence">
-                All Consequences
+            <ng-container *ngIf="!severity">
+                All Severities
             </ng-container>
         </div>
     </div>
@@ -26,7 +25,7 @@
 
         <tbody>
             <ng-container *ngFor="let row of tableRows">
-                <tr *ngIf="!consequence || consequence === row.variant.consequence" (click)="$event.stopPropagation(); selectRow(row)">
+                <tr *ngIf="!severity || severity === row.variant.severity" (click)="$event.stopPropagation(); selectRow(row)">
                     <td *ngFor="let column of tableColumns" [ngClass]="'column_' + column.cssSuffix" [title]="column.accessor(row.variant, row.clusterId)">
                         {{ column.accessor(row.variant, row.clusterId) }}
                     </td>

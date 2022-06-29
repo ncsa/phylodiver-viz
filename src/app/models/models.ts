@@ -14,8 +14,17 @@ export interface DisplayNode {
   level: number;
 }
 
+export type SeverityKey = 'HIGH'|'MODERATE'|'LOW'|'MODIFIER'|'UNKNOWN';
+
+export interface Severity {
+  label: string;
+  value: SeverityKey;
+  sortOrder: number;
+}
+
 export interface DisplayVariant extends SNV {
   cgcGeneInfo: CgcGeneInfo|null;
+  severity: Severity;
 }
 
 export interface CgcGeneInfo {

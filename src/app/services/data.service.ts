@@ -1,11 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, map, withLatestFrom, filter, combineLatest } from 'rxjs';
+import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap, tap } from 'rxjs';
 
-import { CgcGenes } from '../models/annotation-dto';
-import { CgcGeneInfo, DisplayNode, DisplayVariant } from '../models/models';
+import { CgcGenes, ConsequenceSeverities } from '../models/annotation-dto';
+import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity, SeverityKey } from '../models/models';
 import { Aggregate, Cluster, Sample, Tree } from '../models/pipeline-dto';
-import * as amlTree from './test.json';
-import * as cgcGenes from './cgc_genes.json';
+import * as cgcGenesData from './cgc_genes.json';
+import * as consequenceSeveritiesData from './consequence_severities.json';
 import { SelectionService } from './selection.service';
 
 @Injectable({
@@ -13,12 +14,18 @@ import { SelectionService } from './selection.service';
 })
 export class DataService {
 
-  $aggregate = new BehaviorSubject<Aggregate>(amlTree as Aggregate);
+  $dataSet = new BehaviorSubject<DataSet>(DEMO_DATA_SETS[0]);
+  $aggregate = new BehaviorSubject<Aggregate|null>(null);
 
   rootColor = '#90959B';
   clusterColors = ['#173858', '#2A5E72', '#C9C943', '#E89680', '#B26799', '#7524A1'];
 
-  constructor(private selectionService: SelectionService) {
+  constructor(private selectionService: SelectionService, private http: HttpClient) {
+    this.getDataSet().pipe(
+      switchMap(ds => this.http.get<Aggregate>(ds.url)),
+    ).subscribe(ds => {
+      this.$aggregate.next(ds);
+    });
     // auto-select first tumor sample and first tree
     this.getAggregate().subscribe(aggregate => {
       const tumorSamples = aggregate.samples.filter(sample => sample.type === 'tumor');
@@ -29,13 +36,23 @@ export class DataService {
     });
   }
 
+  getDataSet(): Observable<DataSet> {
+    return this.$dataSet.asObservable();
+  }
+
+  setDataSet(dataSet: DataSet): void {
+    this.$dataSet.next(dataSet);
+  }
+
   getAggregate(): Observable<Aggregate> {
-    return this.$aggregate.asObservable();
+    return this.$aggregate.pipe(
+      filter(agg => !!agg)
+    ) as Observable<Aggregate>;
   }
 
   // map keys are gene symbols in all caps
   getCgcGenes(): Observable<Map<string, CgcGeneInfo>> {
-    return of(cgcGenes as CgcGenes).pipe(
+    return of(cgcGenesData as CgcGenes).pipe(
       map(raw => {
         const returnVal = new Map<string, CgcGeneInfo>();
         Object.entries(raw).forEach(([geneSymbol, rawInfo]) => {
@@ -48,6 +65,15 @@ export class DataService {
         });
         return returnVal;
       })
+    );
+  }
+
+  // map keys are consequences in all caps
+  getConsequenceSeverities(): Observable<Map<string, Severity>> {
+    return of(consequenceSeveritiesData as ConsequenceSeverities).pipe(
+      map(raw => new Map<string, Severity>(
+          Object.entries(raw).map(([consequence, severityKey]) => [consequence.toUpperCase(), severityKeyToSeverity.get(severityKey)!])
+      ))
     );
   }
 
@@ -85,8 +111,11 @@ export class DataService {
   }
 
   getLegendSamples(): Observable<LegendSample[]> {
-    return this.selectionService.getTree().pipe(
-      withLatestFrom(this.getAggregate(), this.getClusterIds()),
+    return combineLatest([
+      this.selectionService.getTree(),
+      this.getAggregate(),
+      this.getClusterIds()
+    ]).pipe(
       filter(([tree, aggregate, clusterIds]) => tree !== null),
       map(([tree, aggregate, clusterIds]) => {
         const returnVal: LegendSample[] = [];
@@ -182,8 +211,8 @@ export class DataService {
             const newSubtreeNodes: DisplayNode[] = [];
             node.children.forEach(child => {
               child.children.forEach(grandchild => {
-                // create a name for this subtree; note this is crude
-                let nodeName = 'Subtree ' + grandchild.cluster_id + (grandchild.descendedClusterIds.length ? ',' + grandchild.descendedClusterIds.join(',') : '');
+                // create a name for this subclone
+                let nodeName = 'Subclone ' + grandchild.cluster_id;
                 // create subtree node that will be a sibling of `child`
                 const subtreeNode: DisplayNode = {
                   cluster_id: undefined, // subtree node has no cluster
@@ -229,11 +258,13 @@ export class DataService {
   getSnvIdToDisplayVariant(): Observable<Map<number, DisplayVariant>> {
     return combineLatest([
       this.getAggregate(),
-      this.getCgcGenes()
+      this.getCgcGenes(),
+      this.getConsequenceSeverities()
     ]).pipe(
-      map(([aggregate, cgcGenes]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
+      map(([aggregate, cgcGenes, consequenceSeverities]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
         ...snv,
-        cgcGeneInfo: snv.symbol && cgcGenes.has(snv.symbol.toUpperCase()) ? cgcGenes.get(snv.symbol.toUpperCase()) : null
+        cgcGeneInfo: snv.symbol && cgcGenes.has(snv.symbol.toUpperCase()) ? cgcGenes.get(snv.symbol.toUpperCase()) : null,
+        severity: snv.consequence && consequenceSeverities.has(snv.consequence.toUpperCase()) ? consequenceSeverities.get(snv.consequence.toUpperCase()) : severityKeyToSeverity.get('UNKNOWN')
       } as DisplayVariant])))
     );
   }
@@ -248,3 +279,22 @@ export interface LegendNode {
   color: string;
   proportion: number;
 }
+
+export interface DataSet {
+  label: string;
+  url: string;
+  isDemo: boolean;
+}
+
+export const severityKeyToSeverity = new Map<SeverityKey, Severity>([
+  ['HIGH', { label: 'high', value: 'HIGH', sortOrder: 1 }],
+  ['MODERATE', { label: 'moderate', value: 'MODERATE', sortOrder: 2 }],
+  ['LOW', { label: 'low', value: 'LOW', sortOrder: 3 }],
+  ['MODIFIER', { label: 'modifier', value: 'MODIFIER', sortOrder: 4 }],
+  ['UNKNOWN', { label: 'unknown', value: 'UNKNOWN', sortOrder: 5 }]
+]);
+
+export const DEMO_DATA_SETS: DataSet[] = [
+  { label: 'Griffith_et_al_AML.json', url: 'assets/Griffith_et_al_AML.json', isDemo: true },
+  { label: 'CRC.json', url: 'assets/045.aggregated.json', isDemo: true }
+];

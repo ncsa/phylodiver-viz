@@ -27,11 +27,11 @@
 
   <h2>PhyloDiver</h2>
 
-  <div class="dataset" *ngIf="showDataset">
+  <div class="dataset" *ngIf="showDataset && dataSet">
     <div class="label">You are viewing</div>
 
     <div class="dataset_name">
-      Griffith_et_aL_AML_data <div class="button" (click)="toggleModal();$event.stopPropagation();">Change Data</div>
+      {{ dataSet.label }} <div class="button" (click)="toggleModal();$event.stopPropagation();">Change Data</div>
     </div>
   </div>
 
