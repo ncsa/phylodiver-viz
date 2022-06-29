@@ -3,7 +3,6 @@
         <div class="close_btn" (click)="$event.stopPropagation(); closeTable()"></div>
         <div class="label">Selected: </div>
         <div class="data_label">{{label || ''}}</div>
-        <div class="edge_label" *ngIf="edgeLabel">{{edgeLabel}}</div>
         <div class="tier_label" (click)="$event.stopPropagation(); deselectSeverity()">
             <ng-container *ngIf="severity">
                 <span class="value" [title]="severity.label">{{ severity.label }}</span>

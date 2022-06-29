@@ -16,7 +16,6 @@ export class TableComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   label: string|null = null;
-  edgeLabel: string|null = null;
 
   severity: Severity|null = null;
   displayNode: DisplayNode|null = null;
@@ -47,16 +46,8 @@ export class TableComponent implements OnInit, OnDestroy {
     }));
     this.subscriptions.push(this.selectionService.getDisplayNode().subscribe(displayNode => {
       this.label = null;
-      this.edgeLabel = null;
       if (displayNode) {
         this.label = displayNode.node_name;
-        if (displayNode.cluster) {
-          // selected node is a subclone
-          this.edgeLabel = null;
-        } else {
-          // selected node is a subtree
-          this.edgeLabel = 'Cluster ' + displayNode.children.find(child => !!child.cluster)!.cluster_id;
-        }
       }
       this.displayNode = displayNode;
       this.updateTableRows();

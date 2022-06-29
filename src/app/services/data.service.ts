@@ -211,8 +211,8 @@ export class DataService {
             const newSubtreeNodes: DisplayNode[] = [];
             node.children.forEach(child => {
               child.children.forEach(grandchild => {
-                // create a name for this subtree; note this is crude
-                let nodeName = 'Subtree ' + grandchild.cluster_id + (grandchild.descendedClusterIds.length ? ',' + grandchild.descendedClusterIds.join(',') : '');
+                // create a name for this subclone
+                let nodeName = 'Subclone ' + grandchild.cluster_id;
                 // create subtree node that will be a sibling of `child`
                 const subtreeNode: DisplayNode = {
                   cluster_id: undefined, // subtree node has no cluster
