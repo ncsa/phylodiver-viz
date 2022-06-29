@@ -275,6 +275,6 @@ export interface DataSet {
 }
 
 export const DEMO_DATA_SETS: DataSet[] = [
-  { label: 'Griffith_et_al_AML.json', url: 'assets/test.json', isDemo: true },
+  { label: 'Griffith_et_al_AML.json', url: 'assets/Griffith_et_al_AML.json', isDemo: true },
   { label: 'CRC.json', url: 'assets/045.aggregated.json', isDemo: true }
 ];
