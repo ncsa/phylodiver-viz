@@ -29,7 +29,7 @@
             [displayNode]="rootNode"
         ></phylo-node>
 
-        <div class="diagram_purity_percentage">95% purity</div>
+        <div *ngIf="rootNode" class="diagram_purity_percentage">{{ (rootNode.prevalence * 100) | prevalenceFormatter }}% purity</div>
       </div>
 
       <div class="legend" [class.is_collapsed]="hasSelectedNode && showTable">
