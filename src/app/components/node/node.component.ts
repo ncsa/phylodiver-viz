@@ -14,6 +14,7 @@ import { SelectionService } from 'src/app/services/selection.service';
 export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding('class.is_selected') isFirstSelected = false;
   @HostBinding('class.is_visible') isSelected = false;
+  @HostBinding('class.is_condensed') isCondensed = false;
   @HostBinding('style') cssStyles:{[key: string]: string} = {};
 
   @HostListener('click', ['$event'])
@@ -39,9 +40,9 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   gradientId = 'uninitialized';
 
   summaryColumns = [
+    { label: 'Type', cssSuffix: 'type', accessor: (severity: Severity, info: VariantInfo) => 'SNV' },
     { label: 'Severity', cssSuffix: 'consequence', accessor: (severity: Severity, info: VariantInfo) => severity.label },
     { label: 'Mutations', cssSuffix: 'mutations', accessor: (severity: Severity, info: VariantInfo) => info.mutationsAll.size },
-    { label: 'Type', cssSuffix: 'type', accessor: (severity: Severity, info: VariantInfo) => 'SNV' },
     { label: 'CGC Genes', cssSuffix: 'cgc_genes', accessor: (severity: Severity, info: VariantInfo) => info.genesCgc.size }
   ];
 
