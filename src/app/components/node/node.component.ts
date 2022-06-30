@@ -44,6 +44,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     { label: 'Severity', cssSuffix: 'consequence', accessor: (severity: Severity, info: VariantInfo) => severity.label },
     { label: 'Mutations', cssSuffix: 'mutations', accessor: (severity: Severity, info: VariantInfo) => info.mutationsAll.size },
     { label: 'CGC Genes', cssSuffix: 'cgc_genes', accessor: (severity: Severity, info: VariantInfo) => info.genesCgc.size }
+    // todo: drugs
   ];
 
   constructor(
@@ -112,7 +113,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       // DisplayNode represents a subclone, so we want to aggregate the subclone cluster variants along with all its parent cluster variants
       clusterIds = this.displayNode!.aggregateClusterIds;
     } else {
-      // DisplayNode represents a subtree, so we want to show only the cluster associated with the next child subclone
+      // DisplayNode represents the edge to a cluster, so we want to show only the next child cluster
       clusterIds = this.displayNode!.children.filter(node => node.cluster).map(node => node.cluster_id!);
     }
     // build variant info per severity

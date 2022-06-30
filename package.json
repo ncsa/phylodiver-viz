@@ -7,11 +7,12 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy-pages": "gh-pages -d dist/phylodiver-viz"
+    "deploy-pages": "cp CNAME dist/phylodiver-viz/ && cp dist/phylodiver-viz/index.html dist/phylodiver-viz/404.html && gh-pages -d dist/phylodiver-viz"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.6",
+    "@angular/cdk": "^13.3.9",
     "@angular/common": "~13.3.6",
     "@angular/compiler": "~13.3.6",
     "@angular/core": "~13.3.6",

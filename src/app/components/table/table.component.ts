@@ -91,7 +91,7 @@ export class TableComponent implements OnInit, OnDestroy {
       // DisplayNode represents a subclone, so we want to aggregate the subclone cluster variants along with all its parent cluster variants
       clusterIds = this.displayNode!.aggregateClusterIds;
     } else if (this.displayNode) {
-      // DisplayNode represents a subtree, so we want to show only the cluster associated with the next child subclone
+      // DisplayNode represents the edge to a cluster, so we want to show only the next child cluster
       clusterIds = this.displayNode!.children.filter(node => node.cluster).map(node => node.cluster_id!);
     }
     const rows: TableRow[] = [];

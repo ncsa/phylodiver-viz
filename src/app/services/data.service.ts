@@ -207,7 +207,7 @@ export class DataService {
         patchNode(rootNode, null, 0);
         // now traverse the tree again inserting subtree nodes
         const insertSubtrees = (node: DisplayNode) => {
-          if (!node.cluster) { // we don't insert subtrees on subclones
+          if (!node.cluster) { // nodes with a cluster will represent the subclone; we won't add edges out to descendant clusters
             const newSubtreeNodes: DisplayNode[] = [];
             node.children.forEach(child => {
               child.children.forEach(grandchild => {
