@@ -18,7 +18,7 @@ export class DataService {
   $aggregate = new BehaviorSubject<Aggregate|null>(null);
 
   rootColor = '#90959B';
-  clusterColors = ['#173858', '#2A5E72', '#C9C943', '#E89680', '#B26799', '#7524A1', "#66b362", "#e6a640", "#c7406a"];
+  clusterColors = ['#173858', '#2A5E72', '#C9C943', '#E89680', '#B26799', '#7524A1', "#489669", "#e6a640", "#c7406a"];
 
   constructor(private selectionService: SelectionService, private http: HttpClient) {
     this.getDataSet().pipe(
