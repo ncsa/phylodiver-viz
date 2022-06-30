@@ -55,3 +55,10 @@ example: document.documentElement.style.setProperty('--text-color', '#ff0000');
 //**************** google webfont ******************
 
 //webfonts are no longer referenced using the official CDN, instead, they are loaded locally using webfont.scss
+
+
+//**************** primeicons ******************
+
+//TODO review path replacement instead of relative (may not work inside sass)
+// https://jacobneterer.medium.com/import-via-absolute-paths-in-angular-fc4146bf2330
+@import '../../../node_modules/primeicons/primeicons.css';
