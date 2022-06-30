@@ -223,14 +223,12 @@ export class DataService {
             const newSubtreeNodes: DisplayNode[] = [];
             node.children.forEach(child => {
               child.children.forEach(grandchild => {
-                // create a name for this subclone
-                let nodeName = 'Subclone ' + grandchild.cluster_id;
                 // create subtree node that will be a sibling of `child`
                 const subtreeNode: DisplayNode = {
                   cluster_id: undefined, // subtree node has no cluster
                   cluster: undefined, // subtree node has no cluster
                   color: child.color, // same color as `child`, because it represents a subpopulation derived from `child`
-                  node_name: nodeName,
+                  node_name: 'Cluster ' + grandchild.cluster_id,
                   prevalence: grandchild.prevalence,
                   children: [grandchild],
                   childClusterNodeNames: [grandchild.node_name],
@@ -244,9 +242,14 @@ export class DataService {
                 newSubtreeNodes.push(subtreeNode);
                 levelToNodes.get(subtreeNode.level)!.push(subtreeNode);
               });
+              child.node_name = 'Subclone ' + child.cluster_id;
               // clear child.children, because they're now all represented with sibling subtree nodes
               child.children = [];
             });
+            if(node.parent === null) {
+              // for now, the root node really represents the edge to the first cluster
+              node.node_name = 'Cluster ' + node.children.find(child => !!child.cluster)!.cluster_id;
+            }
             node.children = [...node.children, ...newSubtreeNodes];
             newSubtreeNodes.forEach(node => insertSubtrees(node));
           }
