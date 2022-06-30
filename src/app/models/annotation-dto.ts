@@ -11,8 +11,13 @@ export interface RawCgcGeneInfo {
   'Entrez GeneId'?: number;
 }
 
-
-
 export interface ConsequenceSeverities {
   [consequence: string]: SeverityKey;
+}
+
+export interface DrugInfo {
+  [geneSymbol: string]: {
+    interactions: {[drugName: string]: {}},
+    entrez_id: number;
+  }
 }

@@ -74,13 +74,24 @@ export class TableComponent implements OnInit, OnDestroy {
       { label: 'Amino Acid Change', cssSuffix: 'amino_acid_change', accessor: (variant: DisplayVariant, clusterId: number) => variant.amino_acid_change ?? '' },
       { label: 'Reference', cssSuffix: 'reference', accessor: (variant: DisplayVariant, clusterId: number) => variant.reference ?? '' },
       { label: 'Variant', cssSuffix: 'variant', accessor: (variant: DisplayVariant, clusterId: number) => variant.variant ?? '' },
-      { label: 'Strand', cssSuffix: 'strand', accessor: (variant: DisplayVariant, clusterId: number) => variant.strand ?? '' },
+      { label: 'Strand', cssSuffix: 'strand', accessor: (variant: DisplayVariant, clusterId: number) => variant.strand ?? '' }
     ];
     this.samples.forEach((sample, index) => {
       columns.push({ label: sample.name + ' All DNA VAF', cssSuffix: 'alldna_vaf', accessor: (variant: DisplayVariant, clusterId: number) => formatVaf(variant.vaf?.[index]) });
     });
 
     columns.push({ label: 'CGC Gene', cssSuffix: 'cgc_gene', accessor: (variant: DisplayVariant, clusterId: number) => variant.cgcGeneInfo ? '1' : '' });
+    columns.push({ label: 'Drugs', cssSuffix: 'drugs', accessor: (variant: DisplayVariant, clusterId: number) => {
+      let returnVal: string;
+      if (variant.drugs.length === 0) {
+        returnVal = '';
+      } else if (variant.drugs.length === 1) {
+        returnVal = variant.drugs[0];
+      } else {
+        returnVal = variant.drugs.length + '';
+      }
+      return returnVal;
+    }});
     this.tableColumns = columns;
   }
 

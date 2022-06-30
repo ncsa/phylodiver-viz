@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { DataService, DataSet, DEMO_DATA_SETS } from 'src/app/services/data.service';
@@ -23,11 +24,14 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.subscriptions.push(this.dataService.getDataSet().subscribe(ds => this.selection = ds));
+    if (this.router.url.includes('upload=1')) {
+      this.selection = this.userDataSet;
+    }
   }
 
   ngOnDestroy(): void {

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap, tap } from 'rxjs';
+import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
 
-import { CgcGenes, ConsequenceSeverities } from '../models/annotation-dto';
+import { CgcGenes, ConsequenceSeverities, DrugInfo } from '../models/annotation-dto';
 import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity, SeverityKey } from '../models/models';
-import { Aggregate, Cluster, Sample, Tree } from '../models/pipeline-dto';
+import { Aggregate, Cluster, Node as DtoNode, Sample, Tree } from '../models/pipeline-dto';
 import * as cgcGenesData from './cgc_genes.json';
 import * as consequenceSeveritiesData from './consequence_severities.json';
+import * as drugData from './dgi_genes.json';
 import { SelectionService } from './selection.service';
 
 @Injectable({
@@ -77,6 +78,21 @@ export class DataService {
     );
   }
 
+  // map keys are gene symbols in all caps
+  getGeneDrugs(): Observable<Map<string, string[]>> {
+    return of(drugData as DrugInfo).pipe(
+      map(raw => {
+        const returnVal = new Map<string, string[]>();
+        Object.entries(raw).forEach(([geneName, geneData]) => {
+          if (geneData.interactions) {
+            returnVal.set(geneName.toUpperCase(), Object.keys(geneData.interactions));
+          }
+        });
+        return returnVal;
+      })
+    );
+  }
+
   getSamples(): Observable<Sample[]> {
     return this.getAggregate().pipe(
       map(aggregate => aggregate.samples)
@@ -114,27 +130,39 @@ export class DataService {
     return combineLatest([
       this.selectionService.getTree(),
       this.getAggregate(),
-      this.getClusterIds()
+      this.getClusterColorMapping()
     ]).pipe(
-      filter(([tree, aggregate, clusterIds]) => tree !== null),
-      map(([tree, aggregate, clusterIds]) => {
+      filter(([tree, aggregate, colorMapping]) => tree !== null),
+      map(([tree, aggregate, colorMapping]) => {
         const returnVal: LegendSample[] = [];
         // an array of all the samples
         const tumorSamples = aggregate.samples.filter(sample => sample.type === 'tumor');
         // a map from clusterId and sampleId to prevalence
         const clusterIdAndSampleIdToPrevalance = new Map<string, number>();
+        // a map from node_name to node
+        const nodeNameToNode = new Map<string, DtoNode>();
         tree!.nodes.forEach(node => {
+          nodeNameToNode.set(node.node_name, node);
           if (node.cluster_id !== undefined && node.cluster_id !== null) {
             node.prevalence.forEach(samplePrevalance => {
               clusterIdAndSampleIdToPrevalance.set(node.cluster_id! + '-' + samplePrevalance.sample_id, samplePrevalance.value);
             });
           }
         });
+        // order the clusterIds according to their display order in the tree visualization
+        const orderedClusterIds: number[] = [];
+        const processNode = (node: DtoNode) => {
+          if (node.cluster_id !== undefined && node.cluster_id !== null) {
+            orderedClusterIds.push(node.cluster_id);
+          }
+          node.children.forEach(childNodeName => processNode(nodeNameToNode.get(childNodeName)!));
+        };
+        processNode(nodeNameToNode.get('*')!);
         tumorSamples.forEach(sample => {
           returnVal.push({
             sample,
-            nodes: clusterIds.map((clusterId, index) => ({
-              color: this.clusterColors[index],
+            nodes: orderedClusterIds.map(clusterId => ({
+              color: colorMapping.get(clusterId)!,
               proportion: clusterIdAndSampleIdToPrevalance.get(clusterId + '-' + sample.sample_id) || 0
             }))
           });
@@ -211,14 +239,12 @@ export class DataService {
             const newSubtreeNodes: DisplayNode[] = [];
             node.children.forEach(child => {
               child.children.forEach(grandchild => {
-                // create a name for this subclone
-                let nodeName = 'Subclone ' + grandchild.cluster_id;
                 // create subtree node that will be a sibling of `child`
                 const subtreeNode: DisplayNode = {
                   cluster_id: undefined, // subtree node has no cluster
                   cluster: undefined, // subtree node has no cluster
                   color: child.color, // same color as `child`, because it represents a subpopulation derived from `child`
-                  node_name: nodeName,
+                  node_name: 'Cluster ' + grandchild.cluster_id,
                   prevalence: grandchild.prevalence,
                   children: [grandchild],
                   childClusterNodeNames: [grandchild.node_name],
@@ -232,9 +258,14 @@ export class DataService {
                 newSubtreeNodes.push(subtreeNode);
                 levelToNodes.get(subtreeNode.level)!.push(subtreeNode);
               });
+              child.node_name = 'Subclone ' + child.cluster_id;
               // clear child.children, because they're now all represented with sibling subtree nodes
               child.children = [];
             });
+            if(node.parent === null) {
+              // for now, the root node really represents the edge to the first cluster
+              node.node_name = 'Cluster ' + node.children.find(child => !!child.cluster)!.cluster_id;
+            }
             node.children = [...node.children, ...newSubtreeNodes];
             newSubtreeNodes.forEach(node => insertSubtrees(node));
           }
@@ -259,11 +290,13 @@ export class DataService {
     return combineLatest([
       this.getAggregate(),
       this.getCgcGenes(),
-      this.getConsequenceSeverities()
+      this.getConsequenceSeverities(),
+      this.getGeneDrugs()
     ]).pipe(
-      map(([aggregate, cgcGenes, consequenceSeverities]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
+      map(([aggregate, cgcGenes, consequenceSeverities, geneDrugs]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
         ...snv,
         cgcGeneInfo: snv.symbol && cgcGenes.has(snv.symbol.toUpperCase()) ? cgcGenes.get(snv.symbol.toUpperCase()) : null,
+        drugs: snv.symbol && geneDrugs.has(snv.symbol.toUpperCase()) ? geneDrugs.get(snv.symbol.toUpperCase()) : [],
         severity: snv.consequence && consequenceSeverities.has(snv.consequence.toUpperCase()) ? consequenceSeverities.get(snv.consequence.toUpperCase()) : severityKeyToSeverity.get('UNKNOWN')
       } as DisplayVariant])))
     );

@@ -27,7 +27,7 @@
           <p><a href="https://www.cell.com/fulltext/S2405-4712(15)00113-1" target="_blank">M. Griffith, et al.</a> "Optimizing cancer genome sequencing and analysis." <span class="nowrap">Cell systems. 2015</span></p>
         </div>
 
-        <div class="block_button" routerLink="/demo" routerLinkActive="active">Take Me to the Demo!</div>
+        <div class="block_button" routerLink="/demo">Take Me to the Demo!</div>
       </div>
 
       <div class="block">
@@ -41,7 +41,7 @@
           <p>Your uploaded data is secured locally in your browser and is not transferred across <span class="nowrap">the internet.</span></p>
         </div>
 
-        <div class="block_button">Upload Your Data</div>
+        <div class="block_button" [routerLink]="['/demo', { upload: '1' }]">Upload Your Data</div>
       </div>
     </div>
   </section>
