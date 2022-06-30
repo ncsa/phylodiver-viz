@@ -131,14 +131,14 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
           }
           const variantInfo = severityToVariantInfo.get(severity)!;
           variantInfo.mutationsAll.add(variant);
+          if (severity.value === 'HIGH') {
+            variantInfo.mutationsHigh.add(variant);
+          }
           const geneName = snp.gene;
           if (geneName && geneName.length > 0) {
             variantInfo.genesAll.add(geneName);
             if (snp.cgcGeneInfo) {
               variantInfo.genesCgc.add(geneName);
-              if (snp.severity.value === 'HIGH') {
-                variantInfo.mutationsHigh.add(variant);
-              }
             }
           }
           // TODO drugs
