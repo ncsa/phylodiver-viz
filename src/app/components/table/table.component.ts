@@ -88,10 +88,10 @@ export class TableComponent implements OnInit, OnDestroy {
     // clusterIds will contain the clusters whose variants we'll report
     let clusterIds: number[] = [];
     if (this.displayNode?.cluster) {
-      // DisplayNode represents a cluster, so we want to aggregate the cluster variants along with all its parent cluster variants
+      // DisplayNode represents a subclone, so we want to aggregate the subclone cluster variants along with all its parent cluster variants
       clusterIds = this.displayNode!.aggregateClusterIds;
     } else if (this.displayNode) {
-      // DisplayNode represents a subclone, so we want to show only the next child cluster
+      // DisplayNode represents the edge to a cluster, so we want to show only the next child cluster
       clusterIds = this.displayNode!.children.filter(node => node.cluster).map(node => node.cluster_id!);
     }
     const rows: TableRow[] = [];
