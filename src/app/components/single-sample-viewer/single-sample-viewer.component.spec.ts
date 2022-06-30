@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { LegendSampleComponent } from '../legend-sample/legend-sample.component';
 import { NodeComponent } from '../node/node.component';
@@ -12,6 +13,7 @@ describe('SingleSampleViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [
         LegendSampleComponent,
         NodeComponent,

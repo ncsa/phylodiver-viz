@@ -80,7 +80,13 @@ export class TableComponent implements OnInit, OnDestroy {
       columns.push({ label: sample.name + ' All DNA VAF', cssSuffix: 'alldna_vaf', accessor: (variant: DisplayVariant, clusterId: number) => formatVaf(variant.vaf?.[index]) });
     });
 
-    columns.push({ label: 'CGC Gene', cssSuffix: 'cgc_gene', accessor: (variant: DisplayVariant, clusterId: number) => variant.cgcGeneInfo ? '1' : '' });
+    columns.push({ label: 'CGC Gene', cssSuffix: 'cgc_gene', accessor: (variant: DisplayVariant, clusterId: number) => {
+      let returnVal = '';
+      if (variant.cgcGeneInfo) {
+        returnVal = 'Tier ' + (variant.cgcGeneInfo.tier !== null ? variant.cgcGeneInfo.tier : 'unknown');
+      }
+      return returnVal;
+    }});
     columns.push({ label: 'Drugs', cssSuffix: 'drugs', accessor: (variant: DisplayVariant, clusterId: number) => {
       let returnVal: string;
       if (variant.drugs.length === 0) {
