@@ -2,7 +2,7 @@
     <div class="count" *ngIf="false">{{ this.displayNode!.node_name }}</div>
 </div>
 
-<div *ngIf="displayNode" class="block_info"><!--  v-if="children || is_selected" -->
+<div *ngIf="displayNode" class="block_info" [style]="blockInfoStyles"><!--  v-if="children || is_selected" -->
     <div class="info" *ngIf="displayNode.children.length > 0 || isFirstSelected">
         <div class="info_container">
             <div *ngIf="!displayNode?.cluster" class="label">
