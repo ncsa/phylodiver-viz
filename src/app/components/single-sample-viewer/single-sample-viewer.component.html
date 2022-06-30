@@ -1,19 +1,27 @@
 <div class="page single_sample_viewer" [class.navigation_mode]="showTable && hasSelectedNode">
   <div class="header">
     <div class="header_container">
-      <input type="text" size="24" placeholder="Search" />
-
       <div class="tree_selector">
         <select (change)="selectTree($any($event.target).value)">
           <option *ngFor="let tree of trees" [value]="tree.tree_id" [selected]="tree.tree_id === selectedTree?.tree_id">{{ tree.tree_name }}</option>
         </select>
       </div>
 
+      <div class="search_box p-input-icon-right">
+        <i class="pi pi-search"></i>
+        <input type="text" size="24" placeholder="Search" pInputText />
+      </div>
+
+      <div class="links">
+        <div class="link"><a href="https://github.com/ncsa/phylodiver-viz" target="_blank" title="PhyloDiver GitHub" class="icon_link"><i class="pi pi-question-circle"></i></a></div>
+      </div>
+<!--
       <div class="links">
         <div class="link">PhyloDiver <a href="https://github.com/ncsa/phylodiver-viz" target="_blank">GitHub</a></div>
         <div class="link">PhyloFlow <a href="https://www.dockstore.org/workflows/github.com/ncsa/phyloflow/phyloflow_standalone:master" target="_blank">Dockstore</a><a href="https://gallery.ecr.aws/?searchTerm=phyloflow" target="_blank">Container Repo</a><a href="https://github.com/ncsa/phyloflow/tree/master" target="_blank">GitHub</a></div>
         <div class="link">JSON <a href="#">Documentation</a></div>
       </div>
+-->
     </div>
   </div>
 
