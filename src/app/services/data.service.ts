@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap, tap } from 'rxjs';
+import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
 
 import { CgcGenes, ConsequenceSeverities } from '../models/annotation-dto';
 import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity, SeverityKey } from '../models/models';
-import { Aggregate, Cluster, Sample, Tree } from '../models/pipeline-dto';
+import { Aggregate, Cluster, Node as DtoNode, Sample, Tree } from '../models/pipeline-dto';
 import * as cgcGenesData from './cgc_genes.json';
 import * as consequenceSeveritiesData from './consequence_severities.json';
 import { SelectionService } from './selection.service';
@@ -114,27 +114,39 @@ export class DataService {
     return combineLatest([
       this.selectionService.getTree(),
       this.getAggregate(),
-      this.getClusterIds()
+      this.getClusterColorMapping()
     ]).pipe(
-      filter(([tree, aggregate, clusterIds]) => tree !== null),
-      map(([tree, aggregate, clusterIds]) => {
+      filter(([tree, aggregate, colorMapping]) => tree !== null),
+      map(([tree, aggregate, colorMapping]) => {
         const returnVal: LegendSample[] = [];
         // an array of all the samples
         const tumorSamples = aggregate.samples.filter(sample => sample.type === 'tumor');
         // a map from clusterId and sampleId to prevalence
         const clusterIdAndSampleIdToPrevalance = new Map<string, number>();
+        // a map from node_name to node
+        const nodeNameToNode = new Map<string, DtoNode>();
         tree!.nodes.forEach(node => {
+          nodeNameToNode.set(node.node_name, node);
           if (node.cluster_id !== undefined && node.cluster_id !== null) {
             node.prevalence.forEach(samplePrevalance => {
               clusterIdAndSampleIdToPrevalance.set(node.cluster_id! + '-' + samplePrevalance.sample_id, samplePrevalance.value);
             });
           }
         });
+        // order the clusterIds according to their display order in the tree visualization
+        const orderedClusterIds: number[] = [];
+        const processNode = (node: DtoNode) => {
+          if (node.cluster_id !== undefined && node.cluster_id !== null) {
+            orderedClusterIds.push(node.cluster_id);
+          }
+          node.children.forEach(childNodeName => processNode(nodeNameToNode.get(childNodeName)!));
+        };
+        processNode(nodeNameToNode.get('*')!);
         tumorSamples.forEach(sample => {
           returnVal.push({
             sample,
-            nodes: clusterIds.map((clusterId, index) => ({
-              color: this.clusterColors[index],
+            nodes: orderedClusterIds.map(clusterId => ({
+              color: colorMapping.get(clusterId)!,
               proportion: clusterIdAndSampleIdToPrevalance.get(clusterId + '-' + sample.sample_id) || 0
             }))
           });
