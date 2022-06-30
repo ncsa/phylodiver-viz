@@ -15,10 +15,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    // `useHash: true` here for HashLocationStrategy, which simplifies deployment to github pages
-    // if switching back to PathLocationStrategy, restore the commented-out base href in index.html
-    // or add an APP_BASE_REF provider here
-    RouterModule.forRoot(appRoutes, { useHash: true })
+    RouterModule.forRoot(appRoutes)
   ],
   exports: [
     RouterModule
