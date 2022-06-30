@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { WELCOME_PATH } from 'src/app/app-routing.module';
@@ -30,6 +30,9 @@ export class PageHeaderComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationEnd) {
         this.showDataset = !this.router.url.includes(WELCOME_PATH);
         this.isSmallHeader = (this.showDataset && this.dataSet) ? true : false;
+        if (this.doesRouteOpenModal()) {
+          this.showModal = true;
+        }
       }
     }));
   }
@@ -38,7 +41,14 @@ export class PageHeaderComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  doesRouteOpenModal(): boolean {
+    return this.router.url.includes('upload=1');
+  }
+
   toggleModal(override?:boolean):void {
     this.showModal = (typeof override != 'undefined') ? override : !this.showModal;
+    if (!this.showModal && this.doesRouteOpenModal()) {
+      this.router.navigateByUrl(this.router.url.replace('upload=1', ''));
+    }
   }
 }
