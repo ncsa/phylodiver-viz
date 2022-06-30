@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
 
-import { CgcGenes, ConsequenceSeverities } from '../models/annotation-dto';
+import { CgcGenes, ConsequenceSeverities, DrugInfo } from '../models/annotation-dto';
 import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity, SeverityKey } from '../models/models';
 import { Aggregate, Cluster, Node as DtoNode, Sample, Tree } from '../models/pipeline-dto';
 import * as cgcGenesData from './cgc_genes.json';
 import * as consequenceSeveritiesData from './consequence_severities.json';
+import * as drugData from './dgi_genes.json';
 import { SelectionService } from './selection.service';
 
 @Injectable({
@@ -74,6 +75,21 @@ export class DataService {
       map(raw => new Map<string, Severity>(
           Object.entries(raw).map(([consequence, severityKey]) => [consequence.toUpperCase(), severityKeyToSeverity.get(severityKey)!])
       ))
+    );
+  }
+
+  // map keys are gene symbols in all caps
+  getGeneDrugs(): Observable<Map<string, string[]>> {
+    return of(drugData as DrugInfo).pipe(
+      map(raw => {
+        const returnVal = new Map<string, string[]>();
+        Object.entries(raw).forEach(([geneName, geneData]) => {
+          if (geneData.interactions) {
+            returnVal.set(geneName.toUpperCase(), Object.keys(geneData.interactions));
+          }
+        });
+        return returnVal;
+      })
     );
   }
 
@@ -274,11 +290,13 @@ export class DataService {
     return combineLatest([
       this.getAggregate(),
       this.getCgcGenes(),
-      this.getConsequenceSeverities()
+      this.getConsequenceSeverities(),
+      this.getGeneDrugs()
     ]).pipe(
-      map(([aggregate, cgcGenes, consequenceSeverities]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
+      map(([aggregate, cgcGenes, consequenceSeverities, geneDrugs]) => new Map<number, DisplayVariant>(aggregate.SNV.map(snv => [snv.SNV_id, {
         ...snv,
         cgcGeneInfo: snv.symbol && cgcGenes.has(snv.symbol.toUpperCase()) ? cgcGenes.get(snv.symbol.toUpperCase()) : null,
+        drugs: snv.symbol && geneDrugs.has(snv.symbol.toUpperCase()) ? geneDrugs.get(snv.symbol.toUpperCase()) : [],
         severity: snv.consequence && consequenceSeverities.has(snv.consequence.toUpperCase()) ? consequenceSeverities.get(snv.consequence.toUpperCase()) : severityKeyToSeverity.get('UNKNOWN')
       } as DisplayVariant])))
     );

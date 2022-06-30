@@ -45,8 +45,8 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     { label: 'Type', cssSuffix: 'type', accessor: (severity: Severity, info: VariantInfo) => 'SNV' },
     { label: 'Severity', cssSuffix: 'consequence', accessor: (severity: Severity, info: VariantInfo) => severity.label },
     { label: 'Mutations', cssSuffix: 'mutations', accessor: (severity: Severity, info: VariantInfo) => info.mutationsAll.size },
-    { label: 'CGC Genes', cssSuffix: 'cgc_genes', accessor: (severity: Severity, info: VariantInfo) => info.genesCgc.size }
-    // todo: drugs
+    { label: 'CGC Genes', cssSuffix: 'cgc_genes', accessor: (severity: Severity, info: VariantInfo) => info.genesCgc.size },
+    { label: 'Drug Genes', cssSuffix: 'drug_genes', accessor: (severity: Severity, info: VariantInfo) => info.drugGenes.size }
   ];
 
   constructor(
@@ -140,8 +140,11 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
             if (snp.cgcGeneInfo) {
               variantInfo.genesCgc.add(geneName);
             }
+            if (snp.drugs.length > 0) {
+              variantInfo.drugGenes.add(geneName);
+            }
           }
-          // TODO drugs
+          snp.drugs.forEach(drug => variantInfo.drugs.add(drug));
         } else {
           console.warn('Could not find SNP for variant ' + variant);
         }
@@ -211,14 +214,15 @@ export function getEmptyVariantInfo(): VariantInfo {
     mutationsAll: new Set<number>(),
     genesCgc: new Set<string>(),
     genesAll: new Set<string>(),
-    drugs: new Set<string>()
+    drugs: new Set<string>(),
+    drugGenes: new Set<string>()
   };
 }
 
 export function combineVariantInfos(infos: VariantInfo[]): VariantInfo {
   const returnVal = getEmptyVariantInfo();
   infos.forEach(info => {
-    (['mutationsHigh', 'mutationsAll', 'genesCgc', 'genesAll', 'drugs'] as Array<keyof VariantInfo>).forEach(key => {
+    (['mutationsHigh', 'mutationsAll', 'genesCgc', 'genesAll', 'drugs', 'drugGenes'] as Array<keyof VariantInfo>).forEach(key => {
       info[key].forEach(val => (returnVal[key] as Set<string|number>).add(val));
     });
   });
@@ -231,4 +235,5 @@ export interface VariantInfo {
   genesCgc: Set<string>; // values will be gene symbols
   genesAll: Set<string>; // values will be gene symbols
   drugs: Set<string>; // values will be drug names
+  drugGenes: Set<string>; // values will be gene symbols
 }

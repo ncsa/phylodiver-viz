@@ -24,6 +24,7 @@ export interface Severity {
 
 export interface DisplayVariant extends SNV {
   cgcGeneInfo: CgcGeneInfo|null;
+  drugs: string[];
   severity: Severity;
 }
 

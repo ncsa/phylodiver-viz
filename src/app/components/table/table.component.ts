@@ -75,6 +75,17 @@ export class TableComponent implements OnInit, OnDestroy {
       { label: 'Reference', cssSuffix: 'reference', accessor: (variant: DisplayVariant, clusterId: number) => variant.reference ?? '' },
       { label: 'Variant', cssSuffix: 'variant', accessor: (variant: DisplayVariant, clusterId: number) => variant.variant ?? '' },
       { label: 'Strand', cssSuffix: 'strand', accessor: (variant: DisplayVariant, clusterId: number) => variant.strand ?? '' },
+      { label: 'Drugs', cssSuffix: 'drugs', accessor: (variant: DisplayVariant, clusterId: number) => {
+        let returnVal: string;
+        if (variant.drugs.length === 0) {
+          returnVal = '';
+        } else if (variant.drugs.length === 1) {
+          returnVal = variant.drugs[0];
+        } else {
+          returnVal = variant.drugs.length + '';
+        }
+        return returnVal;
+      }},
     ];
     this.samples.forEach((sample, index) => {
       columns.push({ label: sample.name + ' All DNA VAF', cssSuffix: 'alldna_vaf', accessor: (variant: DisplayVariant, clusterId: number) => formatVaf(variant.vaf?.[index]) });

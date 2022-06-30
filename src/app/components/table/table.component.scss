@@ -224,7 +224,8 @@
 			&.column_start,
 			&.column_strand,
 			&.column_alldna_vaf,
-			&.column_cgc_gene {
+			&.column_cgc_gene,
+			&.column_drugs {
 				text: {
 					align: right;
 				}
