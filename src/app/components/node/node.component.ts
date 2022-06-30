@@ -34,6 +34,8 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   selectedSample: Sample|null = null;
   showTable = false;
 
+  blockInfoStyles:{[key: string]: string} = {};
+
   clusterIdToCluster = new Map<number, Cluster>();
   snvIdToDisplayVariant = new Map<number, DisplayVariant>();
 
@@ -161,6 +163,11 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
       '--gradient_start': startColor,
       '--gradient_end': childrenColor
     } as any;
+
+    this.blockInfoStyles = {
+      '--cell_block_color': childrenColor,
+    } as any;
+
     //only apply the height for the final tree end // TODO FIXME not what I'm doing at the moment; see next line
     if (true || this.displayNode?.cluster) { // TODO FIXME when should we set the flex style?
       const hasSelectedNode = !!this.selectedNode;
@@ -182,6 +189,9 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
     if (this.isFirstSelected) {
       //deselect this block
       this.selectionService.setDisplayNode(null);
+
+      //also deselect the table
+      this.selectionService.setShowTable(false);
     } else {
       this.selectionService.setDisplayNode(this.displayNode);
     }
