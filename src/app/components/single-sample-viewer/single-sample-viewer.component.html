@@ -25,7 +25,10 @@
     </div>
   </div>
 
-  <div *ngIf="selectedSample" class="content">
+  <div *ngIf="!selectedSample || isLoading" class="content">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+  <div *ngIf="selectedSample && !isLoading" class="content">
       <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedNode">
         <div class="diagram_label">Evolutionary Tree</div>
         <div class="diagram_label diagram_subclone_label">
@@ -53,7 +56,7 @@
   </div>
 
 <!-- todo: change phylo-table ngIf to angular animation so it can grow/shrink before show/hide -->
-  <phylo-table *ngIf="hasSelectedNode && showTable"></phylo-table>
+  <phylo-table *ngIf="hasSelectedNode && showTable && !isLoading"></phylo-table>
 
   <footer>
 <!--

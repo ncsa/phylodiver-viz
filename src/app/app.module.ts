@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ButtonModule } from 'primeng/button';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TableModule } from 'primeng/table';
 
 import { AppComponent } from './app.component';
@@ -39,6 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
 
     ButtonModule,
+    ProgressSpinnerModule,
     TableModule
   ],
   providers: [],

@@ -16,6 +16,7 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   hasSelectedNode = false;
+  isLoading = false;
   selectedSample: Sample|null = null;
   legendSamples: LegendSample[] = [];
   showTable = false;
@@ -30,6 +31,12 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.subscriptions.push(this.dataService.getDataSet().subscribe(() => {
+      this.isLoading = true;
+    }));
+    this.subscriptions.push(this.dataService.getAggregate().subscribe(() => {
+      this.isLoading = false;
+    }));
     this.subscriptions.push(this.dataService.getRootDisplayNode().subscribe(root => {
       this.rootNode = root;
     }));
