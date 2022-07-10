@@ -25,10 +25,13 @@
     </div>
   </div>
 
-  <div *ngIf="!selectedSample || isLoading" class="content">
+  <div *ngIf="errors.length > 0" class="content">
+    <div *ngFor="let error of errors">{{ error }}</div>
+  </div>
+  <div *ngIf="errors.length === 0 && (!selectedSample || isLoading)" class="content">
     <p-progressSpinner></p-progressSpinner>
   </div>
-  <div *ngIf="selectedSample && !isLoading" class="content">
+  <div *ngIf="errors.length === 0 && selectedSample && !isLoading" class="content">
       <div class="phyloviz_diagram" [class.has_selected_block]="hasSelectedNode">
         <div class="diagram_label">Evolutionary Tree</div>
         <div class="diagram_label diagram_subclone_label">

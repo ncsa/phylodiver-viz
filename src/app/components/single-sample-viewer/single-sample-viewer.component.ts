@@ -22,6 +22,7 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
   showTable = false;
   rootNode: DisplayNode|null = null;
 
+  errors: string[] = [];
   selectedTree: Tree|null = null;
   trees: Tree[] = [];
 
@@ -36,6 +37,9 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
     }));
     this.subscriptions.push(this.dataService.getAggregate().subscribe(() => {
       this.isLoading = false;
+    }));
+    this.subscriptions.push(this.dataService.getErrors().subscribe(errors => {
+      this.errors = errors;
     }));
     this.subscriptions.push(this.dataService.getRootDisplayNode().subscribe(root => {
       this.rootNode = root;

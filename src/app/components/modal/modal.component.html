@@ -3,7 +3,7 @@
 
   <div class="modal_content">
     <div class="dataset_list">
-      <label *ngFor="let dataset of demoDataSets" class="dataset">
+      <label *ngFor="let dataset of demoDataSets" class="dataset" (click)="onFileDeselected(); fileUpload.value = '';">
         <input type="radio" name="dataset" [value]="dataset" [(ngModel)]="selection" />
         <div class="name">{{ dataset.label }}</div>
         <div class="badge">Demo</div>
@@ -28,13 +28,13 @@
         </div>
       </div>
 
-      <div class="step step_emphasis">
+      <div *ngIf="userDataState === DataState.VALIDATING" class="step step_emphasis">
         Validating...57%
         <!-- todo: percentage is optional, if unable to determine the upload and validation percentage, change this to 100% width and remove from label above -->
         <div class="step_progress" style="width: 57%;"></div>
       </div>
 
-      <div *ngIf="selection" class="step">
+      <div *ngIf="userDataState === DataState.READY" class="step">
         <div class="label">You selected:</div>
         <div class="selected_filename">{{ selection.label }} <div class="remove_button" (click)="clearSelection()">X</div></div>
       </div>
@@ -43,6 +43,6 @@
 
   <div class="modal_footer">
     <div class="button button_plain" (click)="close();$event.stopPropagation();">Cancel</div>
-    <div class="button" [class.disabled]="selection === null || (selection === userDataSet && userDataSet.url === '')" (click)="loadDataSet();$event.stopPropagation();">Launch</div>
+    <div class="button" [class.disabled]="selection === null || (selection === userDataSet && userDataState !== DataState.READY)" (click)="loadDataSet();$event.stopPropagation();">Launch</div>
   </div>
 <div>
