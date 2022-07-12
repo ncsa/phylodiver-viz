@@ -20,6 +20,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   demoDataSets = DEMO_DATA_SETS;
   userDataSet: DataSet = getDefaultUserDataSet();
+  userDataState = DataState.NOT_SELECTED;
   selection: DataSet|null = null;
 
   subscriptions: Subscription[] = [];
@@ -47,13 +48,20 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.userDataSet = getDefaultUserDataSet();
   }
 
+  onFileDeselected(): void {
+    this.userDataState = DataState.NOT_SELECTED;
+    this.userDataSet = getDefaultUserDataSet();
+  }
+
   onFileSelected(file: File): void {
     if (file) {
+      this.userDataState = DataState.UPLOADING;
       this.userDataSet.label = file.name;
       const reader = new FileReader();
       reader.onloadend = (progressEvent) => {
         if (progressEvent.target?.result) {
           this.userDataSet.url = progressEvent.target.result as string;
+          this.userDataState = DataState.READY;
         }
       };
       reader.readAsDataURL(file);
@@ -68,8 +76,20 @@ export class ModalComponent implements OnInit, OnDestroy {
       this.close();
     }
   }
+
+  public get DataState() {
+    return DataState;
+  }
 }
 
 export function getDefaultUserDataSet(): DataSet {
   return { label: 'Your Dataset', url: '', isDemo: false };
+}
+
+export enum DataState {
+  NOT_SELECTED,
+  UPLOADING,
+  VALIDATING,
+  READY,
+  FAILED
 }

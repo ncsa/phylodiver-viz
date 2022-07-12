@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
 
+import Ajv, { JSONSchemaType } from 'ajv';
+
 import { CgcGenes, ConsequenceSeverities, DrugInfo } from '../models/annotation-dto';
 import { CgcGeneInfo, DisplayNode, DisplayVariant, Severity, SeverityKey } from '../models/models';
 import { Aggregate, Cluster, Node as DtoNode, Sample, Tree } from '../models/pipeline-dto';
@@ -15,17 +17,37 @@ import { SelectionService } from './selection.service';
 })
 export class DataService {
 
-  $dataSet = new BehaviorSubject<DataSet>(DEMO_DATA_SETS[0]);
   $aggregate = new BehaviorSubject<Aggregate|null>(null);
+  $dataSet = new BehaviorSubject<DataSet>(DEMO_DATA_SETS[0]);
+  $errors = new BehaviorSubject<string[]>([]);
+  $schema = new BehaviorSubject<JSONSchemaType<Aggregate>|null>(null);
+
+  ajv = new Ajv();
+  schemaUrl = 'https://raw.githubusercontent.com/ncsa/phyloflow/fcbf6b8380a6704f27b4049ed7ac588a25717f1e/aggregate_json/code/aggregate.schema';
 
   rootColor = '#90959B';
   clusterColors = ['#173858', '#2A5E72', '#C9C943', '#E89680', '#B26799', '#7524A1', '#489669', '#deac5b', '#bd486d'];
 
   constructor(private selectionService: SelectionService, private http: HttpClient) {
-    this.getDataSet().pipe(
-      switchMap(ds => this.http.get<Aggregate>(ds.url)),
-    ).subscribe(ds => {
-      this.$aggregate.next(ds);
+    this.http.get<JSONSchemaType<Aggregate>>(this.schemaUrl).subscribe(schema => {
+      this.$schema.next(schema);
+    });
+    combineLatest([
+      this.getDataSet(),
+      this.$schema
+    ]).pipe(
+      filter(([ds, schema]) => !!schema),
+      switchMap(([ds, schema]) => this.http.get<Aggregate>(ds.url))
+    ).subscribe({
+      next: agg => {
+        const validate = this.ajv.compile(this.$schema.value as JSONSchemaType<Aggregate>);
+        if (validate(agg)) {
+          this.$aggregate.next(agg);
+        } else {
+          this.addError('Error parsing data file: ' + validate.errors![0].message + '. Please refresh, check your file format, and try again.');
+        }
+      },
+      error: () => this.addError('The selected data file could not be parsed. Please refresh, check your file format, and try again.')
     });
     // auto-select first tumor sample and first tree
     this.getAggregate().subscribe(aggregate => {
@@ -35,6 +57,14 @@ export class DataService {
       }
       this.selectionService.setTree(aggregate.trees[0]);
     });
+  }
+
+  addError(message: string): void {
+    this.$errors.next([...this.$errors.value, message]);
+  }
+
+  getErrors(): Observable<string[]> {
+    return this.$errors.asObservable();
   }
 
   getDataSet(): Observable<DataSet> {

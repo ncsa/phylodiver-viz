@@ -1,0 +1,81 @@
+/**************** progress_spinner ******************/
+
+//@import '../../styles/core';
+
+
+//**************** custom mixins ******************
+
+
+//**************** animation ******************
+
+@keyframes custom-progress-spinner-color {
+    100%,
+    0% {
+        stroke: color_variable('progress_spinner');
+    }
+    40% {
+        stroke: color_variable('progress_spinner');
+    }
+    66% {
+        stroke: color_variable('progress_spinner');
+    }
+    80%,
+    90% {
+        stroke: color_variable('progress_spinner');
+    }
+}
+
+@keyframes custom-progress-spinner-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+
+//**************** css ******************
+
+::ng-deep p-progressspinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: get_index(loading);
+
+  background: {
+    color: color_variable('progress_spinner_background');
+  }
+
+//  backdrop-filter: blur(4px);
+
+  .p-progress-spinner {
+    min: {
+      width: 50px;
+      height: 50px;
+    }
+    max: {
+      width: 100px;
+      height: 100px;
+    }
+
+    width: 10vw;
+    height: 10vw;
+
+    .p-progress-spinner-circle {
+      animation: custom-progress-spinner-dash 1.5s ease-in-out infinite, custom-progress-spinner-color 6s ease-in-out infinite;
+    }
+  }
+}
