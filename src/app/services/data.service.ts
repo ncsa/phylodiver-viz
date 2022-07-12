@@ -45,12 +45,12 @@ export class DataService {
       next: ({ aggregate, error }) => {
         const validate = this.ajv.compile(this.$schema.value as JSONSchemaType<Aggregate>);
         if (error) {
-          this.addError(error);
+          this.setErrors([error]);
         } else if (validate(aggregate)) {
           this.$aggregate.next(aggregate);
-          this.$errors.next([]);
+          this.setErrors([]);
         } else {
-          this.addError('Error parsing data file: ' + validate.errors![0].message + '.<br>Please check your file format and try again.');
+          this.setErrors(['Error parsing data file: ' + validate.errors![0].message + '.<br>Please check your file format and try again.']);
         }
       }
     });
@@ -64,8 +64,8 @@ export class DataService {
     });
   }
 
-  addError(message: string): void {
-    this.$errors.next([...this.$errors.value, message]);
+  setErrors(messages: string[]): void {
+    this.$errors.next(messages);
   }
 
   getErrors(): Observable<string[]> {
