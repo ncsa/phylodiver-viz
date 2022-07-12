@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, combineLatest, BehaviorSubject, filter, map, Observable, of, switchMap } from 'rxjs';
 
 import Ajv, { JSONSchemaType } from 'ajv';
 
@@ -37,17 +37,22 @@ export class DataService {
       this.$schema
     ]).pipe(
       filter(([ds, schema]) => !!schema),
-      switchMap(([ds, schema]) => this.http.get<Aggregate>(ds.url))
+      switchMap(([ds, schema]) => this.http.get<Aggregate>(ds.url).pipe(
+        map(aggregate => ({ aggregate, error: null })),
+        catchError(err => of({ aggregate: {}, error: 'The selected data file could not be parsed. Please check your file format and try again.'}))
+      )),
     ).subscribe({
-      next: agg => {
+      next: ({ aggregate, error }) => {
         const validate = this.ajv.compile(this.$schema.value as JSONSchemaType<Aggregate>);
-        if (validate(agg)) {
-          this.$aggregate.next(agg);
+        if (error) {
+          this.addError(error);
+        } else if (validate(aggregate)) {
+          this.$aggregate.next(aggregate);
+          this.$errors.next([]);
         } else {
-          this.addError('Error parsing data file: ' + validate.errors![0].message + '. Please refresh, check your file format, and try again.');
+          this.addError('Error parsing data file: ' + validate.errors![0].message + '. Please check your file format and try again.');
         }
-      },
-      error: () => this.addError('The selected data file could not be parsed. Please refresh, check your file format, and try again.')
+      }
     });
     // auto-select first tumor sample and first tree
     this.getAggregate().subscribe(aggregate => {
