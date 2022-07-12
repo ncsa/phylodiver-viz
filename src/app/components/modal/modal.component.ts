@@ -43,12 +43,8 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.onClose.emit();
   }
 
-  clearSelection(): void {
-    this.selection = null;
-    this.userDataSet = getDefaultUserDataSet();
-  }
-
   onFileDeselected(): void {
+    this.selection = null;
     this.userDataState = DataState.NOT_SELECTED;
     this.userDataSet = getDefaultUserDataSet();
   }

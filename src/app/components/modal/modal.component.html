@@ -35,7 +35,7 @@
 
       <div *ngIf="userDataState === DataState.READY" class="step">
         <div class="label">You selected:</div>
-        <div class="selected_filename">{{ selection.label }} <div class="remove_button" (click)="clearSelection()">X</div></div>
+        <div class="selected_filename">{{ selection.label }} <div class="remove_button" (click)="onFileDeselected(); fileUpload.value = '';">X</div></div>
       </div>
     </div>
   </div>
