@@ -299,7 +299,11 @@ export class DataService {
             });
             if(node.parent === null) {
               // for now, the root node really represents the edge to the first cluster
-              node.node_name = 'Cluster ' + node.children.find(child => !!child.cluster)!.cluster_id;
+              // using ? instead of ! after the find because, in the current version of this service,
+              // this method might be called multiple times as the source data streams update; the last
+              // call for any given data file will find a match, but earlier calls might not, and the
+              // ? prevents failure in those cases
+              node.node_name = 'Cluster ' + node.children.find(child => !!child.cluster)?.cluster_id;
             }
             node.children = [...node.children, ...newSubtreeNodes];
             newSubtreeNodes.forEach(node => insertSubtrees(node));
