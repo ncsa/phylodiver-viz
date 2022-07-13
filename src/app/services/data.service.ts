@@ -39,18 +39,18 @@ export class DataService {
       filter(([ds, schema]) => !!schema),
       switchMap(([ds, schema]) => this.http.get<Aggregate>(ds.url).pipe(
         map(aggregate => ({ aggregate, error: null })),
-        catchError(err => of({ aggregate: {}, error: 'The selected data file could not be parsed. Please check your file format and try again.'}))
+        catchError(err => of({ aggregate: {}, error: 'The selected data file could not be parsed.<br><br>Please check your file format and try again.'}))
       )),
     ).subscribe({
       next: ({ aggregate, error }) => {
         const validate = this.ajv.compile(this.$schema.value as JSONSchemaType<Aggregate>);
         if (error) {
-          this.addError(error);
+          this.setErrors([error]);
         } else if (validate(aggregate)) {
           this.$aggregate.next(aggregate);
-          this.$errors.next([]);
+          this.setErrors([]);
         } else {
-          this.addError('Error parsing data file: ' + validate.errors![0].message + '. Please check your file format and try again.');
+          this.setErrors(['Error parsing data file: ' + validate.errors![0].message + '.<br><br>Please check your file format and try again.']);
         }
       }
     });
@@ -64,8 +64,8 @@ export class DataService {
     });
   }
 
-  addError(message: string): void {
-    this.$errors.next([...this.$errors.value, message]);
+  setErrors(messages: string[]): void {
+    this.$errors.next(messages);
   }
 
   getErrors(): Observable<string[]> {
