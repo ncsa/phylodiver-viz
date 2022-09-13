@@ -45,11 +45,11 @@ describe('PhyloTable', () => {
     cy.visit('http://localhost:4200/demo');
   })
 
-  specify('is initially hidden', () => {
+  it('is initially hidden', () => {
     cy.get('phylo-table').should('have.length', 0);
   });
 
-  specify('can be opened by clicking any summary button', () => {
+  it('can be opened by clicking any summary button', () => {
     cy.get('phylo-node')
       .each((e) => {
         cy.wrap(e).click('left').find('> .block_info .summary_button').click();
