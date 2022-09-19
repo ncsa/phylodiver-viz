@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 describe('Demo', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4200');
@@ -8,7 +6,7 @@ describe('Demo', () => {
     cy.contains('Take Me to the Demo!').click();
     cy.location('pathname').should('eq', '/demo');
   })
-})
+});
 
 describe('PhyloNode', () => {
   beforeEach(() => {
