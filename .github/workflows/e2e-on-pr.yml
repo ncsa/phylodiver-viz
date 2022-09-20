@@ -17,4 +17,8 @@ jobs:
         uses: cypress-io/github-action@v4 
         with:
           command: npm run e2e:ci
-          
+      - name: Upload Snapshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: visual-regression-snapshots
+          path: cypress/snapshots/
