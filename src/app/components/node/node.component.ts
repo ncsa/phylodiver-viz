@@ -189,16 +189,7 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   };
 
   onSelectBlock(): void {
-    //globally change the indicate which blocks are selected (or none at all)
-    if (this.isFirstSelected) {
-      //deselect this block
-      this.selectionService.setDisplayNode(null);
-
-      //also deselect the table
-      this.selectionService.setShowTable(false);
-    } else {
-      this.selectionService.setDisplayNode(this.displayNode);
-    }
+    // Now you can't select it.
   }
 
 }
