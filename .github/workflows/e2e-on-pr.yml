@@ -5,6 +5,8 @@ on:
       - main
       - develop
       - wenqi/e2e
+    paths:
+      - 'src/**/*'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
