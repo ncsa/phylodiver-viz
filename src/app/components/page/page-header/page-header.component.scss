@@ -23,7 +23,7 @@
 :host {
   color: color_variable('page_header');
   background: {
-    color: color_variable('page_header_background');
+    color: lightgray;
   }
 
   padding: $padding;
