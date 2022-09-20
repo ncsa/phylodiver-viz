@@ -7,7 +7,7 @@ on:
       - wenqi/e2e
 jobs:
   cypress-run:
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -18,6 +18,7 @@ jobs:
         with:
           command: npm run e2e:ci
       - name: Upload Snapshots
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v3
         with:
           name: visual-regression-snapshots
