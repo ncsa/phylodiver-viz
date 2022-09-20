@@ -28,4 +28,3 @@ jobs:
         with:
           name: visual-regression-snapshots
           path: cypress/snapshots/
-                
