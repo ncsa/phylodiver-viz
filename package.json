@@ -9,7 +9,7 @@
     "test": "ng test",
     "e2e:dev": "start-server-and-test start 4200 'cypress open --e2e --env type=actual'",
     "e2e:ci": "start-server-and-test start 4200 'cypress run --e2e --env type=actual'",
-    "e2e:update": "start-server-and-test start 4200 'cypress run --e2e --env type=base --spec \"cypress/e2e/**/*.regression.cy.ts\"'",
+    "e2e:update": "start-server-and-test start 4200 'cypress run --e2e --env type=base'",
     "deploy-pages": "cp CNAME dist/phylodiver-viz/ && cp dist/phylodiver-viz/index.html dist/phylodiver-viz/404.html && gh-pages -d dist/phylodiver-viz"
   },
   "private": true,
