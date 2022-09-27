@@ -10,4 +10,5 @@ describe('Visual Regression Test - Added', () => {
     cy.wait(1000);
     cy.get('footer').compareSnapshot('page_footer', 0.0);
   });
+
 });
