@@ -5,8 +5,8 @@ on:
       - main
       - develop
       - wenqi/e2e
-    paths:
-      - 'src/**/*'
+    paths-ignore:
+      - 'cypress/**/*.regression.cy.ts'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
