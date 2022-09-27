@@ -66,4 +66,5 @@ describe('PhyloTable', () => {
         cy.get('phylo-table').should('have.length', 0);
       });
   });
+  
 });
