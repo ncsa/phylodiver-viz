@@ -19,9 +19,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: updated base snapshots
-      - name: Upload Snapshots
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: visual-regression-snapshots
-          path: cypress/snapshots/
+          
