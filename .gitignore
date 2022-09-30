@@ -10,6 +10,10 @@
 # dependencies
 /node_modules
 
+# test artifacts
+cypress/snapshots/*
+!cypress/snapshots/base
+
 # profiling files
 chrome-profiler-events*.json
 

@@ -7,8 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:e2e": "run-p start cypress",
-    "cypress": "cypress open",
+    "e2e:dev": "start-server-and-test start 4200 'cypress open --e2e --env type=actual'",
+    "e2e:ci": "start-server-and-test start 4200 'cypress run --e2e --env type=actual'",
+    "e2e:update": "start-server-and-test start 4200 'cypress run --e2e --env type=base'",
     "deploy-pages": "cp CNAME dist/phylodiver-viz/ && cp dist/phylodiver-viz/index.html dist/phylodiver-viz/404.html && gh-pages -d dist/phylodiver-viz"
   },
   "private": true,
@@ -36,6 +37,7 @@
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "cypress": "^10.7.0",
+    "cypress-visual-regression": "^1.7.0",
     "gh-pages": "^4.0.0",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
@@ -43,7 +45,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "npm-run-all": "^4.1.5",
+    "start-server-and-test": "^1.14.0",
     "typescript": "~4.5.2"
   }
 }
