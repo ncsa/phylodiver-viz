@@ -47,9 +47,13 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Running end-to-end tests (Cypress)
+## Running end-to-end and visual regression tests (Cypress)
 
-Run `npm run test:e2e` to start a dev server and launch Cypress.
+Run `npm run e2e:dev` to start a dev server and launch Cypress. 
+
+Because base snapshots are generated and commited by Github action runners, in order for visual regression tests to work locally, you might need to run `npm e2e:update` first to generate a new set of base snapshots. Remember **NOT** to commit snapshots generated on your local machine. 
+
+`e2e:ci` is only intended for GitHub action runners. It's the same as `e2e:dev` except that it runs in headless mode.
 
 ## Publishing to Github Pages
 
