@@ -4,7 +4,6 @@ on:
     branches:    
       - main
       - develop
-      - wenqi/e2e
 jobs:
   cypress-run:
     runs-on: ubuntu-latest

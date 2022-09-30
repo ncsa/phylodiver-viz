@@ -4,9 +4,6 @@ on:
     branches:    
       - main
       - develop
-      - wenqi/e2e
-    paths-ignore:
-      - 'cypress/**/*.regression.cy.ts'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -25,3 +22,4 @@ jobs:
         with:
           name: visual-regression-snapshots
           path: cypress/snapshots/
+
