@@ -75,4 +75,7 @@ export class SingleSampleViewerComponent implements OnInit, OnDestroy {
     }
   }
 
+  updateQuery(userInput: string) {
+    this.selectionService.query$.next(userInput);
+  }
 }

@@ -14,6 +14,7 @@ export class SelectionService {
   severity$: BehaviorSubject<Severity|null>;
   showTable$: BehaviorSubject<boolean>;
   tree$: BehaviorSubject<Tree|null>;
+  query$: BehaviorSubject<string>;
 
   constructor() {
     this.displayNode$ = new BehaviorSubject<DisplayNode|null>(null);
@@ -21,6 +22,7 @@ export class SelectionService {
     this.severity$ = new BehaviorSubject<Severity|null>(null);
     this.showTable$ = new BehaviorSubject<boolean>(false);
     this.tree$ = new BehaviorSubject<Tree|null>(null);
+    this.query$ = new BehaviorSubject<string>('');
   }
 
   getDisplayNode(): Observable<DisplayNode|null> {
