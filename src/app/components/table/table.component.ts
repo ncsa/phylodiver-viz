@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
+import { FilterService, SortEvent } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 import { DisplayNode, DisplayVariant, Severity } from 'src/app/models/models';
 import { Cluster, Sample } from 'src/app/models/pipeline-dto';
@@ -27,11 +29,15 @@ export class TableComponent implements OnInit, OnDestroy {
   tableColumns: TableColumn[] = [];
   tableRows: TableRow[] = [];
 
+  @ViewChild(Table) pTable: Table|null = null;
+
   constructor(
+    private filterService: FilterService,
     private dataService: DataService,
     private selectionService: SelectionService) { }
 
   ngOnInit(): void {
+    this.registerCustomFilters();
     this.subscriptions.push(
       combineLatest([
         this.dataService.getSamples(),
@@ -55,6 +61,9 @@ export class TableComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.selectionService.getSeverity().subscribe(severity => {
       this.severity = severity;
       this.updateTableRows();
+    }));
+    this.subscriptions.push(this.selectionService.query$.subscribe(query => {
+      this.pTable?.filterGlobal(query, 'phylo-table-filter');
     }));
   }
 
@@ -139,6 +148,51 @@ export class TableComponent implements OnInit, OnDestroy {
   selectRow(row: TableRow) {
     this.selectionService.setSeverity(row.variant.severity);
   }
+
+  registerCustomFilters() {
+    // HACK: This filter receives a `DisplayVariant` object 
+    // because we set `[globalFilterFields]="['variant']"` in the template
+    this.filterService.register('phylo-table-filter', (value: DisplayVariant, filter: string) => {
+      filter = filter.toLowerCase();
+      // TODO: custom filtering logic
+      function match(value: any, filter: string): boolean {
+        if (value == undefined || value == null) return false;
+        if (typeof value == 'function') return false;
+        return typeof value == 'object'
+          ? Object.values(value).some((v) => match(v, filter))
+          : String(value).toLowerCase().includes(filter);
+      }
+      return match(value, filter);
+    });
+  }
+
+  customSort(event: SortEvent) {
+    const sortMeta = event.multiSortMeta ?? [];
+    event.data?.sort((a: TableRow, b: TableRow) => {
+      for (const meta of sortMeta) {
+        // HACK: `meta.field` is supposed to be of type `string` but we need to call the accessor,
+        // so a `TableColumn` object is passed in instead. See the template for more detail.
+        const column: TableColumn = meta.field as any; 
+        const aVal = column.accessor(a.variant, a.clusterId);
+        const bVal = column.accessor(b.variant, b.clusterId);
+        if (aVal != bVal)
+          return this.compare(aVal, bVal, column) * meta.order;
+      };
+      return 0;
+    });
+  };
+
+  private compare(a: any, b: any, column: TableColumn) {
+    switch (column.label) {
+      case 'chr':
+        return isNaN(a) || isNaN(b)
+          ? a < b ? -1 : 1 // e.g. compare('X', '1')
+          : a - b // e.g. compare('10', '2')
+      default:
+        return a < b ? -1 : 1;
+    }
+  }
+
 }
 
 export interface TableColumn {
