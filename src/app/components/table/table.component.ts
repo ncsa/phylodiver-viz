@@ -32,7 +32,6 @@ export class TableComponent implements OnInit, OnDestroy {
   @ViewChild(Table) pTable: Table|null = null;
 
   constructor(
-    private filterService: FilterService,
     private dataService: DataService,
     private selectionService: SelectionService) { }
 
@@ -106,6 +105,12 @@ export class TableComponent implements OnInit, OnDestroy {
       }
       return returnVal;
     }});
+    
+    // Hidden columns for global filtering
+    columns.push({ id: 'drugs_all', hidden: true, field: ({ variant, clusterId }) => {
+      return variant.drugs.join('\n');
+    }});
+
     this.tableColumns = columns;
   }
 
@@ -186,9 +191,10 @@ export class TableComponent implements OnInit, OnDestroy {
 }
 
 export interface TableColumn {
-  label: string;
+  label?: string;
   id: string;
   field: (record: TableRow) => string|number;
+  hidden?: boolean;
 }
 
 export interface TableRow {
