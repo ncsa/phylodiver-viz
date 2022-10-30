@@ -42,11 +42,11 @@ export class NodeComponent implements OnInit, OnChanges, OnDestroy {
   gradientId = 'uninitialized';
 
   summaryColumns = [
-    { label: 'Type', cssSuffix: 'type', accessor: (severity: Severity, info: VariantInfo) => 'SNV' },
-    { label: 'Severity', cssSuffix: 'consequence', accessor: (severity: Severity, info: VariantInfo) => severity.label },
-    { label: 'Mutations', cssSuffix: 'mutations', accessor: (severity: Severity, info: VariantInfo) => info.mutationsAll.size },
-    { label: 'CGC Genes', cssSuffix: 'cgc_genes', accessor: (severity: Severity, info: VariantInfo) => info.genesCgc.size },
-    { label: 'Drug Genes', cssSuffix: 'drug_genes', accessor: (severity: Severity, info: VariantInfo) => info.drugGenes.size }
+    { label: 'Type', id: 'type', accessor: (severity: Severity, info: VariantInfo) => 'SNV' },
+    { label: 'Severity', id: 'consequence', accessor: (severity: Severity, info: VariantInfo) => severity.label },
+    { label: 'Mutations', id: 'mutations', accessor: (severity: Severity, info: VariantInfo) => info.mutationsAll.size },
+    { label: 'CGC Genes', id: 'cgc_genes', accessor: (severity: Severity, info: VariantInfo) => info.genesCgc.size },
+    { label: 'Drug Genes', id: 'drug_genes', accessor: (severity: Severity, info: VariantInfo) => info.drugGenes.size }
   ];
 
   constructor(

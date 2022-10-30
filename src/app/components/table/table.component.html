@@ -15,22 +15,21 @@
     </div>
 
     <p-table [value]="tableRows" [columns]="tableColumns" [paginator]="true" [rows]="200" [showCurrentPageReport]="true" responsiveLayout="scroll"
-        [globalFilterFields]="['variant']" sortMode="multiple" [customSort]="true" (sortFunction)="customSort($event)"
+        sortMode="multiple" [customSort]="true" (sortFunction)="customSort($event)"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[50,100,200]">
         <ng-template pTemplate="header" let-columns>
             <tr>
-                <!-- HACK: `pSortableColumn` and `field` are supposed to strings but the sorting logic needs the `column` object -->
-                <th *ngFor="let column of columns" [ngClass]="'column_' + column.cssSuffix" [pSortableColumn]="column">
+                <th *ngFor="let column of columns" [ngClass]="'column_' + column.id" [pSortableColumn]="column.id">
                     {{column.label}}
-                    <p-sortIcon [field]="column"></p-sortIcon>
+                    <p-sortIcon [field]="column.id"></p-sortIcon>
                 </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-row let-columns>
             <tr *ngIf="!severity || severity === row.variant.severity" (click)="$event.stopPropagation(); selectRow(row)">
                 <!-- TODO use filter instead of ngIf above, and use columns instead of tableColumns below (requires fixing ngFor error) -->
-                <td *ngFor="let column of tableColumns" [ngClass]="'column_' + column.cssSuffix" [title]="column.accessor(row.variant, row.clusterId)">
-                    {{ column.accessor(row.variant, row.clusterId) }}
+                <td *ngFor="let column of tableColumns" [ngClass]="'column_' + column.id" [title]="column.field(row)">
+                    {{ column.field(row) }}
                 </td>
             </tr>
         </ng-template>

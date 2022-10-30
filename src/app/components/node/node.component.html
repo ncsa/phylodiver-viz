@@ -39,14 +39,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.cssSuffix">
+                            <th *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.id">
                                 {{column.label}}
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let row of sortedSummaryTableRows" (click)="$event.stopPropagation(); onToggleTable(row)">
-                            <td *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.cssSuffix">
+                            <td *ngFor="let column of summaryColumns" [ngClass]="'column_' + column.id">
                                 <div class="summary_table_value" [title]="column.accessor(row.severity, row.variantInfo)">
                                     {{ column.accessor(row.severity, row.variantInfo) }}
                                 </div>
