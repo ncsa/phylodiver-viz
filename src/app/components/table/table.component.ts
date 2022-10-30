@@ -177,11 +177,10 @@ export class TableComponent implements OnInit, OnDestroy {
   private compare(a: string | number, b: string | number, columnId: string) {
     switch (columnId) {
       case 'chr': {
-        a = Number(a);
-        b = Number(b);
-        return isNaN(a) || isNaN(b)
-          ? a < b ? -1 : 1 // e.g. compare('X', '1')
-          : a - b // e.g. compare('10', '2')
+        const toNumber = (c: string | number) => {
+          return c == 'X' ? 23 : c == 'Y' ? 24 : Number(c);
+        };
+        return toNumber(a) - toNumber(b);
       }
       default:
         return a < b ? -1 : 1;
