@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { TableComponent } from './table.component';
-import { ObjectUtils } from 'primeng/utils';
 import { Table } from 'primeng/table';
 
 describe('TableComponent', () => {
@@ -33,8 +32,6 @@ describe('TableComponent', () => {
   });
 
   it('PrimeNG accepts field accessor functions', () => {
-    const utilSpy = spyOn(ObjectUtils, 'resolveFieldData').and.callThrough();
-
     const data = [{ a: 'abc', b: 456 }, { a: 'def', b: 456 }];
     type T = (typeof data)[number];
 
@@ -49,20 +46,9 @@ describe('TableComponent', () => {
     table.filterGlobal('some string', 'contains');
     clock.tick(table.filterDelay);
 
-    // field `a` is accessed on row 0
-    expect(utilSpy).toHaveBeenCalledWith(data[0], columns[0].field);
     expect(fieldSpyA).toHaveBeenCalledWith(data[0]);
-
-    // field `a` is accessed on row 1
-    expect(utilSpy).toHaveBeenCalledWith(data[1], columns[0].field);
     expect(fieldSpyA).toHaveBeenCalledWith(data[1]);
-
-    // field `b` is accessed on row 0
-    expect(utilSpy).toHaveBeenCalledWith(data[0], columns[1].field);
     expect(fieldSpyB).toHaveBeenCalledWith(data[0]);
-    
-    // field `b` is accessed on row 1
-    expect(utilSpy).toHaveBeenCalledWith(data[1], columns[1].field);
     expect(fieldSpyB).toHaveBeenCalledWith(data[1]);
   });
 
