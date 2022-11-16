@@ -29,6 +29,10 @@ export class TableComponent implements OnInit, OnDestroy {
   tableColumns: TableColumn[] = [];
   tableRows: TableRow[] = [];
 
+  get visibleTableColumns(): TableColumn[] {
+    return this.tableColumns.filter(c => !c.hidden);
+  }
+
   @ViewChild(Table) pTable: Table|null = null;
 
   constructor(
