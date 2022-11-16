@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { TableComponent } from './table.component';
-import { ObjectUtils } from 'primeng/utils'
+import { ObjectUtils } from 'primeng/utils';
 import { Table } from 'primeng/table';
 
 describe('TableComponent', () => {
@@ -16,10 +16,10 @@ describe('TableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [TableComponent, Table]
+      imports: [ HttpClientTestingModule ],
+      declarations: [ TableComponent, Table ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {
