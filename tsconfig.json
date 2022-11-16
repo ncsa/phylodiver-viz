@@ -24,6 +24,8 @@
       "dom"
     ]
   },
+  // This resolves Cypress & Jasmine global type conflicts
+  "exclude": ["./cypress.config.ts", "./cypress"], 
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

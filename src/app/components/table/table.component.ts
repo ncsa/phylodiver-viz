@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
-import { FilterService, SortEvent } from 'primeng/api';
+import { SortEvent } from 'primeng/api';
 import { Table } from 'primeng/table';
 
 import { DisplayNode, DisplayVariant, Severity } from 'src/app/models/models';
@@ -107,7 +107,7 @@ export class TableComponent implements OnInit, OnDestroy {
     }});
     
     // Hidden columns for global filtering
-    columns.push({ id: 'drugs_all', hidden: true, field: ({ variant, clusterId }) => {
+    columns.push({ id: 'extra_filter_key', hidden: true, field: ({ variant, clusterId }) => {
       return variant.drugs.join('\n');
     }});
 
@@ -192,6 +192,11 @@ export class TableComponent implements OnInit, OnDestroy {
 export interface TableColumn {
   label?: string;
   id: string;
+  /**
+   * The name and type of this `field` property was designed to match PrimeNG's implementation of global filtering. 
+   * See: [Table._filter()](https://github.com/primefaces/primeng/blob/03cf823c8e2eacd8df94d87af4fdc2c824a4a998/src/app/components/table/table.ts#L1611)
+   * and [ObjectUtils.resolveFieldData](https://github.com/primefaces/primeng/blob/03cf823c8e2eacd8df94d87af4fdc2c824a4a998/src/app/components/utils/objectutils.ts#L57)
+   */
   field: (record: TableRow) => string|number;
   hidden?: boolean;
 }
