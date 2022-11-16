@@ -7,9 +7,9 @@
         </select>
       </div>
 
-      <div *ngIf="false" class="search_box p-input-icon-right">
+      <div class="search_box p-input-icon-right">
         <i class="pi pi-search"></i>
-        <input type="text" size="24" placeholder="Search" pInputText />
+        <input type="text" size="24" placeholder="Search" pInputText (input)="updateQuery($any($event.target).value)"/>
       </div>
 
       <div class="links">

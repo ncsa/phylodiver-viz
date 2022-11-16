@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
+import { SortEvent } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 import { DisplayNode, DisplayVariant, Severity } from 'src/app/models/models';
 import { Cluster, Sample } from 'src/app/models/pipeline-dto';
@@ -26,6 +28,12 @@ export class TableComponent implements OnInit, OnDestroy {
 
   tableColumns: TableColumn[] = [];
   tableRows: TableRow[] = [];
+
+  get visibleTableColumns(): TableColumn[] {
+    return this.tableColumns.filter(c => !c.hidden);
+  }
+
+  @ViewChild(Table) pTable: Table|null = null;
 
   constructor(
     private dataService: DataService,
@@ -56,6 +64,9 @@ export class TableComponent implements OnInit, OnDestroy {
       this.severity = severity;
       this.updateTableRows();
     }));
+    this.subscriptions.push(this.selectionService.query$.subscribe(query => {
+      this.pTable?.filterGlobal(query, 'contains');
+    }));
   }
 
   ngOnDestroy(): void {
@@ -63,31 +74,31 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   updateTableColumns(): void {
-    const columns = [
-      { label: 'Cluster', cssSuffix: 'cluster', accessor: (variant: DisplayVariant, clusterId: number) => clusterId },
-      { label: 'Type', cssSuffix: 'type', accessor: (variant: DisplayVariant, clusterId: number) => 'SNP' },
-      { label: 'Consequence', cssSuffix: 'consequence', accessor: (variant: DisplayVariant, clusterId: number) => variant.consequence ?? '' },
-      { label: 'Severity', cssSuffix: 'severity', accessor: (variant: DisplayVariant, clusterId: number) => variant.severity?.label ?? '' },
-      { label: 'chr', cssSuffix: 'chr', accessor: (variant: DisplayVariant, clusterId: number) => variant.chr ?? '' },
-      { label: 'Start', cssSuffix: 'start', accessor: (variant: DisplayVariant, clusterId: number) => variant.start ?? '' },
-      { label: 'Gene', cssSuffix: 'gene', accessor: (variant: DisplayVariant, clusterId: number) => variant.symbol ?? '' },
-      { label: 'Amino Acid Change', cssSuffix: 'amino_acid_change', accessor: (variant: DisplayVariant, clusterId: number) => variant.amino_acid_change ?? '' },
-      { label: 'Reference', cssSuffix: 'reference', accessor: (variant: DisplayVariant, clusterId: number) => variant.reference ?? '' },
-      { label: 'Variant', cssSuffix: 'variant', accessor: (variant: DisplayVariant, clusterId: number) => variant.variant ?? '' },
-      { label: 'Strand', cssSuffix: 'strand', accessor: (variant: DisplayVariant, clusterId: number) => variant.strand ?? '' }
+    const columns: Array<TableColumn> = [
+      { label: 'Cluster', id: 'cluster', field: ({ variant, clusterId }) => clusterId },
+      { label: 'Type', id: 'type', field: ({ variant, clusterId }) => 'SNP' },
+      { label: 'Consequence', id: 'consequence', field: ({ variant, clusterId }) => variant.consequence ?? '' },
+      { label: 'Severity', id: 'severity', field: ({ variant, clusterId }) => variant.severity?.label ?? '' },
+      { label: 'chr', id: 'chr', field: ({ variant, clusterId }) => variant.chr ?? '' },
+      { label: 'Start', id: 'start', field: ({ variant, clusterId }) => variant.start ?? '' },
+      { label: 'Gene', id: 'gene', field: ({ variant, clusterId }) => variant.symbol ?? '' },
+      { label: 'Amino Acid Change', id: 'amino_acid_change', field: ({ variant, clusterId }) => variant.amino_acid_change ?? '' },
+      { label: 'Reference', id: 'reference', field: ({ variant, clusterId }) => variant.reference ?? '' },
+      { label: 'Variant', id: 'variant', field: ({ variant, clusterId }) => variant.variant ?? '' },
+      { label: 'Strand', id: 'strand', field: ({ variant, clusterId }) => variant.strand ?? '' }
     ];
     this.samples.forEach((sample, index) => {
-      columns.push({ label: sample.name + ' All DNA VAF', cssSuffix: 'alldna_vaf', accessor: (variant: DisplayVariant, clusterId: number) => formatVaf(variant.vaf?.[index]) });
+      columns.push({ label: sample.name + ' All DNA VAF', id: 'alldna_vaf', field: ({ variant, clusterId }) => formatVaf(variant.vaf?.[index]) });
     });
 
-    columns.push({ label: 'CGC Gene', cssSuffix: 'cgc_gene', accessor: (variant: DisplayVariant, clusterId: number) => {
+    columns.push({ label: 'CGC Gene', id: 'cgc_gene', field: ({ variant, clusterId }) => {
       let returnVal = '';
       if (variant.cgcGeneInfo) {
         returnVal = 'Tier ' + (variant.cgcGeneInfo.tier !== null ? variant.cgcGeneInfo.tier : 'unknown');
       }
       return returnVal;
     }});
-    columns.push({ label: 'Drugs', cssSuffix: 'drugs', accessor: (variant: DisplayVariant, clusterId: number) => {
+    columns.push({ label: 'Drugs', id: 'drugs', field: ({ variant, clusterId }) => {
       let returnVal: string;
       if (variant.drugs.length === 0) {
         returnVal = '';
@@ -98,6 +109,12 @@ export class TableComponent implements OnInit, OnDestroy {
       }
       return returnVal;
     }});
+    
+    // Hidden column used for global filtering
+    columns.push({ id: 'extra_filter_key', hidden: true, field: ({ variant, clusterId }) => {
+      return variant.drugs.join('\n');
+    }});
+
     this.tableColumns = columns;
   }
 
@@ -139,12 +156,53 @@ export class TableComponent implements OnInit, OnDestroy {
   selectRow(row: TableRow) {
     this.selectionService.setSeverity(row.variant.severity);
   }
+
+  customSort(event: SortEvent) {
+    if (event.mode != 'multiple') return;
+    const { data, multiSortMeta } = event;
+    if (!data || !multiSortMeta) return;
+    (event.data as TableRow[]).sort((a, b) => {
+      for (const meta of multiSortMeta) {
+        const column = this.tableColumns.find(col => col.id == meta.field);
+        if (!column) {
+          console.warn(`No TableColumn with id ${meta.field}`)
+          continue;
+        }
+        const aVal = column.field(a);
+        const bVal = column.field(b);
+        if (aVal != bVal) {
+          return this.compare(aVal, bVal, column.id) * meta.order;
+        }
+      };
+      return 0;
+    });
+  };
+
+  private compare(a: string | number, b: string | number, columnId: string) {
+    switch (columnId) {
+      case 'chr': {
+        const toNumber = (c: string | number) => {
+          return c == 'X' ? 23 : c == 'Y' ? 24 : Number(c);
+        };
+        return toNumber(a) - toNumber(b);
+      }
+      default:
+        return a < b ? -1 : 1;
+    }
+  }
+
 }
 
 export interface TableColumn {
-  label: string;
-  cssSuffix: string;
-  accessor: (variant: DisplayVariant, clusterId: number) => string|number;
+  label?: string;
+  id: string;
+  /**
+   * The name and type of this `field` property was designed to match PrimeNG's implementation of global filtering. 
+   * See: [Table._filter()](https://github.com/primefaces/primeng/blob/03cf823c8e2eacd8df94d87af4fdc2c824a4a998/src/app/components/table/table.ts#L1611)
+   * and [ObjectUtils.resolveFieldData](https://github.com/primefaces/primeng/blob/03cf823c8e2eacd8df94d87af4fdc2c824a4a998/src/app/components/utils/objectutils.ts#L57)
+   */
+  field: (record: TableRow) => string|number;
+  hidden?: boolean;
 }
 
 export interface TableRow {
