@@ -106,7 +106,7 @@ export class TableComponent implements OnInit, OnDestroy {
       return returnVal;
     }});
     
-    // Hidden columns for global filtering
+    // Hidden column used for global filtering
     columns.push({ id: 'extra_filter_key', hidden: true, field: ({ variant, clusterId }) => {
       return variant.drugs.join('\n');
     }});
