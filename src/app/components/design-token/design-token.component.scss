@@ -7,6 +7,8 @@
 //if the json comes back as a sass map like this...that would be great
 //by some of the online docs, i think it parses it into the full variable name like this $tokens-prominence-primary-main or $tokens-prominence-secondary-main  (really hope the parser strips off the -main at the end and doesn't include value/type!)
 
+//the parser should save $variables AND create css variables var() so backend AND frontend can reference the values. (if not the entire list, then at least provide a function where the app can determine WHICH are applied to css variables)
+
 $tokens: (
   primary: #f00,
   secondary: #ff0,
