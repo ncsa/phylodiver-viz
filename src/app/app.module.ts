@@ -18,6 +18,7 @@ import { TableComponent } from './components/table/table.component';
 import { PrevalenceFormatterPipe } from './pipes/prevalence-formatter.pipe';
 import { AppRoutingModule } from './app-routing.module';
 
+import { DesignTokenComponent } from './components/design-token/design-token.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { AppRoutingModule } from './app-routing.module';
     PageHeaderComponent,
     SingleSampleViewerComponent,
     TableComponent,
+
+    DesignTokenComponent,
 
     PrevalenceFormatterPipe
   ],

@@ -1,0 +1,106 @@
+/**************** modal ******************/
+
+@import '../../styles/core';
+
+//@import './genomix_tokens.json';
+
+//if the json comes back as a sass map like this...that would be great
+//by some of the online docs, i think it parses it into the full variable name like this $tokens-prominence-primary-main or $tokens-prominence-secondary-main  (really hope the parser strips off the -main at the end and doesn't include value/type!)
+
+$tokens: (
+  primary: #f00,
+  secondary: #ff0,
+  alternative: #f0f
+);
+
+$tokens-prominence-primary: #f00;
+$tokens-prominence-secondary: #ff0;
+$tokens-prominence-alternative: #f0f;
+
+//**************** mixin ******************
+
+//instead of specifying the color_value and passing it directly, i was hoping to use sass map-get or get_map_value() from core/_functions.scss
+//not sure it's possible or
+@mixin color_option($name, $color_value:#888) {
+  &.color_#{$name} {
+    h2 {
+      color: #aaa;
+    }
+
+    .box {
+      background: {
+        color: $color_value;
+      }
+    }
+
+    .box_lighter {
+      background: {
+        color: lighten($color_value, 30%);
+      }
+    }
+
+    .box_darker {
+      background: {
+        color: darken($color_value, 13%);
+      }
+    }
+  }
+}
+
+
+
+//**************** css ******************
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.design_token {
+  max: {
+    width: 920px;
+//    height: 400px;
+  }
+
+  width: 100vw;
+  height: 80vh;
+
+  margin: {
+    top: $padding;
+  }
+  padding: $padding;
+
+  border: 1px solid #eee;
+
+  .color {
+    display: flex;
+    align-items: center;
+    gap: $padding * .5;
+
+    margin: {
+      top: $padding;
+    }
+
+    @include color_option('primary', $tokens-prominence-primary);
+    @include color_option('secondary', $tokens-prominence-secondary);
+    @include color_option('alternative', $tokens-prominence-alternative);
+
+    & + .color {
+      margin: {
+        top: $padding * .5;
+      }
+    }
+  }
+
+  .box {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border: 1px solid #eee;
+
+    @include border-radius(50%);
+  }
+}
+
+

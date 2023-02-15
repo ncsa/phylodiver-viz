@@ -1,0 +1,30 @@
+{
+  "tokens": {
+    "prominence": {
+      "primary": {
+        "main": {
+          "value": "#3B82F6",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "main": {
+          "value": "#64748B",
+          "type": "color"
+        }
+      },
+      "alternative": {
+        "main": {
+          "value": "#ff2099",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "tokens"
+    ]
+  }
+}
